@@ -25,16 +25,22 @@
 //////////////////////////////////////////////////////////////////////////////////
 module X_RAM_NOREAD(clk,reset,count_EN,Output, out_pipe, Score, Lose);
 
+	parameter X0_init = 0;
+	parameter X1_init = 160;
+	parameter X2_init = 320;
+	parameter X3_init = 480;
+
  input clk,reset;
  input count_EN;
  input Lose; // signal from obstacle logic
  
  output [9:0] Output;
- output	out_pipe[1:0];
- output	Score[3:0];
+ output	[1:0] out_pipe;
+ output	[3:0] Score;
  
  reg [9:0] array_X [3:0]; // 2D array X to store four 10 bit pipes
- reg out_pipe[1:0];
+ reg [1:0] out_pipe;
+ reg [3:0] Score;
 
  always @ (posedge clk)
 	 begin  : X_RAM_logic
@@ -42,29 +48,37 @@ module X_RAM_NOREAD(clk,reset,count_EN,Output, out_pipe, Score, Lose);
 		if(reset) // On reset we set the starting positions of the pipes.
 		begin
 			Score <= 0;
-			array_X[0] <= 0;
-			array_X[1] <= 160;
-			array_X[2] <= 320;
-			array_X[3] <= 480;
+			array_X[0] <= X0_init;
+			array_X[1] <= X1_init;
+			array_X[2] <= X2_init;
+			array_X[3] <= X3_init;
 			out_pipe <= 2; // The first pipe in scope is 2 because that's just to the right of the bird.
 		end
 		else if (count_EN) // If signalled to count (the whole gameplay basically)
-			begin
+			begin : COUNT_EN
 				integer i;
 				for(i = 0; i < 4; i = i + 1) // Then we shift each pipe by 1 pixel
 				begin
 					array_X[i] <= array_X[i]-1;
+					
+					if(array_X[i] == 0) // about to roll over
+					begin
+						array_X[i] <= 640;
+					end
 				end
 				
 				if(array_X[out_pipe] < 240) // if current pipe is going out of scope (240 because 320-width of 80)
 				begin // move on to the next pipe
 					if(out_pipe == 3)
 						out_pipe <= 0;
-					else out_pipe <= out_pipe + 1;
-					
+					else 
+						begin
+							out_pipe <= out_pipe + 2'b01;
+						end
 					if(~Lose) Score <= Score + 1; // increment score once a pipe passes the bird
 				end
-			end
+				
+			end // COUNT_EN
 	 end
  
  assign Output = array_X[out_pipe];

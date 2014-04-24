@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/Lorraine/Documents/Flappy_repo/FlappyFPGA/Flappy-Xilinx/X_RAM_tb_isim_beh.exe" -prj "C:/Users/Lorraine/Documents/Flappy_repo/FlappyFPGA/Flappy-Xilinx/X_RAM_tb_beh.prj" "work.X_RAM_tb" "work.glbl" 

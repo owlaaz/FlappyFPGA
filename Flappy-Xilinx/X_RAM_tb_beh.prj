@@ -1,0 +1,3 @@
+verilog work "X_RAM.v"
+verilog work "X_RAM_tb.v"
+verilog work "C:/Xilinx2/ISE_DS/ISE//verilog/src/glbl.v"
