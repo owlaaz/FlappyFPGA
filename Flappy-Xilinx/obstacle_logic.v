@@ -22,35 +22,42 @@ module obstacle_logic(
 	Clk,reset,
 	Q_Initial,
 	Q_Check,
-	Q_Lose, Lose, Check, Score,
+	Q_Lose, Lose, Check,// Score,
 	Start, Ack, 
 	X_Edge, // 10-bit x edges of pipes
 	Y_Edge, // 10 bit y edges
-	Pipe_Index,
-	Bird_X, Bird_Y
+	Bird_X, Bird_Y,
+	X_left_edge,
+	X_right_edge,
+	Y_top_edge,
+	Y_bottom_edge
 	);
 
 // INPUTS //
 input 	Clk, reset, Start, Ack;
-input		Bird_X[9:0]; // flappy's x
-input		Bird_Y[9:0]; // flappy's y
-input	[9:0] Array_X_Edge; // 10-bit x edge of current pipe (left edge)
-input	[9:0] Array_Y_Edge; // 10 bit y edge of current pipe (top edge)
+input	[9:0]	Bird_X; // flappy's x
+input	[9:0]	Bird_Y; // flappy's y
+input	[9:0] X_Edge; // 10-bit x edge of current pipe (left edge)
+input	[9:0] Y_Edge; // 10 bit y edge of current pipe (top edge)
 
 // OUTPUTS //
 output 	Q_Initial,
 			Q_Check, Q_Lose, Lose, Check;
-output	Score[3:0]; // assume no one is good enough to pass 16 pipes
+//output [3:0] Score; // assume no one is good enough to pass 16 pipes
+output [9:0] X_left_edge;
+output [9:0] X_right_edge;
+output [9:0] Y_top_edge;
+output [9:0] Y_bottom_edge;
 				
 reg 	Lose;		
 reg	Check;	
 reg [2:0] state;
 
 // local variables to use to edges I guess
-reg [9:0] X_left_edge;
-reg [9:0] X_right_edge;
-reg [9:0] Y_top_edge;
-reg [9:0] Y_bottom_edge;
+wire [9:0] X_left_edge;
+wire [9:0] X_right_edge;
+wire [9:0] Y_top_edge;
+wire [9:0] Y_bottom_edge;
 
 //reg timer_out;
 //reg [3:0] count;
@@ -59,10 +66,10 @@ assign {Q_Lose, Q_Check,
 			Q_Initial } = state;
 
 // Assigning local edge
-assign Array_X_Edge = X_left_edge;
-assign {Array_X_Edge + 10'd80} = X_right_edge;
-assign Array_Y_Edge = Y_top_edge;
-assign {Array_Y_Edge + 10'd100} = Y_bottom_edge;
+assign X_left_edge = X_Edge;
+assign X_right_edge = {X_Edge + 10'd80};
+assign Y_top_edge = Y_Edge;
+assign Y_bottom_edge = {Y_Edge + 10'd100};
 
 localparam
 			QInitial = 2'b00,
@@ -92,7 +99,7 @@ begin
 			begin
 			// if (Bird is below the bottom part of pipe OR above the top part of pipe
 			//			AND Bird is inside of the pipe X-wise) Then the player loses
-				if( (Bird_Y <= Y_bottom_edge || Bird_Y >= Y_top_edge)
+				if( (Bird_Y >= Y_bottom_edge || Bird_Y <= Y_top_edge)
 					&& (X_left_edge < Bird_X && X_right_edge > Bird_Y) )
 					state <= QLose;
 					Check <= 1;

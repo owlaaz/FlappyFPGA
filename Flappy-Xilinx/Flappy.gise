@@ -22,12 +22,10 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="Flappy.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="X_RAM_tb_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="X_RAM_tb_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="X_RAM_tb_isim_beh.wdb"/>
-    <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
-    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="obstacle_logic_tb_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="obstacle_logic_tb_isim_beh.wdb"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
@@ -36,7 +34,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1398304480" xil_pn:in_ck="6984920301905823143" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1398304480">
+    <transform xil_pn:end_ts="1398305797" xil_pn:in_ck="-8692488060451039718" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1398305797">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="X_RAM.v"/>
@@ -47,12 +45,13 @@
       <outfile xil_pn:name="flappy_top.v"/>
       <outfile xil_pn:name="flight_physics.v"/>
       <outfile xil_pn:name="obstacle_logic.v"/>
+      <outfile xil_pn:name="obstacle_logic_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1398302564" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-5139236622336381629" xil_pn:start_ts="1398302564">
+    <transform xil_pn:end_ts="1398305348" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-1774646584695410234" xil_pn:start_ts="1398305348">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1398302564" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-8556151559301338367" xil_pn:start_ts="1398302564">
+    <transform xil_pn:end_ts="1398305348" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7030827518913385860" xil_pn:start_ts="1398305348">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -60,7 +59,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1398304480" xil_pn:in_ck="6984920301905823143" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1398304480">
+    <transform xil_pn:end_ts="1398305797" xil_pn:in_ck="-8692488060451039718" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1398305797">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="X_RAM.v"/>
@@ -71,21 +70,19 @@
       <outfile xil_pn:name="flappy_top.v"/>
       <outfile xil_pn:name="flight_physics.v"/>
       <outfile xil_pn:name="obstacle_logic.v"/>
+      <outfile xil_pn:name="obstacle_logic_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1398304481" xil_pn:in_ck="6984920301905823143" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-7710704080551687803" xil_pn:start_ts="1398304480">
-      <status xil_pn:value="SuccessfullyRun"/>
+    <transform xil_pn:end_ts="1398305818" xil_pn:in_ck="-8692488060451039718" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-2261338121384913973" xil_pn:start_ts="1398305797">
+      <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="X_RAM_tb_beh.prj"/>
-      <outfile xil_pn:name="X_RAM_tb_isim_beh.exe"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1398304481" xil_pn:in_ck="-8933763303153489541" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="6525841646738766264" xil_pn:start_ts="1398304481">
-      <status xil_pn:value="SuccessfullyRun"/>
+    <transform xil_pn:end_ts="1398305573" xil_pn:in_ck="3847783626171554009" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="51232689156073342" xil_pn:start_ts="1398305573">
+      <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="X_RAM_tb_isim_beh.wdb"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForced"/>
       <outfile xil_pn:name="isim.cmd"/>
+      <outfile xil_pn:name="obstacle_logic_tb_isim_beh.wdb"/>
     </transform>
   </transforms>
 
