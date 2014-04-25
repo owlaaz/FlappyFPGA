@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-04-24T17:29:46</DateModified>
+  <DateModified>2014-04-24T18:06:46</DateModified>
   <ModuleName>flappy_top</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>/home/david/ee201/FlappyFPGA/Flappy-Xilinx/iseconfig/flappy_top.xreport</SavedFilePath>

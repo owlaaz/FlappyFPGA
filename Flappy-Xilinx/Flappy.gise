@@ -42,8 +42,10 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="X_RAM.v"/>
       <outfile xil_pn:name="X_RAM_tb.v"/>
       <outfile xil_pn:name="X_initial_ROM.v"/>
@@ -69,7 +71,11 @@
     <transform xil_pn:end_ts="1398384899" xil_pn:in_ck="-8692488060451039718" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1398384899">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="X_RAM.v"/>
       <outfile xil_pn:name="X_RAM_tb.v"/>
       <outfile xil_pn:name="X_initial_ROM.v"/>
@@ -83,8 +89,11 @@
     <transform xil_pn:end_ts="1398384989" xil_pn:in_ck="-8692488060451039718" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-2261338121384913973" xil_pn:start_ts="1398384988">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
@@ -96,6 +105,7 @@
     <transform xil_pn:end_ts="1398384990" xil_pn:in_ck="3847783626171554009" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="51232689156073342" xil_pn:start_ts="1398384989">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
