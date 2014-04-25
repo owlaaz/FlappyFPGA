@@ -32,8 +32,8 @@ module obstacle_logic_tb;
 	reg Ack;
 	reg [9:0] X_Edge;
 	reg [9:0] Y_Edge;
-	reg [9:0] Bird_X;
-	reg [9:0] Bird_Y;
+	reg signed [9:0] Bird_X;
+	reg signed [9:0] Bird_Y;
 
 	// Outputs
 	wire Q_Initial;
