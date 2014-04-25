@@ -115,7 +115,7 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 // routing resources in the FPGA.
 
 	// BUFGP BUFGP2 (Reset, BtnC); In the case of Spartan 3E (on Nexys-2 board), we were using BUFGP to provide global routing for the reset signal. But Spartan 6 (on Nexys-3) does not allow this.
-	assign Reset = BtnC;
+	assign Reset = BtnD;
 	
 //------------
 	// Our clock is too fast (100MHz) for SSD scanning

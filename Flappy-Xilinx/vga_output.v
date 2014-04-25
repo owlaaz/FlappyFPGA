@@ -26,14 +26,14 @@ module vga_output(
 	
 	input signed [9:0] BirdXdraw;
 	input signed [9:0] BirdYdraw;
-	input signed [9:0] X_Edge_O1;
-	input signed [9:0] X_Edge_O2;
-	input signed [9:0] X_Edge_O3;
-	input signed [9:0] X_Edge_O4;
-	input signed [9:0] Y_Edge_O1;
-	input signed [9:0] Y_Edge_O2;
-	input signed [9:0] Y_Edge_O3;
-	input signed [9:0] Y_Edge_O4;
+	input [9:0] X_Edge_O1;
+	input [9:0] X_Edge_O2;
+	input [9:0] X_Edge_O3;
+	input [9:0] X_Edge_O4;
+	input [9:0] Y_Edge_O1;
+	input [9:0] Y_Edge_O2;
+	input [9:0] Y_Edge_O3;
+	input [9:0] Y_Edge_O4;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
