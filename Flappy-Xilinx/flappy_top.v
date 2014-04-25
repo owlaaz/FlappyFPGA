@@ -63,15 +63,30 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	wire Start, Ack;
 	wire [1:0] X_Index; // index of pipe to read
 	// Outputs from the core design
-	wire [9:0] X_Data;
+	wire [9:0] X_Edge;
+	wire [9:0] Y_Edge;
+	
+	wire [9:0] X_Edge_O1;
+	wire [9:0] Y_Edge_O1;
+	
+	wire [9:0] X_Edge_O2;
+	wire [9:0] Y_Edge_O2;
+	
+	wire [9:0] X_Edge_O3;
+	wire [9:0] Y_Edge_O3;
+	
 	wire Done;
 	wire q_Initial, q_Check, q_Lose; // Dunno if we need these
-	wire Lose, Check;
+	wire Lose, Check, Score, Lose;
 	
-	reg Bird_X[9:0];
-	reg Bird_Y[9:0];
+	reg signed [9:0] Bird_X;
+	reg signed [9:0] Bird_Y;
 	reg BtnPress;
-	reg VertSpeed;
+	reg [9:0] VertSpeed;
+	
+	// extra CLKS
+	wire flight_clk;
+	wire obstacle_clk;
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////	
@@ -236,13 +251,18 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	// TODO initialize somewhere Bird_X, Bird_Y. I think they should be slightly to the left of the middle,
 	// somewhere between pipes 1 & 2 in X_RAM.v
 	// TODO update the initializer lists. I changed the modules but I didn't add new variables or update these lists.
-	X_RAM_NOREAD(.clk(sys_clk), .reset(Reset), .count_EN(Check),Output(Array_X_Edge), .out_pipe(X_Index));	
-	
-	Y_ROM(.I(X_Index), .DOUT(Array_Y_Edge));
+	X_RAM_NOREAD(.clk(sys_clk),.reset(Reset),.count_EN(Check),.Output(X_Edge), .out_pipe(X_Index), 
+		.Score(Score), .Lose(Lose), 	.X_Edge_O1(X_Edge_O1),
+		.X_Edge_O2(X_Edge_O2),
+		.X_Edge_O3(X_Edge_O3));	
+		
+	Y_ROM(.I(X_Index),.Output(Y_Edge), .Y_Edge_O1(Y_Edge_O1),
+		.Y_Edge_O2(Y_Edge_O2),
+		.Y_Edge_O3(Y_Edge_O3));
 	
 	obstacle_logic(.Clk(sys_clk),.reset(Reset),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
-		.Lose(Lose), .Check(Check),.Start(Start), .Ack(Ack), .X_Edge(Array_X_Edge),
-			.Y_Edge(Array_Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
+		.Lose(Lose), .Check(Check),.Start(Start), .Ack(Ack), .X_Edge(X_Edge),
+			.Y_Edge(Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 	
 	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(Start), .Ack(Ack), 
 		.BtnPress(BtnPress), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));

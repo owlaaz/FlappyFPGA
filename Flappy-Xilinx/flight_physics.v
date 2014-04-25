@@ -53,10 +53,6 @@ begin
 	else if(~BtnPress)
 	begin
 		Bird_Y <= Bird_Y + VertSpeed;
-//		if(Bird_Y < 0)
-	//	begin
-	//		Bird_Y <= 0;
-	//	end
 		VertSpeed <= VertSpeed + GRAVITY;
 	end
 end

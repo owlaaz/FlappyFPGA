@@ -26,11 +26,7 @@ module obstacle_logic(
 	Start, Ack, 
 	X_Edge, // 10-bit x edges of pipes
 	Y_Edge, // 10 bit y edges
-	Bird_X, Bird_Y,
-	X_left_edge,
-	X_right_edge,
-	Y_top_edge,
-	Y_bottom_edge
+	Bird_X, Bird_Y
 	);
 
 // INPUTS //
@@ -43,11 +39,6 @@ input	[9:0] Y_Edge; // 10 bit y edge of current pipe (top edge)
 // OUTPUTS //
 output 	Q_Initial,
 			Q_Check, Q_Lose, Lose, Check;
-//output [3:0] Score; // assume no one is good enough to pass 16 pipes
-output [9:0] X_left_edge;
-output [9:0] X_right_edge;
-output [9:0] Y_top_edge;
-output [9:0] Y_bottom_edge;
 				
 reg 	Lose;		
 reg	Check;	

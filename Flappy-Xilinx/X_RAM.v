@@ -23,7 +23,10 @@
 // I guess the clock would be at whatever rate ... not sure actually;
 // Coordinate is the left edge of the pipe. Right edge is calculated in obstacle logic.
 //////////////////////////////////////////////////////////////////////////////////
-module X_RAM_NOREAD(clk,reset,count_EN,Output, out_pipe, Score, Lose);
+module X_RAM_NOREAD(clk,reset,count_EN, Output, out_pipe, Score, Lose,
+	X_Edge_O1,
+	X_Edge_O2,
+	X_Edge_O3);
 
 	parameter X0_init = 0;
 	parameter X1_init = 160;
@@ -35,6 +38,9 @@ module X_RAM_NOREAD(clk,reset,count_EN,Output, out_pipe, Score, Lose);
  input Lose; // signal from obstacle logic
  
  output [9:0] Output;
+ output [9:0] X_Edge_O1;
+ output [9:0] X_Edge_O2;
+ output [9:0] X_Edge_O3;
  output	[1:0] out_pipe;
  output	[3:0] Score;
  
@@ -82,5 +88,8 @@ module X_RAM_NOREAD(clk,reset,count_EN,Output, out_pipe, Score, Lose);
 	 end
  
  assign Output = array_X[out_pipe];
+ assign X_Edge_O1 = array_X[out_pipe-1];
+ assign X_Edge_O2 = array_X[out_pipe-2];
+ assign X_Edge_O3 = array_X[out_pipe-3];
  
 endmodule
