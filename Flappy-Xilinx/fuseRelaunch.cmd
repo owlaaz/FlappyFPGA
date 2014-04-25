@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "/home/david/ee201/FlappyFPGA/Flappy-Xilinx/obstacle_logic_tb_isim_beh.exe" -prj "/home/david/ee201/FlappyFPGA/Flappy-Xilinx/obstacle_logic_tb_beh.prj" "work.obstacle_logic_tb" "work.glbl" 
