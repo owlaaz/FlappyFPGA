@@ -28,7 +28,8 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 		Ld7, Ld6, Ld5, Ld4, Ld3, Ld2, Ld1, Ld0, // 8 LEDs
 		An3, An2, An1, An0,			       // 4 anodes
 		Ca, Cb, Cc, Cd, Ce, Cf, Cg,        // 7 cathodes
-		Dp  
+		Dp,
+		vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b	
     );
 
 	/*  INPUTS */
@@ -40,6 +41,8 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	
 	
 	/*  OUTPUTS */
+	//VGA stuffs
+	output vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b;
 	// Control signals on Memory chips 	(to disable them)
 	output 	MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS;
 	// Project Specific Outputs
@@ -79,10 +82,10 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	wire q_Initial, q_Check, q_Lose; // Dunno if we need these
 	wire Lose, Check, Score, Lose;
 	
-	reg signed [9:0] Bird_X;
-	reg signed [9:0] Bird_Y;
-	reg BtnPress;
-	reg [9:0] VertSpeed;
+	wire signed [9:0] Bird_X;
+	wire signed [9:0] Bird_Y;
+	wire BtnPress;
+	wire [9:0] VertSpeed;
 	
 	// extra CLKS
 	wire flight_clk;
@@ -156,10 +159,10 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	// ****** TODO  in Part 2 ******
 	// assign y = s ? i1 : i0;  // an example of a 2-to-1 mux coding
 	// assign y = s1 ? (s0 ? i3: i2): (s0 ? i1: i0); // an example of a 4-to-1 mux coding
-	assign SSD3 = {1'b0,array_R_Index};
-	assign SSD2 = 4'b0000; // This not actually displayed
-	assign SSD1 = 4'b0000; // This not actually displayed
-	assign SSD0 = array_R_Data;
+	//assign SSD3 = {1'b0,array_R_Index};
+	//assign SSD2 = 4'b0000; // This not actually displayed
+	//assign SSD1 = 4'b0000; // This not actually displayed
+	//assign SSD0 = array_R_Data;
 
 
 	// need a scan clk for the seven segment display 
@@ -267,7 +270,18 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(Start), .Ack(Ack), 
 		.BtnPress(BtnPress), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 		
-	vga_output(.ClkPort(sys_clk), .reset(Reset), .BirdXdraw(Bird_X), .BirdYdraw(Bird_Y), .X_Edge(Array_X_Edge));
+	vga_output(
+		.ClkPort(sys_clk), .reset(Reset), .BirdXdraw(Bird_X), .BirdYdraw(Bird_Y),
+		.X_Edge_O1(X_Edge_O1),
+		.X_Edge_O2(X_Edge_O2),
+		.X_Edge_O3(X_Edge_O3),
+		.X_Edge_O4(X_Edge),
+		.Y_Edge_O1(Y_Edge_O1),
+		.Y_Edge_O2(Y_Edge_O2),
+		.Y_Edge_O3(Y_Edge_O3),
+		.Y_Edge_O4(Y_Edge),
+		.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .vga_r(vga_r), .vga_g(vga_g), .vga_b(vga_b)
+		);
 		
 	// produces debounced button signal	
 	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnPress), .MCEN(), .CCEN());

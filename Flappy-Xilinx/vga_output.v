@@ -9,20 +9,31 @@ module vga_output(
 	reset,
 	BirdXdraw,
 	BirdYdraw,
-	X_Edge,
-	vga_h_sync, vga_v_sync, 
-	vga_r, vga_g, vga_b, 
-	St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar
+	X_Edge_O1,
+	X_Edge_O2,
+	X_Edge_O3,
+	X_Edge_O4,
+	Y_Edge_O1,
+	Y_Edge_O2,
+	Y_Edge_O3,
+	Y_Edge_O4,
+	vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b
 	);
 	
 	input ClkPort, reset;
-	output St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar;
 	output vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b;
-	reg vga_r, vga_g, vga_b; 
+	reg vga_r, vga_g, vga_b;
 	
-	input [9:0] BirdXdraw;
-	input [9:0] BirdYdraw;
-	input [9:0] X_Edge;
+	input signed [9:0] BirdXdraw;
+	input signed [9:0] BirdYdraw;
+	input signed [9:0] X_Edge_O1;
+	input signed [9:0] X_Edge_O2;
+	input signed [9:0] X_Edge_O3;
+	input signed [9:0] X_Edge_O4;
+	input signed [9:0] Y_Edge_O1;
+	input signed [9:0] Y_Edge_O2;
+	input signed [9:0] Y_Edge_O3;
+	input signed [9:0] Y_Edge_O4;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -41,7 +52,6 @@ module vga_output(
 	end	
 
 	assign	clk = DIV_CLK[1];
-	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b11111};
 	
 	wire inDisplayArea;
 	wire [9:0] CounterX;
@@ -61,13 +71,13 @@ module vga_output(
 	//red = bird
 	wire R = 
 		CounterY>=(BirdYdraw-10) && CounterY<=(BirdYdraw+10) && 
-		CounterX>=(BirdXdraw-10) && CounterX<=(BirdXDraw+10);
+		CounterX>=(BirdXdraw-10) && CounterX<=(BirdXdraw+10);
 	//green = pipes
 	wire G = 
-		CounterX>=Pipe1left && CounterX<=Pipe1right && CounterY>=Pipe1top && CounterY<=Pipe1bottom &&
-		CounterX>=Pipe2left && CounterX<=Pipe2right && CounterY>=Pipe2top && CounterY<=Pipe2bottom &&
-		CounterX>=Pipe3left && CounterX<=Pipe3right && CounterY>=Pipe3top && CounterY<=Pipe3bottom &&
-		CounterX>=Pipe4left && CounterX<=Pipe4right && CounterY>=Pipe4top && CounterY<=Pipe4bottom;
+		CounterX>=X_Edge_O1 && CounterX<=X_Edge_O1+80 && CounterY>=Y_Edge_O1 && CounterY<=Y_Edge_O1-100 &&
+		CounterX>=X_Edge_O2 && CounterX<=X_Edge_O2+80 && CounterY>=Y_Edge_O2 && CounterY<=Y_Edge_O2-100 &&
+		CounterX>=X_Edge_O3 && CounterX<=X_Edge_O3+80 && CounterY>=Y_Edge_O3 && CounterY<=Y_Edge_O3-100 &&
+		CounterX>=X_Edge_O4 && CounterX<=X_Edge_O4+80 && CounterY>=Y_Edge_O4 && CounterY<=Y_Edge_O4-100;
 	wire B = 0;
 	
 	always @(posedge clk)
