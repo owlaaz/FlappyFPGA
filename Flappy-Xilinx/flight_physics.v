@@ -23,22 +23,24 @@ module flight_physics(Clk, reset, Start, Ack, BtnPress, VertSpeed, Bird_X, Bird_
 
 input 	Clk, reset, Start, Ack;
 input 	BtnPress;
-input		Bird_X[9:0];
-input		Bird_Y[9:0];
 
-output	VertSpeed; // some amount of pixels per clock
-output	Bird_X[9:0];
-output	Bird_Y[9:0];
+output signed [9:0]	VertSpeed; // some amount of pixels per clock
+output signed [9:0] Bird_X;
+output signed [9:0] Bird_Y;
+
+reg signed [9:0] VertSpeed;
+reg signed [9:0] Bird_X;
+reg signed [9:0] Bird_Y;
 
 integer JUMP_VELOCITY = 10; // some amount of pixels per clock
-integer GRAVITY = -9.8; // change to some number of pixels per clock
+integer GRAVITY = -9; // change to some number of pixels per clock
 
-always @ (posedge Clk, posedge reset)
+always @ (posedge Clk)
 begin
 	if(reset)
 	begin
-		VertSpeed <= 0;
-		Bird_X <= 10'd320;
+		VertSpeed <= 10'd0;
+		Bird_X <= 10'd300;
 		Bird_Y <= 10'd240;
 	end
 	
@@ -48,8 +50,15 @@ begin
 	end
 	
 	// always pulled by gravity
-	Bird_Y <= Bird_Y + VertSpeed;
-	VertSpeed <= VertSpeed - GRAVITY;
+	else if(~BtnPress)
+	begin
+		Bird_Y <= Bird_Y + VertSpeed;
+//		if(Bird_Y < 0)
+	//	begin
+	//		Bird_Y <= 0;
+	//	end
+		VertSpeed <= VertSpeed + GRAVITY;
+	end
 end
 
 endmodule

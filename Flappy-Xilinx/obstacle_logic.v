@@ -35,8 +35,8 @@ module obstacle_logic(
 
 // INPUTS //
 input 	Clk, reset, Start, Ack;
-input	[9:0]	Bird_X; // flappy's x
-input	[9:0]	Bird_Y; // flappy's y
+input	signed [9:0] Bird_X; // flappy's x
+input	signed [9:0] Bird_Y; // flappy's y
 input	[9:0] X_Edge; // 10-bit x edge of current pipe (left edge)
 input	[9:0] Y_Edge; // 10 bit y edge of current pipe (top edge)
 
