@@ -2,28 +2,9 @@ Command line:
    obstacle_logic_tb_isim_beh.exe
      -simmode  gui
      -simrunnum  0
-     -socket  52393
+     -socket  39792
 
-Wed Apr 23 19:22:01 2014
+Thu Apr 24 17:16:32 2014
 
 
- Elaboration Time: 0.015625 sec
-
- Current Memory Usage: 492.155 Meg
-
- Total Signals          : 36
- Total Nets             : 101
- Total Signal Drivers   : 22
- Total Blocks           : 3
- Total Primitive Blocks : 2
- Total Processes        : 25
- Total Traceable Variables  : 34
- Total Scalar Nets and Variables : 239
-Total Line Count : 62
-
- Total Simulation Time: 0.03125 sec
-
- Current Memory Usage: 492.155 Meg
-
-Wed Apr 23 19:22:36 2014
-
+ Elaboration Time: 0.01 sec

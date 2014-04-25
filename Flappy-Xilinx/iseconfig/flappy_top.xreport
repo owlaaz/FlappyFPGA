@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-04-17T20:47:48</DateModified>
+  <DateModified>2014-04-24T17:29:46</DateModified>
   <ModuleName>flappy_top</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/Lorraine/Documents/Flappy_repo/FlappyFPGA/Flappy-Xilinx/iseconfig/flappy_top.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/Lorraine/Documents/Flappy_repo/FlappyFPGA/Flappy-Xilinx</ImplementationReportsDirectory>
+  <SavedFilePath>/home/david/ee201/FlappyFPGA/Flappy-Xilinx/iseconfig/flappy_top.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>/home/david/ee201/FlappyFPGA/Flappy-Xilinx/</ImplementationReportsDirectory>
   <DateInitialized>2014-04-17T20:47:48</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

@@ -247,6 +247,8 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(Start), .Ack(Ack), 
 		.BtnPress(BtnPress), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 		
+	vga_output(
+		
 	// produces debounced button signal	
 	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnPress), .MCEN(), .CCEN());
 endmodule
