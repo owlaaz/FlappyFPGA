@@ -1,7 +1,8 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // VGA verilog template
-// Author:  Da Cheng
+// Based on module by:  Da Cheng
+// Modified by: David Carr
 //////////////////////////////////////////////////////////////////////////////////
 module vga_output(
 	ClkPort, 
@@ -11,7 +12,7 @@ module vga_output(
 	X_Edge,
 	vga_h_sync, vga_v_sync, 
 	vga_r, vga_g, vga_b, 
-	St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
+	St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar
 	);
 	
 	input ClkPort, reset;
@@ -19,18 +20,16 @@ module vga_output(
 	output vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b;
 	reg vga_r, vga_g, vga_b; 
 	
-	wire [9:0] BirdXdraw;
-	wire [9:0] BirdYdraw;
-	wire [9:0] X_Edge;
+	input [9:0] BirdXdraw;
+	input [9:0] BirdYdraw;
+	input [9:0] X_Edge;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	/*  LOCAL SIGNALS */
-	wire	reset, start, ClkPort, board_clk, clk, button_clk;
+	wire	board_clk, clk;
 	
 	BUF BUF1 (board_clk, ClkPort); 	
-	BUF BUF2 (reset, Sw0);
-	BUF BUF3 (start, Sw1);
 	
 	reg [27:0]	DIV_CLK;
 	always @ (posedge board_clk, posedge reset)  
@@ -41,7 +40,6 @@ module vga_output(
 			DIV_CLK <= DIV_CLK + 1'b1;
 	end	
 
-	assign	button_clk = DIV_CLK[18];
 	assign	clk = DIV_CLK[1];
 	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b11111};
 	
@@ -49,25 +47,27 @@ module vga_output(
 	wire [9:0] CounterX;
 	wire [9:0] CounterY;
 
-	hvsync_generator syncgen(.clk(clk), .reset(reset),.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .inDisplayArea(inDisplayArea), .CounterX(CounterX), .CounterY(CounterY));
+	hvsync_generator syncgen(
+		.clk(clk), .reset(reset),
+		.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), 
+		.inDisplayArea(inDisplayArea), 
+		.CounterX(CounterX), .CounterY(CounterY));
 	
 	/////////////////////////////////////////////////////////////////
 	///////////////		VGA control starts here		/////////////////
 	/////////////////////////////////////////////////////////////////
-	//reg [9:0] position;
-	
-	/*always @(posedge DIV_CLK[21])
-		begin
-			if(reset)
-				position<=240;
-			else if(btnD && ~btnU)
-				position<=position+2;
-			else if(btnU && ~btnD)
-				position<=position-2;	
-		end*/
 
-	wire R = CounterY>=(position-10) && CounterY<=(position+10) && CounterX[8:5]==7;
-	wire G = CounterX>100 && CounterX<200 && CounterY[5:3]==7;
+
+	//red = bird
+	wire R = 
+		CounterY>=(BirdYdraw-10) && CounterY<=(BirdYdraw+10) && 
+		CounterX>=(BirdXdraw-10) && CounterX<=(BirdXDraw+10);
+	//green = pipes
+	wire G = 
+		CounterX>=Pipe1left && CounterX<=Pipe1right && CounterY>=Pipe1top && CounterY<=Pipe1bottom &&
+		CounterX>=Pipe2left && CounterX<=Pipe2right && CounterY>=Pipe2top && CounterY<=Pipe2bottom &&
+		CounterX>=Pipe3left && CounterX<=Pipe3right && CounterY>=Pipe3top && CounterY<=Pipe3bottom &&
+		CounterX>=Pipe4left && CounterX<=Pipe4right && CounterY>=Pipe4top && CounterY<=Pipe4bottom;
 	wire B = 0;
 	
 	always @(posedge clk)
