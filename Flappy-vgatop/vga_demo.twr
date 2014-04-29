@@ -1,0 +1,88 @@
+--------------------------------------------------------------------------------
+Release 13.2 Trace  (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx2\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3 -n 3
+-fastpaths -xml vga_demo.twx vga_demo.ncd -o vga_demo.twr vga_demo.pcf
+
+Design file:              vga_demo.ncd
+Physical constraint file: vga_demo.pcf
+Device,package,speed:     xc6slx16,csg324,C,-3 (PRODUCTION 1.19 2011-06-20)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock ClkPort
+------------+------------+------------+------------+------------+------------------+--------+
+            |Max Setup to|  Process   |Max Hold to |  Process   |                  | Clock  |
+Source      | clk (edge) |   Corner   | clk (edge) |   Corner   |Internal Clock(s) | Phase  |
+------------+------------+------------+------------+------------+------------------+--------+
+Sw0         |    2.456(R)|      SLOW  |   -1.024(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+------------+------------+------------+------------+------------+------------------+--------+
+
+Clock ClkPort to Pad
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+            |Max (slowest) clk|  Process   |Min (fastest) clk|  Process   |                  | Clock  |
+Destination |  (edge) to PAD  |   Corner   |  (edge) to PAD  |   Corner   |Internal Clock(s) | Phase  |
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+An0         |         9.789(R)|      SLOW  |         5.167(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+An1         |         8.645(R)|      SLOW  |         4.414(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+An2         |         8.746(R)|      SLOW  |         4.560(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+An3         |         9.160(R)|      SLOW  |         4.793(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+Ca          |         9.527(R)|      SLOW  |         4.954(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+Cb          |        10.128(R)|      SLOW  |         5.397(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+Cc          |         8.833(R)|      SLOW  |         4.526(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+Cd          |         9.775(R)|      SLOW  |         5.161(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+Ce          |         9.254(R)|      SLOW  |         4.783(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+Cf          |         9.081(R)|      SLOW  |         4.689(R)|      FAST  |ClkPort_BUFGP     |   0.000|
+------------+-----------------+------------+-----------------+------------+------------------+--------+
+
+Clock to Setup on destination clock ClkPort
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ClkPort        |    1.856|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+BtnC           |Ld0            |    5.431|
+BtnD           |Ld1            |    5.568|
+BtnL           |Ld4            |    5.618|
+BtnR           |Ld2            |    5.690|
+BtnU           |Ld3            |    5.616|
+---------------+---------------+---------+
+
+
+Analysis completed Mon Apr 28 21:12:01 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 204 MB
+
+
+
