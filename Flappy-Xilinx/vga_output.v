@@ -35,6 +35,18 @@ module vga_output(
 	input [9:0] Y_Edge_O3;
 	input [9:0] Y_Edge_O4;
 	
+	integer tBirdXdraw = 320;
+	integer tBirdYdraw = 240;
+		
+	integer tX_Edge_O1 = 10;
+	integer tX_Edge_O2 = 100;
+	integer tX_Edge_O3 = 200;
+	integer tX_Edge_O4 = 300;
+	integer tY_Edge_O1 = 10;
+	integer tY_Edge_O2 = 100;
+	integer tY_Edge_O3 = 200;
+	integer tY_Edge_O4 = 300;
+	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	/*  LOCAL SIGNALS */
@@ -69,15 +81,27 @@ module vga_output(
 
 
 	//red = bird
-	wire R = 
+	/*wire R = 
 		CounterY>=(BirdYdraw-10) && CounterY<=(BirdYdraw+10) && 
 		CounterX>=(BirdXdraw-10) && CounterX<=(BirdXdraw+10);
 	//green = pipes
 	wire G = 
-		CounterX>=X_Edge_O1 && CounterX<=X_Edge_O1+80 && CounterY>=Y_Edge_O1 && CounterY<=Y_Edge_O1-100 &&
-		CounterX>=X_Edge_O2 && CounterX<=X_Edge_O2+80 && CounterY>=Y_Edge_O2 && CounterY<=Y_Edge_O2-100 &&
-		CounterX>=X_Edge_O3 && CounterX<=X_Edge_O3+80 && CounterY>=Y_Edge_O3 && CounterY<=Y_Edge_O3-100 &&
+		CounterX>=X_Edge_O1 && CounterX<=X_Edge_O1+80 && CounterY>=Y_Edge_O1 && CounterY<=Y_Edge_O1-100 ||
+		CounterX>=X_Edge_O2 && CounterX<=X_Edge_O2+80 && CounterY>=Y_Edge_O2 && CounterY<=Y_Edge_O2-100 ||
+		CounterX>=X_Edge_O3 && CounterX<=X_Edge_O3+80 && CounterY>=Y_Edge_O3 && CounterY<=Y_Edge_O3-100 ||
 		CounterX>=X_Edge_O4 && CounterX<=X_Edge_O4+80 && CounterY>=Y_Edge_O4 && CounterY<=Y_Edge_O4-100;
+	wire B = 0;*/
+	
+	//testing
+	wire R = 
+		CounterY>=(tBirdYdraw-10) && CounterY<=(tBirdYdraw+10) && 
+		CounterX>=(tBirdXdraw-10) && CounterX<=(tBirdXdraw+10);
+	//green = pipes
+	wire G = 
+		CounterX>=tX_Edge_O1 && CounterX<=tX_Edge_O1+80 && CounterY>=tY_Edge_O1 && CounterY<=tY_Edge_O1-100 ||
+		CounterX>=tX_Edge_O2 && CounterX<=tX_Edge_O2+80 && CounterY>=tY_Edge_O2 && CounterY<=tY_Edge_O2-100 ||
+		CounterX>=tX_Edge_O3 && CounterX<=tX_Edge_O3+80 && CounterY>=tY_Edge_O3 && CounterY<=tY_Edge_O3-100 ||
+		CounterX>=tX_Edge_O4 && CounterX<=tX_Edge_O4+80 && CounterY>=tY_Edge_O4 && CounterY<=tY_Edge_O4-100;
 	wire B = 0;
 	
 	always @(posedge clk)

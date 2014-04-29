@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the three memory chips
+module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, // Disable the three memory chips
 
         ClkPort,                           // the 100 MHz incoming clock signal
 		
@@ -44,8 +44,7 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	//VGA stuffs
 	output vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b;
 	// Control signals on Memory chips 	(to disable them)
-	output 	MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS;
-	// Project Specific Outputs
+	output St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar;	// Project Specific Outputs
 	// LEDs
 	output 	Ld0, Ld1, Ld2, Ld3, Ld4, Ld5, Ld6, Ld7;
 	// SSD Outputs
@@ -99,7 +98,8 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 ////////////////////////////////////////////////////////////////////////////////////////////////////////	
 //------------	
 // Disable the three memories so that they do not interfere with the rest of the design.
-	assign {MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS} = 5'b11111;
+	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b11111};	
+	
 	
 // TEMP VGA OUTPUTS	
 	assign vga_h_sync = vga_h_sync_temp;
