@@ -82,18 +82,20 @@ begin
 		case(state)
 		
 			QInitial:
+			begin
 				if(Start) // we're startin' folks
 					state <= QCheck;
-					
-					
+			end		
 			QCheck:
 			begin
 			// if (Bird is below the bottom part of pipe OR above the top part of pipe
 			//			AND Bird is inside of the pipe X-wise) Then the player loses
 				if( (Bird_Y >= Y_bottom_edge || Bird_Y <= Y_top_edge)
 					&& (X_left_edge < Bird_X && X_right_edge > Bird_Y) )
+					begin
 					state <= QLose;
 					Check <= 1;
+					end
 			end	
 			
 			QLose:
