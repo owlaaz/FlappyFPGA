@@ -80,7 +80,8 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	
 	wire Done;
 	wire q_Initial, q_Check, q_Lose; // Dunno if we need these
-	wire Lose, Check, Score, Lose;
+	wire Lose, Check;
+	wire [3:0]	Score;
 	
 	wire signed [9:0] Bird_X;
 	wire signed [9:0] Bird_Y;
@@ -100,6 +101,7 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 // Disable the three memories so that they do not interfere with the rest of the design.
 	assign {MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS} = 5'b11111;
 	
+// TEMP VGA OUTPUTS	
 	assign vga_h_sync = vga_h_sync_temp;
 	assign vga_v_sync = vga_v_sync_temp;
 	assign vga_r = vga_r_temp;
@@ -144,9 +146,9 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	
 // Buttons and Switches usage here	
 	assign Reset = BtnR;
-	assign Start = BtnL;
-	assign Ack   = BtnD;
-	assign Jump = BtnC;
+//	assign Start = BtnL;
+//	assign Ack   = BtnD;
+//	assign Jump = BtnC;
 	
 
 // LEDs
@@ -262,23 +264,23 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	// TODO initialize somewhere Bird_X, Bird_Y. I think they should be slightly to the left of the middle,
 	// somewhere between pipes 1 & 2 in X_RAM.v
 	// TODO update the initializer lists. I changed the modules but I didn't add new variables or update these lists.
-	X_RAM_NOREAD(.clk(sys_clk),.reset(Reset),.count_EN(Check),.Output(X_Edge), .out_pipe(X_Index), 
+	X_RAM_NOREAD x_ram(.clk(sys_clk),.reset(Reset),.count_EN(Check),.Output(X_Edge), .out_pipe(X_Index), 
 		.Score(Score), .Lose(Lose), 	.X_Edge_O1(X_Edge_O1),
 		.X_Edge_O2(X_Edge_O2),
 		.X_Edge_O3(X_Edge_O3));	
 		
-	Y_ROM(.I(X_Index),.Output(Y_Edge), .Y_Edge_O1(Y_Edge_O1),
+	Y_ROM y_rom(.I(X_Index),.Output(Y_Edge), .Y_Edge_O1(Y_Edge_O1),
 		.Y_Edge_O2(Y_Edge_O2),
 		.Y_Edge_O3(Y_Edge_O3));
 	
-	obstacle_logic(.Clk(sys_clk),.reset(Reset),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
+	obstacle_logic obs_log(.Clk(sys_clk),.reset(Reset),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
 		.Lose(Lose), .Check(Check),.Start(BtnL_Pulse), .Ack(BtnD_Pulse), .X_Edge(X_Edge),
 			.Y_Edge(Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 	
-	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(BtnL_Pulse), .Ack(BtnD_Pulse), 
-		.BtnPress(BtnC_Pulse), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
+	flight_physics flight_phys(.Clk(sys_clk), .reset(Reset), .Start(BtnL_Pulse), .Ack(BtnD_Pulse), 
+		.BtnPress(BtnC_Pulse), .Bird_X(Bird_X), .Bird_Y(Bird_Y)); // .VertSpeed(VertSpeed)
 		
-	vga_output(
+	vga_output vga_out(
 		.clk(sys_clk), .reset(Reset), .BirdXdraw(Bird_X), .BirdYdraw(Bird_Y),
 		.X_Edge_O1(X_Edge_O1),
 		.X_Edge_O2(X_Edge_O2),
@@ -293,7 +295,7 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 		);
 		
 	// produces debounced button signal	
-	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnC_Pulse), .MCEN(), .CCEN());
-	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnL), .DPB(), .SCEN(BtnL_Pulse), .MCEN(), .CCEN());
-	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnD), .DPB(), .SCEN(BtnD_Pulse), .MCEN(), .CCEN());
+	ee201_debouncer db1(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnC_Pulse), .MCEN(), .CCEN());
+	ee201_debouncer db2(.CLK(sys_clk), .RESET(Reset), .PB(BtnL), .DPB(), .SCEN(BtnL_Pulse), .MCEN(), .CCEN());
+	ee201_debouncer db3(.CLK(sys_clk), .RESET(Reset), .PB(BtnD), .DPB(), .SCEN(BtnD_Pulse), .MCEN(), .CCEN());
 endmodule

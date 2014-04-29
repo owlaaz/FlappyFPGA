@@ -18,13 +18,13 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module flight_physics(Clk, reset, Start, Ack, BtnPress, VertSpeed, Bird_X, Bird_Y
+module flight_physics(Clk, reset, Start, Ack, BtnPress, Bird_X, Bird_Y //vertspeed
     );
 
 input 	Clk, reset, Start, Ack;
 input 	BtnPress;
 
-output signed [9:0]	VertSpeed; // some amount of pixels per clock
+//output signed [9:0]	VertSpeed; // some amount of pixels per clock
 output signed [9:0] Bird_X;
 output signed [9:0] Bird_Y;
 
@@ -32,8 +32,8 @@ reg signed [9:0] VertSpeed;
 reg signed [9:0] Bird_X;
 reg signed [9:0] Bird_Y;
 
-integer JUMP_VELOCITY = 10; // some amount of pixels per clock
-integer GRAVITY = -9; // change to some number of pixels per clock
+parameter JUMP_VELOCITY = 10; // some amount of pixels per clock
+parameter GRAVITY = -9; // change to some number of pixels per clock
 
 always @ (posedge Clk)
 begin
