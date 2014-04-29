@@ -83,7 +83,8 @@ module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, /
 	
 	wire signed [9:0] Bird_X;
 	wire signed [9:0] Bird_Y;
-	wire BtnPress;
+	wire BtnC_Pulse, BtnL_Pulse, BtnD_Pulse, BtnR_Pulse, BtnU_Pulse;
+	wire Jump;
 	wire [9:0] VertSpeed;
 	
 	// extra CLKS
@@ -113,7 +114,6 @@ module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, /
 // routing resources in the FPGA.
 
 	// BUFGP BUFGP2 (Reset, BtnC); In the case of Spartan 3E (on Nexys-2 board), we were using BUFGP to provide global routing for the reset signal. But Spartan 6 (on Nexys-3) does not allow this.
-	assign Reset = BtnD;
 	
 //------------
 	// Our clock is too fast (100MHz) for SSD scanning
@@ -135,8 +135,10 @@ module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, /
 //------------
 	
 // Buttons and Switches usage here	
+	assign Reset = BtnR;
 	assign Start = BtnL;
-	assign Ack   = BtnR;
+	assign Ack   = BtnD;
+	assign Jump = BtnC;
 	
 
 // LEDs
@@ -147,8 +149,8 @@ module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, /
 	assign Ld4 = BtnL; // Start
 	assign Ld3 = BtnU;
 	assign Ld2 = BtnR; // Ack
-	assign Ld1 = BtnD;
-	assign Ld0 = BtnC;
+	assign Ld1 = BtnD; // Reset
+	assign Ld0 = BtnC; // Jump
 	
 //------------
 // SSD (Seven Segment Display)
@@ -262,11 +264,11 @@ module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, /
 		.Y_Edge_O3(Y_Edge_O3));
 	
 	obstacle_logic(.Clk(sys_clk),.reset(Reset),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
-		.Lose(Lose), .Check(Check),.Start(Start), .Ack(Ack), .X_Edge(X_Edge),
+		.Lose(Lose), .Check(Check),.Start(BtnL_Pulse), .Ack(BtnD_Pulse), .X_Edge(X_Edge),
 			.Y_Edge(Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 	
-	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(Start), .Ack(Ack), 
-		.BtnPress(BtnPress), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
+	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(BtnL_Pulse), .Ack(BtnD_Pulse), 
+		.BtnPress(BtnC_Pulse), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 		
 	vga_output(
 		.clk(sys_clk), .reset(Reset), .BirdXdraw(Bird_X), .BirdYdraw(Bird_Y),
@@ -282,5 +284,7 @@ module flappy_top(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar, /
 		);
 		
 	// produces debounced button signal	
-	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnPress), .MCEN(), .CCEN());
+	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnC_Pulse), .MCEN(), .CCEN());
+	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnL), .DPB(), .SCEN(BtnL_Pulse), .MCEN(), .CCEN());
+	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnD), .DPB(), .SCEN(BtnD_Pulse), .MCEN(), .CCEN());
 endmodule

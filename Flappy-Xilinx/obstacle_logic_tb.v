@@ -27,7 +27,7 @@ module obstacle_logic_tb;
 	// Inputs
 	reg Clk;
 	reg reset;
-	reg Score;
+	//reg Score;
 	reg Start;
 	reg Ack;
 	reg [9:0] X_Edge;
@@ -41,11 +41,7 @@ module obstacle_logic_tb;
 	wire Q_Lose;
 	wire Lose;
 	wire Check;
-	//wire [3:0] Score;
-	wire [9:0] X_left_edge;
-	wire [9:0] X_right_edge;
-	wire [9:0] Y_top_edge;
-	wire [9:0] Y_bottom_edge;
+
 
 	// Instantiate the Unit Under Test (UUT)
 	obstacle_logic uut (
@@ -62,18 +58,14 @@ module obstacle_logic_tb;
 		.X_Edge(X_Edge), 
 		.Y_Edge(Y_Edge), 
 		.Bird_X(Bird_X), 
-		.Bird_Y(Bird_Y),
-		.X_left_edge(X_left_edge),
-		.X_right_edge(X_right_edge),
-		.Y_top_edge(Y_top_edge),
-		.Y_bottom_edge(Y_bottom_edge)
+		.Bird_Y(Bird_Y)
 	);
 
 	initial begin
 		// Initialize Inputs
 		Clk = 0;
 		reset = 0;
-		Score = 0;
+		//Score = 0;
 		Start = 0;
 		Ack = 0;
 		X_Edge = 350;
