@@ -74,9 +74,9 @@ module vga_output(
 		CounterX>=(BirdXdraw-10) && CounterX<=(BirdXdraw+10);
 	//green = pipes
 	wire G = 
-		CounterX>=X_Edge_O1 && CounterX<=X_Edge_O1+80 && CounterY>=Y_Edge_O1 && CounterY<=Y_Edge_O1-100 &&
-		CounterX>=X_Edge_O2 && CounterX<=X_Edge_O2+80 && CounterY>=Y_Edge_O2 && CounterY<=Y_Edge_O2-100 &&
-		CounterX>=X_Edge_O3 && CounterX<=X_Edge_O3+80 && CounterY>=Y_Edge_O3 && CounterY<=Y_Edge_O3-100 &&
+		CounterX>=X_Edge_O1 && CounterX<=X_Edge_O1+80 && CounterY>=Y_Edge_O1 && CounterY<=Y_Edge_O1-100 ||
+		CounterX>=X_Edge_O2 && CounterX<=X_Edge_O2+80 && CounterY>=Y_Edge_O2 && CounterY<=Y_Edge_O2-100 ||
+		CounterX>=X_Edge_O3 && CounterX<=X_Edge_O3+80 && CounterY>=Y_Edge_O3 && CounterY<=Y_Edge_O3-100 ||
 		CounterX>=X_Edge_O4 && CounterX<=X_Edge_O4+80 && CounterY>=Y_Edge_O4 && CounterY<=Y_Edge_O4-100;
 	wire B = 0;
 	
