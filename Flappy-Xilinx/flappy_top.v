@@ -92,13 +92,19 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	wire flight_clk;
 	wire obstacle_clk;
 	
+	wire vga_h_sync_temp, vga_v_sync_temp, vga_r_temp, vga_g_temp, vga_b_temp;
+	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////	
 //------------	
 // Disable the three memories so that they do not interfere with the rest of the design.
 	assign {MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS} = 5'b11111;
 	
-	
+	assign vga_h_sync = vga_h_sync_temp;
+	assign vga_v_sync = vga_v_sync_temp;
+	assign vga_r = vga_r_temp;
+	assign vga_g = vga_g_temp;
+	assign vga_b = vga_b_temp;
 //------------
 // CLOCK DIVISION
 
@@ -282,7 +288,8 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 		.Y_Edge_O2(Y_Edge_O2),
 		.Y_Edge_O3(Y_Edge_O3),
 		.Y_Edge_O4(Y_Edge),
-		.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .vga_r(vga_r), .vga_g(vga_g), .vga_b(vga_b)
+		.vga_h_sync(vga_h_sync_temp), .vga_v_sync(vga_v_sync_temp),
+		.vga_r(vga_r_temp), .vga_g(vga_g_temp), .vga_b(vga_b_temp)
 		);
 		
 	// produces debounced button signal	
