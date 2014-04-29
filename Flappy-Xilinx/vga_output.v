@@ -5,7 +5,7 @@
 // Modified by: David Carr
 //////////////////////////////////////////////////////////////////////////////////
 module vga_output(
-	ClkPort, 
+	clk, 
 	reset,
 	BirdXdraw,
 	BirdYdraw,
@@ -20,7 +20,7 @@ module vga_output(
 	vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b
 	);
 	
-	input ClkPort, reset;
+	input clk, reset;
 	output vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b;
 	reg vga_r, vga_g, vga_b;
 	
@@ -38,20 +38,20 @@ module vga_output(
 	//////////////////////////////////////////////////////////////////////////////////////////
 	
 	/*  LOCAL SIGNALS */
-	wire	board_clk, clk;
+	//wire	board_clk, clk;
 	
-	BUF BUF1 (board_clk, ClkPort); 	
+	//BUF BUF1 (board_clk, ClkPort); 	
 	
-	reg [27:0]	DIV_CLK;
-	always @ (posedge board_clk, posedge reset)  
-	begin : CLOCK_DIVIDER
-      if (reset)
-			DIV_CLK <= 0;
-      else
-			DIV_CLK <= DIV_CLK + 1'b1;
-	end	
+	//reg [27:0]	DIV_CLK;
+	//always @ (posedge board_clk, posedge reset)  
+	//begin : CLOCK_DIVIDER
+   //  if (reset)
+	//		DIV_CLK <= 0;
+   //  else
+	//		DIV_CLK <= DIV_CLK + 1'b1;
+	//end	
 
-	assign	clk = DIV_CLK[1];
+	//assign	clk = DIV_CLK[1];
 	
 	wire inDisplayArea;
 	wire [9:0] CounterX;
