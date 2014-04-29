@@ -254,35 +254,7 @@ module flappy_top(MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS, // Disable the t
 	// TODO initialize somewhere Bird_X, Bird_Y. I think they should be slightly to the left of the middle,
 	// somewhere between pipes 1 & 2 in X_RAM.v
 	// TODO update the initializer lists. I changed the modules but I didn't add new variables or update these lists.
-	X_RAM_NOREAD(.clk(sys_clk),.reset(Reset),.count_EN(Check),.Output(X_Edge), .out_pipe(X_Index), 
-		.Score(Score), .Lose(Lose), 	.X_Edge_O1(X_Edge_O1),
-		.X_Edge_O2(X_Edge_O2),
-		.X_Edge_O3(X_Edge_O3));	
-		
-	Y_ROM(.I(X_Index),.Output(Y_Edge), .Y_Edge_O1(Y_Edge_O1),
-		.Y_Edge_O2(Y_Edge_O2),
-		.Y_Edge_O3(Y_Edge_O3));
 	
-	obstacle_logic(.Clk(sys_clk),.reset(Reset),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
-		.Lose(Lose), .Check(Check),.Start(Start), .Ack(Ack), .X_Edge(X_Edge),
-			.Y_Edge(Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
+		
 	
-	flight_physics(.Clk(sys_clk), .reset(Reset), .Start(Start), .Ack(Ack), 
-		.BtnPress(BtnPress), .VertSpeed(VertSpeed), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
-		
-	vga_output(
-		.ClkPort(sys_clk), .reset(Reset), .BirdXdraw(Bird_X), .BirdYdraw(Bird_Y),
-		.X_Edge_O1(X_Edge_O1),
-		.X_Edge_O2(X_Edge_O2),
-		.X_Edge_O3(X_Edge_O3),
-		.X_Edge_O4(X_Edge),
-		.Y_Edge_O1(Y_Edge_O1),
-		.Y_Edge_O2(Y_Edge_O2),
-		.Y_Edge_O3(Y_Edge_O3),
-		.Y_Edge_O4(Y_Edge),
-		.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .vga_r(vga_r), .vga_g(vga_g), .vga_b(vga_b)
-		);
-		
-	// produces debounced button signal	
-	ee201_debouncer(.CLK(sys_clk), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(BtnPress), .MCEN(), .CCEN());
 endmodule

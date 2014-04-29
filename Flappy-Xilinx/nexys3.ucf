@@ -14,17 +14,17 @@
 # Replace the Nexys-3 names MemOE, MemWR, RamCS, FlashCS, QuadSpiFlashCS
 # with the Nexys-2 names Mt_St_oe_bar, Mt_St_we_bar, Mt_ce_bar, St_ce_bar, St_rp_bar,   
 # Disable MT45W8MW16BGX
-Net "MemOE" LOC = L18 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46N_FOE_B_M1DQ3, Sch name = P30-OE
-#Net "Mt_St_oe_bar" LOC = L18 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46N_FOE_B_M1DQ3, Sch name = P30-OE
-Net "MemWR" LOC = M16 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L47P_FWE_B_M1DQ0, Sch name = P30-WE
-#Net "Mt_St_we_bar" LOC = M16 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L47P_FWE_B_M1DQ0, Sch name = P30-WE
-Net "RamCS" LOC = L15 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L42P_GCLK7_M1UDM, Sch name = MT-CE
-#Net "Mt_ce_bar" LOC = L15 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L42P_GCLK7_M1UDM, Sch name = MT-CE
+#Net "MemOE" LOC = L18 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46N_FOE_B_M1DQ3, Sch name = P30-OE
+Net "Mt_St_oe_bar" LOC = L18 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46N_FOE_B_M1DQ3, Sch name = P30-OE
+#Net "MemWR" LOC = M16 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L47P_FWE_B_M1DQ0, Sch name = P30-WE
+Net "Mt_St_we_bar" LOC = M16 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L47P_FWE_B_M1DQ0, Sch name = P30-WE
+#Net "RamCS" LOC = L15 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L42P_GCLK7_M1UDM, Sch name = MT-CE
+Net "Mt_ce_bar" LOC = L15 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L42P_GCLK7_M1UDM, Sch name = MT-CE
 # Disable NP8P128A13T1760E NP8P128
-Net "FlashCS" LOC = L17 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46P_FCS_B_M1DQ2, Sch name = P30-CE
-#Net "St_ce_bar" LOC = L17 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46P_FCS_B_M1DQ2, Sch name = P30-CE
-Net "QuadSpiFlashCS" LOC = V3  | IOSTANDARD = LVCMOS33; #Bank = MISC, pin name = IO_L65N_CSO_B_2, Sch name = CS
-#Net "St_rp_bar" LOC = V3  | IOSTANDARD = LVCMOS33; #Bank = MISC, pin name = IO_L65N_CSO_B_2, Sch name = CS
+#Net "FlashCS" LOC = L17 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46P_FCS_B_M1DQ2, Sch name = P30-CE
+Net "St_ce_bar" LOC = L17 | IOSTANDARD = LVCMOS33; #Bank = 1, pin name = IO_L46P_FCS_B_M1DQ2, Sch name = P30-CE
+#Net "QuadSpiFlashCS" LOC = V3  | IOSTANDARD = LVCMOS33; #Bank = MISC, pin name = IO_L65N_CSO_B_2, Sch name = CS
+Net "St_rp_bar" LOC = V3  | IOSTANDARD = LVCMOS33; #Bank = MISC, pin name = IO_L65N_CSO_B_2, Sch name = CS
 # ***************
 
 
