@@ -33,16 +33,20 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire Start, Ack;
 	wire [1:0] X_Index; // index of pipe to read
 	// Outputs from the core design
-	wire [9:0] X_Edge;
+	wire [9:0] X_Edge_OO_L;
+	wire [9:0] X_Edge_OO_R;
 	wire [9:0] Y_Edge;
 	
-	wire [9:0] X_Edge_O1;
+	wire [9:0] X_Edge_O1_L;
+	wire [9:0] X_Edge_O1_R;
 	wire [9:0] Y_Edge_O1;
 	
-	wire [9:0] X_Edge_O2;
+	wire [9:0] X_Edge_O2_L;
+	wire [9:0] X_Edge_O2_R;
 	wire [9:0] Y_Edge_O2;
 	
-	wire [9:0] X_Edge_O3;
+	wire [9:0] X_Edge_O3_L;
+	wire [9:0] X_Edge_O3_R;
 	wire [9:0] Y_Edge_O3;
 	
 	wire Done;
@@ -51,24 +55,14 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire q_InitialF, q_Flight, q_StopF;
 	wire [3:0]	Score;
 	
-	wire signed [9:0] Bird_X;
-	wire signed [9:0] Bird_Y;
+	wire [9:0] Bird_X_L;
+	wire [9:0] Bird_Y_T;
+	wire [9:0] Bird_X_R;
+	wire [9:0] Bird_Y_B;
 	wire BtnC_Pulse, BtnL_Pulse, BtnD_Pulse, BtnR_Pulse, BtnU_Pulse;
 	wire Jump;
-	reg [9:0] VertSpeed;
-	
-	reg [9:0] Bird_X_in;
-	reg [9:0] Bird_Y_in;
-	reg [9:0] VertSpeed_in;
-	reg [1:0] X_Index_in;
-	reg [9:0] X_Edge_in;
-	reg [9:0] Y_Edge_in;
-	reg [9:0] X_Edge_O1_in;
-	reg [9:0] Y_Edge_O1_in;
-	reg [9:0] X_Edge_O2_in;
-	reg [9:0] Y_Edge_O2_in;
-	reg [9:0] X_Edge_O3_in;
-	reg [9:0] Y_Edge_O3_in;
+	reg [9:0] PositiveSpeed;
+	reg [9:0] NegativeSpeed;
 	
 	wire [1:0] 	ssdscan_clk;
 	reg [1:0] state_num;
@@ -363,9 +357,10 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				out_pipe - index of the pipe in scope, used to pass into Y_ROM
 	*				Score - player's score, which increments when an edge leaves scope and a new one enters
 	*/
-	X_RAM_NOREAD x_ram(.clk(DIV_CLK[21]),.reset(BtnR),.Start(BtnU), .Stop(q_Lose), .Ack(BtnD),.Output(X_Edge), .out_pipe(X_Index), 
-		.Score(Score), .X_Edge_O1(X_Edge_O1), .X_Edge_O2(X_Edge_O2), .X_Edge_O3(X_Edge_O3), .Q_Initial(q_InitialX),
-	 .Q_Count(q_Count), .Q_Stop(q_Stop));	
+	X_RAM_NOREAD x_ram(.clk(DIV_CLK[21]),.reset(BtnR),.Start(BtnU), .Stop(q_Lose), .Ack(BtnD), .out_pipe(X_Index), 
+		.Score(Score),.X_Edge_OO_L(X_Edge_OO_L), .X_Edge_O1_L(X_Edge_O1_L), .X_Edge_O2_L(X_Edge_O2_L), .X_Edge_O3_L(X_Edge_O3_L), 
+		.X_Edge_OO_R(X_Edge_OO_R), .X_Edge_O1_R(X_Edge_O1_R), .X_Edge_O2_R(X_Edge_O2_R), .X_Edge_O3_R(X_Edge_O3_R), 
+		.Q_Initial(q_InitialX), .Q_Count(q_Count), .Q_Stop(q_Stop));	
 	
 	/*	Y_ROM
 	*	INPUTS:		I - signal from X_RAM, the index of the pipe in scope
@@ -405,5 +400,6 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Bird_Y
 	*/
 	flight_physics flight_phys(.Clk(DIV_CLK[21]), .reset(BtnR), .Start(BtnU), .Ack(BtnD), .Stop(q_Lose),
-		.BtnPress(BtnC), .Bird_X(Bird_X), .Bird_Y(Bird_Y), .q_Initial(q_InitialF), .q_Flight(q_Flight), .q_Stop(q_StopF));
+		.BtnPress(BtnC), .Bird_X_L(Bird_X_L),  .Bird_X_L(Bird_X_L), .Bird_Y_T(Bird_Y_T),  .Bird_Y_B(Bird_Y_B),
+		.q_Initial(q_InitialF), .q_Flight(q_Flight), .q_Stop(q_StopF), .PositiveSpeed(PositiveSpeed), .NegativeSpeed(NegativeSpeed));
 endmodule
