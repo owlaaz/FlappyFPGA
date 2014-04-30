@@ -1,0 +1,571 @@
+--------------------------------------------------------------------------------
+Release 13.2 Trace  (nt64)
+Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx2\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -v 3 -s 3 -n 3
+-fastpaths -xml vga_top.twx vga_top.ncd -o vga_top.twr vga_top.pcf -ucf
+nexys3.ucf
+
+Design file:              vga_top.ncd
+Physical constraint file: vga_top.pcf
+Device,package,speed:     xc6slx16,csg324,C,-3 (PRODUCTION 1.19 2011-06-20)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 
+50%;
+
+ 1277 paths analyzed, 296 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is   4.643ns.
+--------------------------------------------------------------------------------
+
+Paths for end point vga_r (SLICE_X15Y23.A2), 130 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     5.357ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               flight_phys/Bird_Y_1_1 (FF)
+  Destination:          vga_r (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.575ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.033ns (0.416 - 0.449)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: flight_phys/Bird_Y_1_1 to vga_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X15Y35.AQ      Tcko                  0.391   flight_phys/Bird_Y_1_1
+                                                       flight_phys/Bird_Y_1_1
+    SLICE_X15Y35.A5      net (fanout=3)        0.755   flight_phys/Bird_Y_1_1
+    SLICE_X15Y35.A       Tilo                  0.259   flight_phys/Bird_Y_1_1
+                                                       Madd_n0160_xor<3>111
+    SLICE_X15Y35.B6      net (fanout=3)        0.129   Madd_n0160_xor<3>11
+    SLICE_X15Y35.B       Tilo                  0.259   flight_phys/Bird_Y_1_1
+                                                       Madd_n0160_xor<7>11
+    SLICE_X14Y30.D2      net (fanout=1)        0.886   n0160<7>
+    SLICE_X14Y30.COUT    Topcyd                0.274   Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<3>
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_lutdi3
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<3>
+    SLICE_X14Y31.CIN     net (fanout=1)        0.003   Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<3>
+    SLICE_X14Y31.AMUX    Tcina                 0.212   n0160<5>
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<4>
+    SLICE_X15Y23.A2      net (fanout=1)        1.085   GND_1_o_BUS_0002_LessThan_7_o
+    SLICE_X15Y23.CLK     Tas                   0.322   Ld7_OBUF
+                                                       R_inDisplayArea_AND_18_o3
+                                                       vga_r
+    -------------------------------------------------  ---------------------------
+    Total                                      4.575ns (1.717ns logic, 2.858ns route)
+                                                       (37.5% logic, 62.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     5.370ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               flight_phys/Bird_Y_1_1 (FF)
+  Destination:          vga_r (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.562ns (Levels of Logic = 5)
+  Clock Path Skew:      -0.033ns (0.416 - 0.449)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: flight_phys/Bird_Y_1_1 to vga_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X15Y35.AQ      Tcko                  0.391   flight_phys/Bird_Y_1_1
+                                                       flight_phys/Bird_Y_1_1
+    SLICE_X15Y35.A5      net (fanout=3)        0.755   flight_phys/Bird_Y_1_1
+    SLICE_X15Y35.A       Tilo                  0.259   flight_phys/Bird_Y_1_1
+                                                       Madd_n0160_xor<3>111
+    SLICE_X15Y35.B6      net (fanout=3)        0.129   Madd_n0160_xor<3>11
+    SLICE_X15Y35.B       Tilo                  0.259   flight_phys/Bird_Y_1_1
+                                                       Madd_n0160_xor<7>11
+    SLICE_X14Y30.D2      net (fanout=1)        0.886   n0160<7>
+    SLICE_X14Y30.COUT    Topcyd                0.261   Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<3>
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_lut<3>
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<3>
+    SLICE_X14Y31.CIN     net (fanout=1)        0.003   Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<3>
+    SLICE_X14Y31.AMUX    Tcina                 0.212   n0160<5>
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<4>
+    SLICE_X15Y23.A2      net (fanout=1)        1.085   GND_1_o_BUS_0002_LessThan_7_o
+    SLICE_X15Y23.CLK     Tas                   0.322   Ld7_OBUF
+                                                       R_inDisplayArea_AND_18_o3
+                                                       vga_r
+    -------------------------------------------------  ---------------------------
+    Total                                      4.562ns (1.704ns logic, 2.858ns route)
+                                                       (37.4% logic, 62.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     5.395ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               flight_phys/Bird_Y_1_1 (FF)
+  Destination:          vga_r (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.537ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.033ns (0.416 - 0.449)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: flight_phys/Bird_Y_1_1 to vga_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X15Y35.AQ      Tcko                  0.391   flight_phys/Bird_Y_1_1
+                                                       flight_phys/Bird_Y_1_1
+    SLICE_X15Y35.A5      net (fanout=3)        0.755   flight_phys/Bird_Y_1_1
+    SLICE_X15Y35.A       Tilo                  0.259   flight_phys/Bird_Y_1_1
+                                                       Madd_n0160_xor<3>111
+    SLICE_X14Y34.A6      net (fanout=3)        0.290   Madd_n0160_xor<3>11
+    SLICE_X14Y34.A       Tilo                  0.203   n0160<8>
+                                                       Madd_n0160_xor<8>11
+    SLICE_X14Y31.A1      net (fanout=1)        0.843   n0160<8>
+    SLICE_X14Y31.AMUX    Topaa                 0.389   n0160<5>
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_lutdi4
+                                                       Mcompar_GND_1_o_BUS_0002_LessThan_7_o_cy<4>
+    SLICE_X15Y23.A2      net (fanout=1)        1.085   GND_1_o_BUS_0002_LessThan_7_o
+    SLICE_X15Y23.CLK     Tas                   0.322   Ld7_OBUF
+                                                       R_inDisplayArea_AND_18_o3
+                                                       vga_r
+    -------------------------------------------------  ---------------------------
+    Total                                      4.537ns (1.564ns logic, 2.973ns route)
+                                                       (34.5% logic, 65.5% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point vga_r (SLICE_X15Y23.A4), 162 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     5.507ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               flight_phys/Bird_Y_5 (FF)
+  Destination:          vga_r (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.432ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.026ns (0.416 - 0.442)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: flight_phys/Bird_Y_5 to vga_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y36.BQ      Tcko                  0.408   flight_phys/Bird_Y<7>
+                                                       flight_phys/Bird_Y_5
+    SLICE_X14Y35.C2      net (fanout=17)       0.861   flight_phys/Bird_Y<5>
+    SLICE_X14Y35.CMUX    Tilo                  0.361   GND_1_o_GND_1_o_sub_4_OUT<7>
+                                                       Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<7>11_G
+                                                       Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<7>11
+    SLICE_X12Y31.D3      net (fanout=1)        0.895   GND_1_o_GND_1_o_sub_4_OUT<7>
+    SLICE_X12Y31.COUT    Topcyd                0.281   Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<3>
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_lutdi3
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.108   Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<3>
+    SLICE_X12Y32.AMUX    Tcina                 0.194   GND_1_o_GND_1_o_LessThan_5_o
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<4>
+    SLICE_X15Y23.A4      net (fanout=1)        1.002   GND_1_o_GND_1_o_LessThan_5_o
+    SLICE_X15Y23.CLK     Tas                   0.322   Ld7_OBUF
+                                                       R_inDisplayArea_AND_18_o3
+                                                       vga_r
+    -------------------------------------------------  ---------------------------
+    Total                                      4.432ns (1.566ns logic, 2.866ns route)
+                                                       (35.3% logic, 64.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     5.528ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               flight_phys/Bird_Y_5 (FF)
+  Destination:          vga_r (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.411ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.026ns (0.416 - 0.442)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: flight_phys/Bird_Y_5 to vga_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y36.BQ      Tcko                  0.408   flight_phys/Bird_Y<7>
+                                                       flight_phys/Bird_Y_5
+    SLICE_X14Y35.C2      net (fanout=17)       0.861   flight_phys/Bird_Y<5>
+    SLICE_X14Y35.CMUX    Tilo                  0.361   GND_1_o_GND_1_o_sub_4_OUT<7>
+                                                       Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<7>11_G
+                                                       Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<7>11
+    SLICE_X12Y31.D3      net (fanout=1)        0.895   GND_1_o_GND_1_o_sub_4_OUT<7>
+    SLICE_X12Y31.COUT    Topcyd                0.260   Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<3>
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_lut<3>
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.108   Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<3>
+    SLICE_X12Y32.AMUX    Tcina                 0.194   GND_1_o_GND_1_o_LessThan_5_o
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<4>
+    SLICE_X15Y23.A4      net (fanout=1)        1.002   GND_1_o_GND_1_o_LessThan_5_o
+    SLICE_X15Y23.CLK     Tas                   0.322   Ld7_OBUF
+                                                       R_inDisplayArea_AND_18_o3
+                                                       vga_r
+    -------------------------------------------------  ---------------------------
+    Total                                      4.411ns (1.545ns logic, 2.866ns route)
+                                                       (35.0% logic, 65.0% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     5.530ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               flight_phys/Bird_Y_3 (FF)
+  Destination:          vga_r (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      4.407ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.028ns (0.416 - 0.444)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: flight_phys/Bird_Y_3 to vga_r
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y35.DQ      Tcko                  0.408   flight_phys/Bird_Y<3>
+                                                       flight_phys/Bird_Y_3
+    SLICE_X14Y32.B1      net (fanout=17)       0.968   flight_phys/Bird_Y<3>
+    SLICE_X14Y32.B       Tilo                  0.203   GND_1_o_GND_1_o_sub_4_OUT<9>
+                                                       Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<6>121
+    SLICE_X14Y32.D1      net (fanout=3)        0.494   Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<6>12
+    SLICE_X14Y32.D       Tilo                  0.203   GND_1_o_GND_1_o_sub_4_OUT<9>
+                                                       Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<9>11
+    SLICE_X12Y32.A4      net (fanout=1)        0.425   GND_1_o_GND_1_o_sub_4_OUT<9>
+    SLICE_X12Y32.AMUX    Topaa                 0.382   GND_1_o_GND_1_o_LessThan_5_o
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_lut<4>
+                                                       Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<4>
+    SLICE_X15Y23.A4      net (fanout=1)        1.002   GND_1_o_GND_1_o_LessThan_5_o
+    SLICE_X15Y23.CLK     Tas                   0.322   Ld7_OBUF
+                                                       R_inDisplayArea_AND_18_o3
+                                                       vga_r
+    -------------------------------------------------  ---------------------------
+    Total                                      4.407ns (1.518ns logic, 2.889ns route)
+                                                       (34.4% logic, 65.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point syncgen/CounterX_9 (SLICE_X12Y24.SR), 10 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     6.201ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               syncgen/CounterX_6 (FF)
+  Destination:          syncgen/CounterX_9 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.750ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.014ns (0.244 - 0.258)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: syncgen/CounterX_6 to syncgen/CounterX_9
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y23.CQ      Tcko                  0.408   syncgen/CounterX<7>
+                                                       syncgen/CounterX_6
+    SLICE_X13Y23.D1      net (fanout=5)        0.810   syncgen/CounterX<6>
+    SLICE_X13Y23.D       Tilo                  0.259   N28
+                                                       syncgen/CounterX[9]_PWR_3_o_equal_2_o<9>_SW0
+    SLICE_X13Y23.B2      net (fanout=1)        0.438   N28
+    SLICE_X13Y23.B       Tilo                  0.259   N28
+                                                       syncgen/CounterX[9]_PWR_3_o_equal_2_o<9>
+    SLICE_X13Y23.C4      net (fanout=4)        0.303   syncgen/CounterX[9]_PWR_3_o_equal_2_o
+    SLICE_X13Y23.CMUX    Tilo                  0.313   N28
+                                                       syncgen/Mcount_CounterX_val1
+    SLICE_X12Y24.SR      net (fanout=3)        0.505   syncgen/Mcount_CounterX_val
+    SLICE_X12Y24.CLK     Tsrck                 0.455   syncgen/CounterX<9>
+                                                       syncgen/CounterX_9
+    -------------------------------------------------  ---------------------------
+    Total                                      3.750ns (1.694ns logic, 2.056ns route)
+                                                       (45.2% logic, 54.8% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.403ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               syncgen/CounterX_7 (FF)
+  Destination:          syncgen/CounterX_9 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.548ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.014ns (0.244 - 0.258)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: syncgen/CounterX_7 to syncgen/CounterX_9
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y23.DQ      Tcko                  0.408   syncgen/CounterX<7>
+                                                       syncgen/CounterX_7
+    SLICE_X13Y23.D2      net (fanout=6)        0.608   syncgen/CounterX<7>
+    SLICE_X13Y23.D       Tilo                  0.259   N28
+                                                       syncgen/CounterX[9]_PWR_3_o_equal_2_o<9>_SW0
+    SLICE_X13Y23.B2      net (fanout=1)        0.438   N28
+    SLICE_X13Y23.B       Tilo                  0.259   N28
+                                                       syncgen/CounterX[9]_PWR_3_o_equal_2_o<9>
+    SLICE_X13Y23.C4      net (fanout=4)        0.303   syncgen/CounterX[9]_PWR_3_o_equal_2_o
+    SLICE_X13Y23.CMUX    Tilo                  0.313   N28
+                                                       syncgen/Mcount_CounterX_val1
+    SLICE_X12Y24.SR      net (fanout=3)        0.505   syncgen/Mcount_CounterX_val
+    SLICE_X12Y24.CLK     Tsrck                 0.455   syncgen/CounterX<9>
+                                                       syncgen/CounterX_9
+    -------------------------------------------------  ---------------------------
+    Total                                      3.548ns (1.694ns logic, 1.854ns route)
+                                                       (47.7% logic, 52.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     6.627ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               syncgen/CounterX_2 (FF)
+  Destination:          syncgen/CounterX_9 (FF)
+  Requirement:          10.000ns
+  Data Path Delay:      3.322ns (Levels of Logic = 3)
+  Clock Path Skew:      -0.016ns (0.244 - 0.260)
+  Source Clock:         ClkPort_BUFGP rising at 0.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: syncgen/CounterX_2 to syncgen/CounterX_9
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y22.CQ      Tcko                  0.408   syncgen/CounterX<3>
+                                                       syncgen/CounterX_2
+    SLICE_X13Y23.D5      net (fanout=3)        0.382   syncgen/CounterX<2>
+    SLICE_X13Y23.D       Tilo                  0.259   N28
+                                                       syncgen/CounterX[9]_PWR_3_o_equal_2_o<9>_SW0
+    SLICE_X13Y23.B2      net (fanout=1)        0.438   N28
+    SLICE_X13Y23.B       Tilo                  0.259   N28
+                                                       syncgen/CounterX[9]_PWR_3_o_equal_2_o<9>
+    SLICE_X13Y23.C4      net (fanout=4)        0.303   syncgen/CounterX[9]_PWR_3_o_equal_2_o
+    SLICE_X13Y23.CMUX    Tilo                  0.313   N28
+                                                       syncgen/Mcount_CounterX_val1
+    SLICE_X12Y24.SR      net (fanout=3)        0.505   syncgen/Mcount_CounterX_val
+    SLICE_X12Y24.CLK     Tsrck                 0.455   syncgen/CounterX<9>
+                                                       syncgen/CounterX_9
+    -------------------------------------------------  ---------------------------
+    Total                                      3.322ns (1.694ns logic, 1.628ns route)
+                                                       (51.0% logic, 49.0% route)
+
+--------------------------------------------------------------------------------
+
+Hold Paths: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+
+Paths for end point flight_phys/VertSpeed_4 (SLICE_X16Y42.B5), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.410ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               flight_phys/VertSpeed_2 (FF)
+  Destination:          flight_phys/VertSpeed_4 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.410ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         ClkPort_BUFGP rising at 10.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: flight_phys/VertSpeed_2 to flight_phys/VertSpeed_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y42.BQ      Tcko                  0.200   flight_phys/VertSpeed<2>
+                                                       flight_phys/VertSpeed_2
+    SLICE_X16Y42.B5      net (fanout=5)        0.089   flight_phys/VertSpeed<2>
+    SLICE_X16Y42.CLK     Tah         (-Th)    -0.121   flight_phys/VertSpeed<2>
+                                                       flight_phys/Maccum_VertSpeed_xor<4>11
+                                                       flight_phys/VertSpeed_4
+    -------------------------------------------------  ---------------------------
+    Total                                      0.410ns (0.321ns logic, 0.089ns route)
+                                                       (78.3% logic, 21.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point flight_phys/VertSpeed_9 (SLICE_X16Y41.D6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.416ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               flight_phys/VertSpeed_9 (FF)
+  Destination:          flight_phys/VertSpeed_9 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.416ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         ClkPort_BUFGP rising at 10.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: flight_phys/VertSpeed_9 to flight_phys/VertSpeed_9
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y41.DQ      Tcko                  0.200   flight_phys/VertSpeed<9>
+                                                       flight_phys/VertSpeed_9
+    SLICE_X16Y41.D6      net (fanout=2)        0.026   flight_phys/VertSpeed<9>
+    SLICE_X16Y41.CLK     Tah         (-Th)    -0.190   flight_phys/VertSpeed<9>
+                                                       flight_phys/Maccum_VertSpeed_xor<9>1
+                                                       flight_phys/VertSpeed_9
+    -------------------------------------------------  ---------------------------
+    Total                                      0.416ns (0.390ns logic, 0.026ns route)
+                                                       (93.8% logic, 6.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point flight_phys/VertSpeed_0 (SLICE_X16Y42.A6), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.432ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               flight_phys/VertSpeed_0 (FF)
+  Destination:          flight_phys/VertSpeed_0 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.432ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         ClkPort_BUFGP rising at 10.000ns
+  Destination Clock:    ClkPort_BUFGP rising at 10.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: flight_phys/VertSpeed_0 to flight_phys/VertSpeed_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X16Y42.AQ      Tcko                  0.200   flight_phys/VertSpeed<2>
+                                                       flight_phys/VertSpeed_0
+    SLICE_X16Y42.A6      net (fanout=6)        0.042   flight_phys/VertSpeed<0>
+    SLICE_X16Y42.CLK     Tah         (-Th)    -0.190   flight_phys/VertSpeed<2>
+                                                       flight_phys/Maccum_VertSpeed_xor<0>11_INV_0
+                                                       flight_phys/VertSpeed_0
+    -------------------------------------------------  ---------------------------
+    Total                                      0.432ns (0.390ns logic, 0.042ns route)
+                                                       (90.3% logic, 9.7% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 8.270ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 1.730ns (578.035MHz) (Tbcper_I)
+  Physical resource: ClkPort_BUFGP/BUFG/I0
+  Logical resource: ClkPort_BUFGP/BUFG/I0
+  Location pin: BUFGMUX_X3Y13.I0
+  Clock network: ClkPort_BUFGP/IBUFG
+--------------------------------------------------------------------------------
+Slack: 9.570ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 0.430ns (2325.581MHz) (Tcp)
+  Physical resource: syncgen/CounterX<3>/CLK
+  Logical resource: syncgen/CounterX_0/CK
+  Location pin: SLICE_X12Y22.CLK
+  Clock network: ClkPort_BUFGP
+--------------------------------------------------------------------------------
+Slack: 9.570ns (period - min period limit)
+  Period: 10.000ns
+  Min period limit: 0.430ns (2325.581MHz) (Tcp)
+  Physical resource: syncgen/CounterX<3>/CLK
+  Logical resource: syncgen/CounterX_1/CK
+  Location pin: SLICE_X12Y22.CLK
+  Clock network: ClkPort_BUFGP
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock ClkPort
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+ClkPort        |    4.643|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
+
+Constraints cover 1277 paths, 0 nets, and 430 connections
+
+Design statistics:
+   Minimum period:   4.643ns{1}   (Maximum frequency: 215.378MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Tue Apr 29 19:31:34 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 205 MB
+
+
+
