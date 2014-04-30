@@ -32,9 +32,13 @@ module flight_physics_tb;
 	reg BtnPress;
 
 	// Outputs
-	wire [9:0] VertSpeed;
-	wire [9:0] Bird_X;
-	wire [9:0] Bird_Y;
+	wire [9:0] Bird_X_L;
+	wire [9:0] Bird_Y_T;
+	wire [9:0] Bird_X_R;
+	wire [9:0] Bird_Y_B;
+	wire [9:0] PositiveSpeed;
+	wire [9:0] NegativeSpeed;
+	wire q_Initial, q_Flight, q_Stop;
 
 
 	// Instantiate the Unit Under Test (UUT)
@@ -44,9 +48,10 @@ module flight_physics_tb;
 		.Start(Start), 
 		.Ack(Ack), 
 		.BtnPress(BtnPress), 
-		.VertSpeed(VertSpeed), 
-		.Bird_X(Bird_X), 
-		.Bird_Y(Bird_Y)
+		.Bird_X_L(Bird_X_L), .Bird_X_R(Bird_X_R), 
+		.Bird_Y_T(Bird_Y_T), .Bird_Y_B(Bird_Y_B),
+		 .q_Initial(q_Initial), .q_Flight(q_Flight), .q_Stop(q_Stop),
+		 .PositiveSpeed(PositiveSpeed), .NegativeSpeed(NegativeSpeed)
 	);
 
 	initial begin
@@ -63,10 +68,14 @@ module flight_physics_tb;
 		#100;
 		reset = 0;
 		#30;
-		BtnPress = 1;
-		#20;
-		BtnPress = 0;
+		Start = 1;
 		#50;
+		Start = 0;
+		#100;
+		BtnPress = 1;
+		#50;
+		BtnPress = 0;
+		#500;
 		BtnPress = 1;
 		#50;
 		BtnPress = 0;
