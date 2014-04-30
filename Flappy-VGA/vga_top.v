@@ -34,16 +34,24 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire [1:0] X_Index; // index of pipe to read
 	// Outputs from the core design
 	wire [9:0] X_Edge;
-	wire [9:0] Y_Edge;
+
+	wire [9:0] Y_Edge_01_Top;
+	wire [9:0] Y_Edge_01_Bottom;
 	
 	wire [9:0] X_Edge_O1;
-	wire [9:0] Y_Edge_O1;
+	
+	wire [9:0] Y_Edge_02_Top;
+	wire [9:0] Y_Edge_02_Bottom;
 	
 	wire [9:0] X_Edge_O2;
-	wire [9:0] Y_Edge_O2;
+	
+	wire [9:0] Y_Edge_03_Top;
+	wire [9:0] Y_Edge_03_Bottom;
 	
 	wire [9:0] X_Edge_O3;
-	wire [9:0] Y_Edge_O3;
+	
+	wire [9:0] Y_Edge_04_Top;
+	wire [9:0] Y_Edge_04_Bottom;
 	
 	wire Done;
 	wire q_Initial, q_Check, q_Lose;
@@ -172,10 +180,10 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		//CounterX>=(Bird_L) && CounterX<=(Bird_R);
 	//green = pipes
 	wire G = 
-		CounterX>=X_Edge_O1 && CounterX<=X1draw && CounterY<=Y_Edge_O1 && CounterY>=Y_Edge_O1+100 ||
-		CounterX>=X_Edge_O2 && CounterX<=X2draw && CounterY<=Y_Edge_O2 && CounterY>=Y_Edge_O2+100 ||
-		CounterX>=X_Edge_O3 && CounterX<=X3draw && CounterY<=Y_Edge_O3 && CounterY>=Y_Edge_O3+100 ||
-		CounterX>=X_Edge && CounterX<=X0draw && CounterY<=Y_Edge && CounterY>=Y_Edge+100;
+		CounterX>=X_Edge_O1 && CounterX<=X1draw && CounterY<=Y_Edge_01_Top && CounterY>=Y_Edge_01_Bottom ||
+		CounterX>=X_Edge_O2 && CounterX<=X2draw && CounterY<=Y_Edge_02_Top && CounterY>=Y_Edge_02_Bottom ||
+		CounterX>=X_Edge_O3 && CounterX<=X3draw && CounterY<=Y_Edge_03_Top && CounterY>=Y_Edge_03_Bottom ||
+		CounterX>=X_Edge && CounterX<=X0draw && CounterY<=Y_Edge_04_Top && CounterY>=Y_Edge_04_Bottom;
 	wire B = 0;
 	
 	always @(posedge sys_clk)
@@ -374,8 +382,16 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Y_Edge_O2
 	*				Y_Edge_O3
 	*/
-	Y_ROM y_rom(.I(X_Index),.Output(Y_Edge), .Y_Edge_O1(Y_Edge_O1), .Y_Edge_O2(Y_Edge_O2), .Y_Edge_O3(Y_Edge_O3));
-	
+	Y_ROM y_rom(.I(X_Index),
+		.YEdge1T(Y_Edge_01_Top), 
+		.YEdge1B(Y_Edge_01_Bottom),
+		.YEdge2T(Y_Edge_02_Top),
+		.YEdge2B(Y_Edge_02_Bottom),
+		.YEdge3T(Y_Edge_03_Top),
+		.YEdge3B(Y_Edge_03_Bottom),
+		.YEdge4T(Y_Edge_04_Top),
+		.YEdge4B(Y_Edge_04_Bottom)
+		);
 	/* 	obstacle_logic
 	* 	INPUTS:		Clk
 	*				reset	

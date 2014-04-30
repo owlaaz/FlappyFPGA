@@ -25,7 +25,7 @@ module Y_ROM(I,
 	YEdge2T, YEdge2B,
 	YEdge3T, YEdge3B,
 	YEdge4T, YEdge4B
-	)
+	);
 	
 	parameter E0 = 100;
 	parameter E1 = 150;
@@ -35,20 +35,20 @@ module Y_ROM(I,
 	input [1:0] I;
 	
 	output [9:0] YEdge1T;
-	output [9:0] YEdge1B,
+	output [9:0] YEdge1B;
 	output [9:0] YEdge2T;
-	output [9:0] YEdge2B,
+	output [9:0] YEdge2B;
 	output [9:0] YEdge3T;
-	output [9:0] YEdge3B,
+	output [9:0] YEdge3B;
 	output [9:0] YEdge4T;
 	output [9:0] YEdge4B;
 	
 	reg [9:0] YEdge1T;
-	reg [9:0] YEdge1B,
+	reg [9:0] YEdge1B;
 	reg [9:0] YEdge2T;
-	reg [9:0] YEdge2B,
+	reg [9:0] YEdge2B;
 	reg [9:0] YEdge3T;
-	reg [9:0] YEdge3B,
+	reg [9:0] YEdge3B;
 	reg [9:0] YEdge4T;
 	reg [9:0] YEdge4B;	
  
@@ -100,10 +100,14 @@ module Y_ROM(I,
 				end
             default:
 				begin 
-					Output <= 10'bXXXXXXXXXX;
-					Y_Edge_O1 <= 10'bXXXXXXXXXX;
-					Y_Edge_O2 <= 10'bXXXXXXXXXX;
-					Y_Edge_O3 <= 10'bXXXXXXXXXX;
+					YEdge1T <= 10'bXXXXXXXXXX;
+					YEdge1B <= 10'bXXXXXXXXXX;
+					YEdge2T <= 10'bXXXXXXXXXX;
+					YEdge2B <= 10'bXXXXXXXXXX;
+					YEdge3T <= 10'bXXXXXXXXXX;
+					YEdge3B <= 10'bXXXXXXXXXX;
+					YEdge4T <= 10'bXXXXXXXXXX;
+					YEdge4B <= 10'bXXXXXXXXXX;
 				end
          endcase	 
 
