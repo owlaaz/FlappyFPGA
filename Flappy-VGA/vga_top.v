@@ -48,6 +48,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire Done;
 	wire q_Initial, q_Check, q_Lose;
 	wire q_InitialX, q_Count, q_Stop;
+	wire q_InitialF, q_Flight, q_StopF;
 	wire [3:0]	Score;
 	
 	wire signed [9:0] Bird_X;
@@ -94,15 +95,15 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	assign sys_clk = board_clk;
 	
-	hvsync_generator syncgen(.clk(sys_clk), .reset(Reset),.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .inDisplayArea(inDisplayArea), .CounterX(CounterX), .CounterY(CounterY));
+	hvsync_generator syncgen(.clk(DIV_CLK[1]), .reset(BtnR),.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .inDisplayArea(inDisplayArea), .CounterX(CounterX), .CounterY(CounterY));
 	
 	/////////////////////////////////////////////////////////////////
 	///////////////		VGA control starts here		/////////////////
 	/////////////////////////////////////////////////////////////////
 
 	wire R = 
-		CounterY>=(Bird_Y-10) && CounterY<=(Bird_Y+10) && 
-		CounterX>=(Bird_X-10) && CounterX<=(Bird_X+10);
+		CounterY>=(Bird_Y-100) && CounterY<=(Bird_Y+100);// && 
+		//CounterX>=(Bird_X-100) && CounterX<=(Bird_X+100);
 	//green = pipes
 	wire G = 
 		CounterX>=X_Edge_O1 && CounterX<=X_Edge_O1+80 && CounterY>=Y_Edge_O1 && CounterY<=Y_Edge_O1-100 ||
@@ -113,7 +114,8 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	always @(posedge sys_clk)
 	begin
-		vga_r <= R & inDisplayArea;
+		vga_r <= inDisplayArea;
+		//vga_r <= 1;
 		vga_g <= G & inDisplayArea;
 		vga_b <= B & inDisplayArea;
 	end
@@ -147,9 +149,10 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire 	[3:0]	SSD0, SSD1, SSD2, SSD3;
 	
 	`define QI_NUM			2'b00
-	`define QCHECK_NUM	2'b01 // or count
+	`define QCHECK_NUM		2'b01 // or count
 	`define QLOSE_NUM		2'b10 // or lose
 	
+	/* TO VIEW OBSTACLE LOGIC STATE SSD */
 	always @ ( q_Initial, q_Check, q_Lose )
 	begin : ONE_HOT_TO_HEX
 		(* full_case, parallel_case *) // to avoid prioritization (Verilog 2001 standard)
@@ -161,10 +164,11 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		endcase
 	end
 	
-		always @ ( q_InitialX, q_Count, q_Stop )
+	/* TO VIEW X RAM STATE SSD */
+	always @ ( q_InitialF, q_Flight, q_StopF )
 	begin : ONE_HOT_TO_HEX_2
 		(* full_case, parallel_case *) // to avoid prioritization (Verilog 2001 standard)
-		case ( {q_InitialX, q_Count, q_Stop} )	
+		case ( {q_InitialF, q_Flight, q_StopF} )	
 			3'b100: state_num_2 = `QI_NUM;
 			3'b010: state_num_2 = `QCHECK_NUM;
 			3'b001: state_num_2 = `QLOSE_NUM;
@@ -172,34 +176,56 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		endcase
 	end
 	
-	reg [3:0] x_index;
+	reg [3:0] state_num_3;
+		/* TO VIEW X RAM STATE SSD */
+	always @ ( q_InitialX, q_Count, q_Stop )
+	begin : ONE_HOT_TO_HEX_3
+		(* full_case, parallel_case *) // to avoid prioritization (Verilog 2001 standard)
+		case ( {q_InitialX, q_Count, q_Stop} )	
+			3'b100: state_num_3 = `QI_NUM;
+			3'b010: state_num_3 = `QCHECK_NUM;
+			3'b001: state_num_3 = `QLOSE_NUM;
+			default:		state_num_3 = 3'bXXX;
+		endcase
+	end
 	
+	/* TO VIEW OUTPUT PIPE INDEX SSD */
+	reg [3:0] x_index;
 	always @ (X_Index)
 	begin : Pipe_Index
 		x_index <= {0, 0, X_Index};
 	end
 	
-	reg [9:0] edge_sample;
-	always @ (X_Edge)
+	
+	reg [9:0] bird_y;
+	always @ (Bird_Y)
 	begin
-		edge_sample <= X_Edge;
+		bird_y <= Bird_Y;
 	end
 	
-	//assign SSD0 = edge_sample[3:0];
-	//assign SSD1 = edge_sample[7:4];
-	//assign SSD2 = {0,0,edge_sample[9:8]};
-	//assign SSD3 = state_num;
-		
+	reg red;
+	always @ (vga_r)
+	begin
+		red <= vga_r;
+	end
 	
-	assign SSD0 = x_index; // pipe index
-	assign SSD1 =  q_Check; //in check state
-	assign SSD2 = 	state_num_2; //x rom
-	assign SSD3 =  state_num; // obstacle logic
+	reg [9:0] counterx;
+	always @ (CounterX)
+	begin
+		counterx <= CounterX;
+	end
 	
-	//assign SSD0 = x_index[0];
-	//assign SSD1 =  x_index[1];
-	//assign SSD2 = 	x_index[2];
-	//assign SSD3 =  x_index[3];
+	/*
+	assign SSD0 = counterx[3:0];
+	assign SSD1 = counterx[7:4];
+	assign SSD2 = red;
+	assign SSD3 = state_num;
+	*/	
+	
+	assign SSD0 = red; // pipe index
+	assign SSD1 =  bird_y[3:0]; //in check state
+	assign SSD2 = 	bird_y[7:4]; //x rom
+	assign SSD3 =  {0,0,bird_y[9:8]}; // obstacle logic
 	
 	// need a scan clk for the seven segment display 
 	// 191Hz (50MHz / 2^18) works well
@@ -271,7 +297,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				out_pipe - index of the pipe in scope, used to pass into Y_ROM
 	*				Score - player's score, which increments when an edge leaves scope and a new one enters
 	*/
-	X_RAM_NOREAD x_ram(.clk(DIV_CLK[18]),.reset(Reset),.Start(BtnU), .Stop(BtnL), .Ack(BtnD),.Output(X_Edge), .out_pipe(X_Index), 
+	X_RAM_NOREAD x_ram(.clk(DIV_CLK[21]),.reset(BtnR),.Start(BtnU), .Stop(q_Lose), .Ack(BtnD),.Output(X_Edge), .out_pipe(X_Index), 
 		.Score(Score), .X_Edge_O1(X_Edge_O1), .X_Edge_O2(X_Edge_O2), .X_Edge_O3(X_Edge_O3), .Q_Initial(q_InitialX),
 	 .Q_Count(q_Count), .Q_Stop(q_Stop));	
 	
@@ -299,7 +325,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Lose
 	*				Check
 	*/
-	obstacle_logic obs_log(.Clk(sys_clk),.reset(Reset),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
+	obstacle_logic obs_log(.Clk(DIV_CLK[1]),.reset(BtnR),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
 		.Start(BtnU), .Ack(BtnD), .X_Edge(X_Edge),
 			.Y_Edge(Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
 			
@@ -312,6 +338,6 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*	OUTPUTS:	Bird_X
 	*				Bird_Y
 	*/
-	flight_physics flight_phys(.Clk(sys_clk), .reset(Reset), .Start(BtnU), .Ack(BtnD), 
-		.BtnPress(BtnC), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
+	flight_physics flight_phys(.Clk(DIV_CLK[21]), .reset(BtnR), .Start(BtnU), .Ack(BtnD), .Stop(q_Lose),
+		.BtnPress(BtnC), .Bird_X(Bird_X), .Bird_Y(Bird_Y), .q_Initial(q_InitialF), .q_Flight(q_Flight), .q_Stop(q_StopF));
 endmodule
