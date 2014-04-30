@@ -24,8 +24,10 @@ module obstacle_logic(
 	Q_Check,
 	Q_Lose, 
 	Start, Ack, 
-	X_Edge, // 10-bit x edges of pipes
-	Y_Edge, // 10 bit y edges
+	X_Edge_Left,
+	X_Edge_Right,
+	Y_Edge_Top,
+	Y_Edge_Bottom,
 	Bird_X, Bird_Y
 	);
 
@@ -33,8 +35,11 @@ module obstacle_logic(
 input 	Clk, reset, Start, Ack;
 input	signed [9:0] Bird_X; // flappy's x
 input	signed [9:0] Bird_Y; // flappy's y
-input	[9:0] X_Edge; // 10-bit x edge of current pipe (left edge)
-input	[9:0] Y_Edge; // 10 bit y edge of current pipe (top edge)
+input	[9:0] X_Edge_Left; // 10-bit x edge of current pipe (left edge)
+input	[9:0] X_Edge_Right; // 10-bit x edge of current pipe (right edge)
+input	[9:0] Y_Edge_Top; // 10 bit y edge of current pipe (top edge)
+input	[9:0] Y_Edge_Bottom; // 10 bit y edge of current pipe (bottom edge)
+
 
 // OUTPUTS //
 output 	Q_Initial,
@@ -45,23 +50,11 @@ reg	Check;
 reg 	Initial;
 reg [2:0] state;
 
-// local variables to use to edges I guess
-wire [9:0] X_left_edge;
-wire [9:0] X_right_edge;
-wire [9:0] Y_top_edge;
-wire [9:0] Y_bottom_edge;
-
 //reg timer_out;
 //reg [3:0] count;
 
 assign {Q_Lose, Q_Check,
 			Q_Initial } = state;
-
-// Assigning local edge
-assign X_left_edge = X_Edge;
-assign X_right_edge = {X_Edge + 10'd80};
-assign Y_top_edge = Y_Edge;
-assign Y_bottom_edge = {Y_Edge + 10'd100};
 
 localparam
 			QInitial = 3'b001,
@@ -90,8 +83,8 @@ begin
 			begin
 			// if (Bird is below the bottom part of pipe OR above the top part of pipe
 			//			AND Bird is inside of the pipe X-wise) Then the player loses
-				if( (Bird_Y >= Y_bottom_edge || Bird_Y <= Y_top_edge)
-					&& (X_left_edge < Bird_X && X_right_edge > Bird_Y) )
+				if( (Bird_Y >= Y_Edge_Bottm || Bird_Y <= Y_Edge_Top)
+					&& (X_Edge_Left < Bird_X && X_Edge_Right > Bird_Y) )
 					begin
 						state <= QLose;
 					end
