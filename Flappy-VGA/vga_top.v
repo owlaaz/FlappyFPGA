@@ -33,43 +33,29 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire Start, Ack;
 	wire [1:0] X_Index; // index of pipe to read
 	// Outputs from the core design
-<<<<<<< HEAD
 	wire [9:0] X_Edge_OO_L;
 	wire [9:0] X_Edge_OO_R;
-	wire [9:0] Y_Edge;
 	
 	wire [9:0] X_Edge_O1_L;
 	wire [9:0] X_Edge_O1_R;
-	wire [9:0] Y_Edge_O1;
 	
 	wire [9:0] X_Edge_O2_L;
 	wire [9:0] X_Edge_O2_R;
-	wire [9:0] Y_Edge_O2;
 	
 	wire [9:0] X_Edge_O3_L;
 	wire [9:0] X_Edge_O3_R;
-	wire [9:0] Y_Edge_O3;
-=======
-	wire [9:0] X_Edge;
 
 	wire [9:0] Y_Edge_01_Top;
 	wire [9:0] Y_Edge_01_Bottom;
-	
-	wire [9:0] X_Edge_O1;
-	
+		
 	wire [9:0] Y_Edge_02_Top;
 	wire [9:0] Y_Edge_02_Bottom;
-	
-	wire [9:0] X_Edge_O2;
-	
+		
 	wire [9:0] Y_Edge_03_Top;
 	wire [9:0] Y_Edge_03_Bottom;
-	
-	wire [9:0] X_Edge_O3;
-	
+		
 	wire [9:0] Y_Edge_04_Top;
 	wire [9:0] Y_Edge_04_Bottom;
->>>>>>> f9b59bb3ffb77a107387b06738e375da23d5c6d5
 	
 	wire Done;
 	wire q_Initial, q_Check, q_Lose;
@@ -418,10 +404,10 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*/
 	obstacle_logic obs_log(.Clk(DIV_CLK[1]),.reset(BtnR),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
 		.Start(BtnU), .Ack(BtnD), 
-		.X_Edge_Left(),
-		.X_Edge_Right(),
-		.Y_Edge_Top(),
-		.Y_Edge_Bottom(),
+		.X_Edge_Left(X_Edge_OO_L),
+		.X_Edge_Right(X_Edge_OO_R),
+		.Y_Edge_Top(Y_Edge_01_Top),
+		.Y_Edge_Bottom(Y_Edge_01_Bottom),
 		.Bird_X(Bird_X), .Bird_Y(Bird_Y));
 			
 	/*	flight_physics
