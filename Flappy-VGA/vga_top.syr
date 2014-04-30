@@ -1,18 +1,21 @@
-Release 13.2 - xst O.61xd (nt64)
-Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
---> Parameter TMPDIR set to xst/projnav.tmp
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.05 secs
  
---> Parameter xsthdpdir set to xst
+--> 
+Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.05 secs
  
---> Reading design: vga_top.prj
+--> 
+Reading design: vga_top.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -41,7 +44,6 @@ TABLE OF CONTENTS
 =========================================================================
 ---- Source Parameters
 Input File Name                    : "vga_top.prj"
-Input Format                       : mixed
 Ignore Synthesis Constraint File   : NO
 
 ---- Target Parameters
@@ -106,71 +108,97 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\Y_ROM.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/Y_ROM.v" into library work
 Parsing module <Y_ROM>.
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\X_RAM.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/X_RAM.v" into library work
 Parsing module <X_RAM_NOREAD>.
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\obstacle_logic.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/obstacle_logic.v" into library work
 Parsing module <obstacle_logic>.
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\hvsync_generator.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/hvsync_generator.v" into library work
 Parsing module <hvsync_generator>.
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\flight_physics.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/flight_physics.v" into library work
 Parsing module <flight_physics>.
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" into library work
 Parsing module <ee201_debouncer>.
-Analyzing Verilog file \"C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v\" into library work
+Analyzing Verilog file "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" into library work
 Parsing module <vga_top>.
-WARNING:HDLCompiler:327 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 179: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 262: Concatenation with unsized literal; will interpret as 32 bits
 
 =========================================================================
 *                            HDL Elaboration                            *
 =========================================================================
-WARNING:HDLCompiler:327 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 179: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 262: Concatenation with unsized literal; will interpret as 32 bits
 
 Elaborating module <vga_top>.
 
 Elaborating module <BUF>.
 
 Elaborating module <hvsync_generator>.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\hvsync_generator.v" Line 34: Result of 11-bit expression is truncated to fit in 10-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\hvsync_generator.v" Line 44: Result of 11-bit expression is truncated to fit in 10-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 130: Assignment to clock_led ignored, since the identifier is never used
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 160: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 171: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 183: Assignment to edge_sample ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/hvsync_generator.v" Line 34: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/hvsync_generator.v" Line 44: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 113: Signal <Bird_X> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 113: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 114: Signal <Bird_X> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 114: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 115: Signal <Bird_Y> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 115: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 116: Signal <Bird_Y> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 116: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 117: Signal <Bird_X> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 119: Signal <Bird_X> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 122: Signal <Bird_Y> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 124: Signal <Bird_Y> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 138: Result of 11-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 139: Result of 11-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 140: Result of 11-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 141: Result of 11-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 144: Result of 10-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 147: Result of 10-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 150: Result of 10-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 153: Result of 10-bit expression is truncated to fit in 1-bit target.
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 198: Assignment to clock_led ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 229: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 222: Assignment to state_num ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 241: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 234: Assignment to state_num_2 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 247: Assignment to state_num_3 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 260: Assignment to x_index ignored, since the identifier is never used
+WARNING:HDLCompiler:91 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 288: Signal <Bird_L> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 288: Result of 10-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 286: Assignment to bird_y ignored, since the identifier is never used
 
 Elaborating module <ee201_debouncer(N_dc=28)>.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 142: Result of 32-bit expression is truncated to fit in 28-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 157: Result of 29-bit expression is truncated to fit in 28-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 169: Result of 5-bit expression is truncated to fit in 4-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 174: Result of 29-bit expression is truncated to fit in 28-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 187: Result of 5-bit expression is truncated to fit in 4-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 192: Result of 29-bit expression is truncated to fit in 28-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 224: Result of 29-bit expression is truncated to fit in 28-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 256: Assignment to Jump ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 258: Assignment to Start ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 260: Assignment to Ack ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 142: Result of 32-bit expression is truncated to fit in 28-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 157: Result of 29-bit expression is truncated to fit in 28-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 169: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 174: Result of 29-bit expression is truncated to fit in 28-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 187: Result of 5-bit expression is truncated to fit in 4-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 192: Result of 29-bit expression is truncated to fit in 28-bit target.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/ee201_debounce_DPB_SCEN_CCEN_MCEN.v" Line 224: Result of 29-bit expression is truncated to fit in 28-bit target.
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 348: Assignment to Jump ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 350: Assignment to Start ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 352: Assignment to Ack ignored, since the identifier is never used
 
 Elaborating module <X_RAM_NOREAD>.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\X_RAM.v" Line 107: Result of 3-bit expression is truncated to fit in 2-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.v" Line 275: Assignment to Score ignored, since the identifier is never used
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/X_RAM.v" Line 107: Result of 3-bit expression is truncated to fit in 2-bit target.
+WARNING:HDLCompiler:1127 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" Line 367: Assignment to Score ignored, since the identifier is never used
 
 Elaborating module <Y_ROM>.
 
 Elaborating module <obstacle_logic>.
 
 Elaborating module <flight_physics>.
-WARNING:HDLCompiler:413 - "C:\Users\Lorraine\Documents\Flappy-vgatop\flight_physics.v" Line 56: Result of 11-bit expression is truncated to fit in 10-bit target.
-WARNING:Xst:2972 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 256. All outputs of instance <db1> of block <ee201_debouncer> are unconnected in block <vga_top>. Underlying logic will be removed.
-WARNING:Xst:2972 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 258. All outputs of instance <db2> of block <ee201_debouncer> are unconnected in block <vga_top>. Underlying logic will be removed.
-WARNING:Xst:2972 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 260. All outputs of instance <db3> of block <ee201_debouncer> are unconnected in block <vga_top>. Underlying logic will be removed.
+WARNING:HDLCompiler:413 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/flight_physics.v" Line 83: Result of 11-bit expression is truncated to fit in 10-bit target.
+WARNING:Xst:2972 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 348. All outputs of instance <db1> of block <ee201_debouncer> are unconnected in block <vga_top>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 350. All outputs of instance <db2> of block <ee201_debouncer> are unconnected in block <vga_top>. Underlying logic will be removed.
+WARNING:Xst:2972 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 352. All outputs of instance <db3> of block <ee201_debouncer> are unconnected in block <vga_top>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <vga_top>.
-    Related source file is "c:/users/lorraine/documents/flappy-vgatop/vga_top.v".
+    Related source file is "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v".
 WARNING:Xst:647 - Input <Sw7> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Sw6> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Sw5> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -179,88 +207,108 @@ WARNING:Xst:647 - Input <Sw3> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <Sw2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Sw1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Sw0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 256: Output port <DPB> of the instance <db1> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 256: Output port <SCEN> of the instance <db1> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 256: Output port <MCEN> of the instance <db1> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 256: Output port <CCEN> of the instance <db1> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 258: Output port <DPB> of the instance <db2> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 258: Output port <SCEN> of the instance <db2> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 258: Output port <MCEN> of the instance <db2> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 258: Output port <CCEN> of the instance <db2> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 260: Output port <DPB> of the instance <db3> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 260: Output port <SCEN> of the instance <db3> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 260: Output port <MCEN> of the instance <db3> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 260: Output port <CCEN> of the instance <db3> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "c:/users/lorraine/documents/flappy-vgatop/vga_top.v" line 274: Output port <Score> of the instance <x_ram> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 348: Output port <DPB> of the instance <db1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 348: Output port <SCEN> of the instance <db1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 348: Output port <MCEN> of the instance <db1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 348: Output port <CCEN> of the instance <db1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 350: Output port <DPB> of the instance <db2> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 350: Output port <SCEN> of the instance <db2> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 350: Output port <MCEN> of the instance <db2> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 350: Output port <CCEN> of the instance <db2> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 352: Output port <DPB> of the instance <db3> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 352: Output port <SCEN> of the instance <db3> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 352: Output port <MCEN> of the instance <db3> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 352: Output port <CCEN> of the instance <db3> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 366: Output port <Score> of the instance <x_ram> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 366: Output port <Q_Initial> of the instance <x_ram> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 366: Output port <Q_Count> of the instance <x_ram> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 366: Output port <Q_Stop> of the instance <x_ram> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 394: Output port <Q_Initial> of the instance <obs_log> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 394: Output port <Q_Check> of the instance <obs_log> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 407: Output port <q_Initial> of the instance <flight_phys> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 407: Output port <q_Flight> of the instance <flight_phys> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.v" line 407: Output port <q_Stop> of the instance <flight_phys> is unconnected or connected to loadless signal.
     Found 28-bit register for signal <DIV_CLK>.
+    Found 1-bit register for signal <R>.
     Found 1-bit register for signal <Ld7>.
     Found 1-bit register for signal <Ld6>.
-    Found 11-bit subtractor for signal <GND_1_o_GND_1_o_sub_4_OUT> created at line 104.
-    Found 11-bit subtractor for signal <GND_1_o_GND_1_o_sub_8_OUT> created at line 105.
-    Found 11-bit subtractor for signal <GND_1_o_GND_1_o_sub_16_OUT> created at line 108.
-    Found 11-bit subtractor for signal <GND_1_o_GND_1_o_sub_22_OUT> created at line 109.
-    Found 11-bit subtractor for signal <GND_1_o_GND_1_o_sub_28_OUT> created at line 110.
-    Found 11-bit subtractor for signal <GND_1_o_GND_1_o_sub_34_OUT> created at line 111.
-    Found 28-bit adder for signal <DIV_CLK[27]_GND_1_o_add_0_OUT> created at line 86.
-    Found 11-bit adder for signal <n0160> created at line 104.
-    Found 11-bit adder for signal <n0165> created at line 105.
-    Found 11-bit adder for signal <n0167> created at line 108.
-    Found 11-bit adder for signal <n0172> created at line 109.
-    Found 11-bit adder for signal <n0177> created at line 110.
-    Found 11-bit adder for signal <n0182> created at line 111.
+    Found 28-bit adder for signal <DIV_CLK[27]_GND_1_o_add_0_OUT> created at line 87.
+    Found 11-bit adder for signal <n0161> created at line 114.
+    Found 11-bit adder for signal <n0163> created at line 116.
+    Found 10-bit adder for signal <n0164> created at line 138.
+    Found 10-bit adder for signal <n0165> created at line 139.
+    Found 10-bit adder for signal <n0166> created at line 140.
+    Found 10-bit adder for signal <n0167> created at line 141.
+    Found 11-bit adder for signal <n0185> created at line 175.
+    Found 11-bit adder for signal <n0188> created at line 176.
+    Found 11-bit adder for signal <n0191> created at line 177.
+    Found 11-bit adder for signal <n0194> created at line 178.
+    Found 10-bit subtractor for signal <Bird_X[9]_GND_1_o_sub_4_OUT<9:0>> created at line 113.
+    Found 10-bit subtractor for signal <Bird_Y[9]_GND_1_o_sub_6_OUT<9:0>> created at line 115.
     Found 16x7-bit Read Only RAM for signal <SSD_CATHODES>
-    Found 1-bit 4-to-1 multiplexer for signal <SSD<1>> created at line 228.
-    Found 1-bit 4-to-1 multiplexer for signal <SSD<0>> created at line 228.
-    Found 32-bit comparator lessequal for signal <n0005> created at line 104
-    Found 11-bit comparator lessequal for signal <n0008> created at line 104
-    Found 32-bit comparator lessequal for signal <n0012> created at line 105
-    Found 11-bit comparator lessequal for signal <n0016> created at line 105
-    Found 10-bit comparator lessequal for signal <n0019> created at line 108
-    Found 11-bit comparator lessequal for signal <n0022> created at line 108
-    Found 10-bit comparator lessequal for signal <n0025> created at line 108
-    Found 32-bit comparator lessequal for signal <n0029> created at line 108
-    Found 10-bit comparator lessequal for signal <n0032> created at line 109
-    Found 11-bit comparator lessequal for signal <n0035> created at line 109
-    Found 10-bit comparator lessequal for signal <n0038> created at line 109
-    Found 32-bit comparator lessequal for signal <n0042> created at line 109
-    Found 10-bit comparator lessequal for signal <n0046> created at line 110
-    Found 11-bit comparator lessequal for signal <n0049> created at line 110
-    Found 10-bit comparator lessequal for signal <n0052> created at line 110
-    Found 32-bit comparator lessequal for signal <n0056> created at line 110
-    Found 10-bit comparator lessequal for signal <n0060> created at line 111
-    Found 11-bit comparator lessequal for signal <n0063> created at line 111
-    Found 10-bit comparator lessequal for signal <n0066> created at line 111
-    Found 32-bit comparator lessequal for signal <n0070> created at line 111
+    Found 1-bit 4-to-1 multiplexer for signal <SSD<3>> created at line 320.
+    Found 1-bit 4-to-1 multiplexer for signal <SSD<2>> created at line 320.
+    Found 1-bit 4-to-1 multiplexer for signal <SSD<1>> created at line 320.
+    Found 1-bit 4-to-1 multiplexer for signal <SSD<0>> created at line 320.
+    Found 10-bit comparator greater for signal <Bird_X[9]_Bird_X[9]_LessThan_8_o> created at line 117
+    Found 10-bit comparator greater for signal <Bird_X[9]_Bird_X[9]_LessThan_10_o> created at line 119
+    Found 10-bit comparator greater for signal <Bird_Y[9]_Bird_Y[9]_LessThan_12_o> created at line 122
+    Found 10-bit comparator greater for signal <Bird_Y[9]_Bird_Y[9]_LessThan_14_o> created at line 124
+    Found 10-bit comparator greater for signal <GND_1_o_X_Edge[9]_LessThan_24_o> created at line 143
+    Found 10-bit comparator greater for signal <GND_1_o_X_Edge_O1[9]_LessThan_25_o> created at line 146
+    Found 10-bit comparator greater for signal <GND_1_o_X_Edge_O2[9]_LessThan_26_o> created at line 149
+    Found 10-bit comparator greater for signal <GND_1_o_X_Edge_O3[9]_LessThan_27_o> created at line 152
+    Found 10-bit comparator lessequal for signal <n0036> created at line 166
+    Found 10-bit comparator lessequal for signal <n0038> created at line 166
+    Found 10-bit comparator lessequal for signal <n0041> created at line 167
+    Found 10-bit comparator lessequal for signal <n0044> created at line 167
+    Found 10-bit comparator lessequal for signal <n0048> created at line 175
+    Found 10-bit comparator lessequal for signal <n0050> created at line 175
+    Found 10-bit comparator lessequal for signal <n0053> created at line 175
+    Found 11-bit comparator lessequal for signal <n0057> created at line 175
+    Found 10-bit comparator lessequal for signal <n0060> created at line 176
+    Found 10-bit comparator lessequal for signal <n0062> created at line 176
+    Found 10-bit comparator lessequal for signal <n0065> created at line 176
+    Found 11-bit comparator lessequal for signal <n0069> created at line 176
+    Found 10-bit comparator lessequal for signal <n0073> created at line 177
+    Found 10-bit comparator lessequal for signal <n0075> created at line 177
+    Found 10-bit comparator lessequal for signal <n0078> created at line 177
+    Found 11-bit comparator lessequal for signal <n0082> created at line 177
+    Found 10-bit comparator lessequal for signal <n0086> created at line 178
+    Found 10-bit comparator lessequal for signal <n0088> created at line 178
+    Found 10-bit comparator lessequal for signal <n0091> created at line 178
+    Found 11-bit comparator lessequal for signal <n0095> created at line 178
     WARNING:Xst:2404 -  FFs/Latches <vga_b<0:0>> (without init value) have a constant value of 0 in block <vga_top>.
     Summary:
 	inferred   1 RAM(s).
 	inferred  13 Adder/Subtractor(s).
-	inferred  30 D-type flip-flop(s).
-	inferred  20 Comparator(s).
-	inferred   2 Multiplexer(s).
+	inferred  31 D-type flip-flop(s).
+	inferred  28 Comparator(s).
+	inferred  12 Multiplexer(s).
 Unit <vga_top> synthesized.
 
 Synthesizing Unit <hvsync_generator>.
-    Related source file is "c:/users/lorraine/documents/flappy-vgatop/hvsync_generator.v".
+    Related source file is "/home/david/ee201/FlappyFPGA/Flappy-VGA/hvsync_generator.v".
     Found 10-bit register for signal <CounterY>.
+    Found 10-bit register for signal <CounterX>.
     Found 1-bit register for signal <vga_HS>.
     Found 1-bit register for signal <vga_VS>.
     Found 1-bit register for signal <inDisplayArea>.
-    Found 10-bit register for signal <CounterX>.
-    Found 10-bit adder for signal <CounterX[9]_GND_3_o_add_2_OUT> created at line 34.
-    Found 10-bit adder for signal <CounterY[9]_GND_3_o_add_9_OUT> created at line 44.
-    Found 10-bit comparator greater for signal <PWR_3_o_CounterX[9]_LessThan_16_o> created at line 49
-    Found 10-bit comparator greater for signal <CounterX[9]_PWR_3_o_LessThan_17_o> created at line 49
-    Found 10-bit comparator greater for signal <CounterX[9]_PWR_3_o_LessThan_21_o> created at line 58
-    Found 10-bit comparator greater for signal <CounterY[9]_GND_3_o_LessThan_22_o> created at line 58
+    Found 10-bit adder for signal <CounterX[9]_GND_3_o_add_1_OUT> created at line 34.
+    Found 10-bit adder for signal <CounterY[9]_GND_3_o_add_6_OUT> created at line 44.
+    Found 10-bit comparator greater for signal <PWR_3_o_CounterX[9]_LessThan_12_o> created at line 49
+    Found 10-bit comparator greater for signal <CounterX[9]_PWR_3_o_LessThan_13_o> created at line 49
+    Found 10-bit comparator greater for signal <CounterX[9]_PWR_3_o_LessThan_17_o> created at line 58
+    Found 10-bit comparator greater for signal <CounterY[9]_GND_3_o_LessThan_18_o> created at line 58
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  23 D-type flip-flop(s).
 	inferred   4 Comparator(s).
+	inferred   2 Multiplexer(s).
 Unit <hvsync_generator> synthesized.
 
 Synthesizing Unit <X_RAM_NOREAD>.
-    Related source file is "c:/users/lorraine/documents/flappy-vgatop/x_ram.v".
+    Related source file is "/home/david/ee201/FlappyFPGA/Flappy-VGA/X_RAM.v".
         X0_init = 0
         X1_init = 160
         X2_init = 320
@@ -305,7 +353,7 @@ Synthesizing Unit <X_RAM_NOREAD>.
 Unit <X_RAM_NOREAD> synthesized.
 
 Synthesizing Unit <Y_ROM>.
-    Related source file is "c:/users/lorraine/documents/flappy-vgatop/y_rom.v".
+    Related source file is "/home/david/ee201/FlappyFPGA/Flappy-VGA/Y_ROM.v".
         E0 = 100
         E1 = 150
         E2 = 200
@@ -316,7 +364,7 @@ Synthesizing Unit <Y_ROM>.
 Unit <Y_ROM> synthesized.
 
 Synthesizing Unit <obstacle_logic>.
-    Related source file is "c:/users/lorraine/documents/flappy-vgatop/obstacle_logic.v".
+    Related source file is "/home/david/ee201/FlappyFPGA/Flappy-VGA/obstacle_logic.v".
     Found 3-bit register for signal <state>.
     Found finite state machine <FSM_1> for signal <state>.
     -----------------------------------------------------------------------
@@ -344,19 +392,33 @@ Synthesizing Unit <obstacle_logic>.
 Unit <obstacle_logic> synthesized.
 
 Synthesizing Unit <flight_physics>.
-    Related source file is "c:/users/lorraine/documents/flappy-vgatop/flight_physics.v".
+    Related source file is "/home/david/ee201/FlappyFPGA/Flappy-VGA/flight_physics.v".
         JUMP_VELOCITY = 10
         GRAVITY = -9
-WARNING:Xst:647 - Input <Start> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <Ack> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 3-bit register for signal <state>.
+    Found 10-bit register for signal <VertSpeed>.
     Found 10-bit register for signal <Bird_X>.
     Found 10-bit register for signal <Bird_Y>.
-    Found 10-bit register for signal <VertSpeed>.
-    Found 10-bit adder for signal <Bird_Y[9]_VertSpeed[9]_add_1_OUT> created at line 55.
-    Found 11-bit adder for signal <n0017> created at line 56.
+    Found finite state machine <FSM_2> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 6                                              |
+    | Clock              | Clk (rising_edge)                              |
+    | Reset              | reset (positive)                               |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | 001                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 10-bit adder for signal <Bird_Y[9]_VertSpeed[9]_add_3_OUT> created at line 82.
+    Found 11-bit adder for signal <n0031> created at line 83.
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  30 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
 Unit <flight_physics> synthesized.
 
 =========================================================================
@@ -367,32 +429,32 @@ Macro Statistics
  16x7-bit single-port Read Only RAM                    : 1
  4x40-bit single-port Read Only RAM                    : 1
 # Adders/Subtractors                                   : 28
- 10-bit adder                                          : 5
- 10-bit subtractor                                     : 4
+ 10-bit adder                                          : 9
+ 10-bit subtractor                                     : 6
  11-bit adder                                          : 7
- 11-bit subtractor                                     : 6
  2-bit adder                                           : 1
  2-bit subtractor                                      : 3
  28-bit adder                                          : 1
  4-bit adder                                           : 1
-# Registers                                            : 14
- 1-bit register                                        : 5
+# Registers                                            : 15
+ 1-bit register                                        : 6
  10-bit register                                       : 5
  2-bit register                                        : 1
  28-bit register                                       : 1
  4-bit register                                        : 1
  40-bit register                                       : 1
-# Comparators                                          : 29
- 10-bit comparator greater                             : 7
- 10-bit comparator lessequal                           : 10
- 11-bit comparator lessequal                           : 6
- 32-bit comparator lessequal                           : 6
-# Multiplexers                                         : 9
- 1-bit 4-to-1 multiplexer                              : 2
+# Comparators                                          : 37
+ 10-bit comparator greater                             : 15
+ 10-bit comparator lessequal                           : 18
+ 11-bit comparator lessequal                           : 4
+# Multiplexers                                         : 23
+ 1-bit 2-to-1 multiplexer                              : 4
+ 1-bit 4-to-1 multiplexer                              : 4
+ 10-bit 2-to-1 multiplexer                             : 8
  10-bit 4-to-1 multiplexer                             : 4
  2-bit 2-to-1 multiplexer                              : 2
  4-bit 2-to-1 multiplexer                              : 1
-# FSMs                                                 : 2
+# FSMs                                                 : 3
 
 =========================================================================
 
@@ -401,10 +463,10 @@ Macro Statistics
 =========================================================================
 
 WARNING:Xst:1710 - FF/Latch <Bird_X_0> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <Bird_X_1> (without init value) has a constant value of 1 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <Bird_X_2> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <Bird_X_3> (without init value) has a constant value of 1 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <Bird_X_4> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Bird_X_1> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Bird_X_2> (without init value) has a constant value of 1 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Bird_X_3> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <Bird_X_4> (without init value) has a constant value of 1 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <Bird_X_5> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <Bird_X_6> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <Bird_X_7> (without init value) has a constant value of 0 in block <flight_phys>. This FF/Latch will be trimmed during the optimization process.
@@ -425,11 +487,6 @@ INFO:Xst:3231 - The small RAM <Mram__n0013> will be implemented on LUTs in order
     -----------------------------------------------------------------------
 Unit <Y_ROM> synthesized (advanced).
 
-Synthesizing (advanced) Unit <flight_physics>.
-The following registers are absorbed into accumulator <Bird_Y>: 1 register on signal <Bird_Y>.
-The following registers are absorbed into accumulator <VertSpeed>: 1 register on signal <VertSpeed>.
-Unit <flight_physics> synthesized (advanced).
-
 Synthesizing (advanced) Unit <hvsync_generator>.
 The following registers are absorbed into counter <CounterX>: 1 register on signal <CounterX>.
 The following registers are absorbed into counter <CounterY>: 1 register on signal <CounterY>.
@@ -444,7 +501,7 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_SSD_CATHODES> will be implemented on
     | Port A                                                              |
     |     aspect ratio   | 16-word x 7-bit                     |          |
     |     weA            | connected to signal <GND>           | high     |
-    |     addrA          | connected to signal <("00",SSD)>    |          |
+    |     addrA          | connected to signal <SSD>           |          |
     |     diA            | connected to signal <GND>           |          |
     |     doA            | connected to signal <Cg>            |          |
     -----------------------------------------------------------------------
@@ -457,32 +514,31 @@ Macro Statistics
 # RAMs                                                 : 2
  16x7-bit single-port distributed Read Only RAM        : 1
  4x40-bit single-port distributed Read Only RAM        : 1
-# Adders/Subtractors                                   : 23
- 10-bit adder                                          : 2
- 10-bit subtractor                                     : 4
- 11-bit adder                                          : 6
- 11-bit subtractor                                     : 6
+# Adders/Subtractors                                   : 25
+ 1-bit adder                                           : 4
+ 10-bit adder                                          : 6
+ 10-bit subtractor                                     : 6
+ 11-bit adder                                          : 4
  2-bit adder                                           : 1
  2-bit subtractor                                      : 3
  4-bit adder                                           : 1
 # Counters                                             : 3
  10-bit up counter                                     : 2
  28-bit up counter                                     : 1
-# Accumulators                                         : 2
- 10-bit up accumulator                                 : 2
-# Registers                                            : 61
- Flip-Flops                                            : 61
-# Comparators                                          : 29
- 10-bit comparator greater                             : 7
- 10-bit comparator lessequal                           : 10
- 11-bit comparator lessequal                           : 6
- 32-bit comparator lessequal                           : 6
-# Multiplexers                                         : 9
- 1-bit 4-to-1 multiplexer                              : 2
+# Registers                                            : 82
+ Flip-Flops                                            : 82
+# Comparators                                          : 37
+ 10-bit comparator greater                             : 15
+ 10-bit comparator lessequal                           : 18
+ 11-bit comparator lessequal                           : 4
+# Multiplexers                                         : 21
+ 1-bit 2-to-1 multiplexer                              : 4
+ 1-bit 4-to-1 multiplexer                              : 4
+ 10-bit 2-to-1 multiplexer                             : 6
  10-bit 4-to-1 multiplexer                             : 4
  2-bit 2-to-1 multiplexer                              : 2
  4-bit 2-to-1 multiplexer                              : 1
-# FSMs                                                 : 2
+# FSMs                                                 : 3
 
 =========================================================================
 
@@ -490,10 +546,10 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 WARNING:Xst:1710 - FF/Latch <Bird_X_0> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_1> (without init value) has a constant value of 1 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_2> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_3> (without init value) has a constant value of 1 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_4> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_1> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_2> (without init value) has a constant value of 1 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_3> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_4> (without init value) has a constant value of 1 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_5> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_6> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Bird_X_7> (without init value) has a constant value of 0 in block <flight_physics>. This FF/Latch will be trimmed during the optimization process.
@@ -517,12 +573,15 @@ Optimizing FSM <obs_log/FSM_1> on signal <state[1:2]> with gray encoding.
  010   | 01
  100   | 11
 -------------------
-WARNING:Xst:2677 - Node <DIV_CLK_20> of sequential type is unconnected in block <vga_top>.
-WARNING:Xst:2677 - Node <DIV_CLK_21> of sequential type is unconnected in block <vga_top>.
-WARNING:Xst:2677 - Node <DIV_CLK_22> of sequential type is unconnected in block <vga_top>.
-WARNING:Xst:2677 - Node <DIV_CLK_23> of sequential type is unconnected in block <vga_top>.
-WARNING:Xst:2677 - Node <DIV_CLK_24> of sequential type is unconnected in block <vga_top>.
-WARNING:Xst:2677 - Node <DIV_CLK_25> of sequential type is unconnected in block <vga_top>.
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <flight_phys/FSM_2> on signal <state[1:2]> with sequential encoding.
+-------------------
+ State | Encoding
+-------------------
+ 001   | 00
+ 010   | 01
+ 100   | 10
+-------------------
 WARNING:Xst:2677 - Node <DIV_CLK_26> of sequential type is unconnected in block <vga_top>.
 WARNING:Xst:2677 - Node <DIV_CLK_27> of sequential type is unconnected in block <vga_top>.
 
@@ -532,6 +591,8 @@ Optimizing unit <X_RAM_NOREAD> ...
 
 Optimizing unit <obstacle_logic> ...
 
+Optimizing unit <flight_physics> ...
+
 Optimizing unit <hvsync_generator> ...
 WARNING:Xst:2677 - Node <x_ram/Score_3> of sequential type is unconnected in block <vga_top>.
 WARNING:Xst:2677 - Node <x_ram/Score_2> of sequential type is unconnected in block <vga_top>.
@@ -540,6 +601,8 @@ WARNING:Xst:2677 - Node <x_ram/Score_0> of sequential type is unconnected in blo
 WARNING:Xst:1710 - FF/Latch <vga_g> (without init value) has a constant value of 0 in block <vga_top>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2261 - The FF/Latch <x_ram/array_X_0_34> in Unit <vga_top> is equivalent to the following 3 FFs/Latches, which will be removed : <x_ram/array_X_0_24> <x_ram/array_X_0_14> <x_ram/array_X_0_4> 
 INFO:Xst:2261 - The FF/Latch <x_ram/array_X_0_35> in Unit <vga_top> is equivalent to the following FF/Latch, which will be removed : <x_ram/array_X_0_15> 
+INFO:Xst:2261 - The FF/Latch <x_ram/state_FSM_FFd1> in Unit <vga_top> is equivalent to the following FF/Latch, which will be removed : <flight_phys/state_FSM_FFd1> 
+INFO:Xst:2261 - The FF/Latch <x_ram/state_FSM_FFd2> in Unit <vga_top> is equivalent to the following FF/Latch, which will be removed : <flight_phys/state_FSM_FFd2> 
 INFO:Xst:2261 - The FF/Latch <x_ram/array_X_0_30> in Unit <vga_top> is equivalent to the following 3 FFs/Latches, which will be removed : <x_ram/array_X_0_20> <x_ram/array_X_0_10> <x_ram/array_X_0_0> 
 INFO:Xst:2261 - The FF/Latch <x_ram/array_X_0_25> in Unit <vga_top> is equivalent to the following FF/Latch, which will be removed : <x_ram/array_X_0_5> 
 INFO:Xst:2261 - The FF/Latch <x_ram/array_X_0_31> in Unit <vga_top> is equivalent to the following 3 FFs/Latches, which will be removed : <x_ram/array_X_0_21> <x_ram/array_X_0_11> <x_ram/array_X_0_1> 
@@ -548,11 +611,8 @@ INFO:Xst:2261 - The FF/Latch <x_ram/array_X_0_33> in Unit <vga_top> is equivalen
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block vga_top, actual ratio is 3.
-FlipFlop flight_phys/Bird_Y_1 has been replicated 1 time(s)
-FlipFlop flight_phys/Bird_Y_2 has been replicated 1 time(s)
-FlipFlop flight_phys/Bird_Y_3 has been replicated 1 time(s)
-FlipFlop flight_phys/Bird_Y_4 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block vga_top, actual ratio is 4.
+FlipFlop vga_r has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -560,8 +620,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 97
- Flip-Flops                                            : 97
+# Registers                                            : 101
+ Flip-Flops                                            : 101
 
 =========================================================================
 
@@ -584,29 +644,28 @@ Top Level Output File Name         : vga_top.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 362
+# BELS                             : 471
 #      BUF                         : 1
 #      GND                         : 1
-#      INV                         : 11
-#      LUT1                        : 37
-#      LUT2                        : 26
-#      LUT3                        : 10
-#      LUT4                        : 65
-#      LUT5                        : 37
-#      LUT6                        : 50
-#      MUXCY                       : 71
+#      INV                         : 9
+#      LUT1                        : 29
+#      LUT2                        : 44
+#      LUT3                        : 13
+#      LUT4                        : 101
+#      LUT5                        : 49
+#      LUT6                        : 68
+#      MUXCY                       : 97
 #      MUXF7                       : 2
 #      VCC                         : 1
-#      XORCY                       : 50
-# FlipFlops/Latches                : 97
+#      XORCY                       : 56
+# FlipFlops/Latches                : 101
 #      FD                          : 2
-#      FDC                         : 24
-#      FDE                         : 25
-#      FDR                         : 14
-#      FDRE                        : 28
-#      FDSE                        : 4
-# Clock Buffers                    : 2
-#      BUFG                        : 1
+#      FDC                         : 40
+#      FDCE                        : 10
+#      FDE                         : 45
+#      FDR                         : 4
+# Clock Buffers                    : 3
+#      BUFG                        : 2
 #      BUFGP                       : 1
 # IO Buffers                       : 35
 #      IBUF                        : 5
@@ -619,23 +678,24 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:              97  out of  18224     0%  
- Number of Slice LUTs:                  236  out of   9112     2%  
-    Number used as Logic:               236  out of   9112     2%  
+ Number of Slice Registers:              99  out of  18224     0%  
+ Number of Slice LUTs:                  313  out of   9112     3%  
+    Number used as Logic:               313  out of   9112     3%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    240
-   Number with an unused Flip Flop:     143  out of    240    59%  
-   Number with an unused LUT:             4  out of    240     1%  
-   Number of fully used LUT-FF pairs:    93  out of    240    38%  
-   Number of unique control sets:        11
+ Number of LUT Flip Flop pairs used:    313
+   Number with an unused Flip Flop:     214  out of    313    68%  
+   Number with an unused LUT:             0  out of    313     0%  
+   Number of fully used LUT-FF pairs:    99  out of    313    31%  
+   Number of unique control sets:        10
 
 IO Utilization: 
  Number of IOs:                          44
  Number of bonded IOBs:                  36  out of    232    15%  
+    IOB Flip Flops/Latches:               2
 
 Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+ Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
 
 ---------------------------
 Partition Resource Summary:
@@ -655,12 +715,15 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-ClkPort                            | BUFGP                  | 70    |
-DIV_CLK_18                         | BUFG                   | 27    |
------------------------------------+------------------------+-------+
+-----------------------------------+-----------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)       | Load  |
+-----------------------------------+-----------------------------+-------+
+DIV_CLK_25                         | BUFG                        | 24    |
+ClkPort                            | BUFGP                       | 28    |
+DIV_CLK_21                         | BUFG                        | 47    |
+DIV_CLK_1                          | NONE(obs_log/state_FSM_FFd1)| 2     |
+-----------------------------------+-----------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -670,152 +733,257 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 5.339ns (Maximum Frequency: 187.289MHz)
-   Minimum input arrival time before clock: 4.460ns
-   Maximum output required time after clock: 6.432ns
-   Maximum combinational path delay: 5.312ns
+   Minimum period: 4.894ns (Maximum Frequency: 204.315MHz)
+   Minimum input arrival time before clock: 4.793ns
+   Maximum output required time after clock: 6.235ns
+   Maximum combinational path delay: 5.360ns
 
 Timing Details:
 ---------------
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'ClkPort'
-  Clock period: 5.339ns (frequency: 187.289MHz)
-  Total number of paths / destination ports: 1278 / 102
+Timing constraint: Default period analysis for Clock 'DIV_CLK_25'
+  Clock period: 4.894ns (frequency: 204.315MHz)
+  Total number of paths / destination ports: 1328 / 36
 -------------------------------------------------------------------------
-Delay:               5.339ns (Levels of Logic = 5)
-  Source:            flight_phys/Bird_Y_5 (FF)
-  Destination:       vga_r (FF)
-  Source Clock:      ClkPort rising
-  Destination Clock: ClkPort rising
+Delay:               4.894ns (Levels of Logic = 3)
+  Source:            syncgen/CounterX_3 (FF)
+  Destination:       syncgen/CounterY_9 (FF)
+  Source Clock:      DIV_CLK_25 rising
+  Destination Clock: DIV_CLK_25 rising
 
-  Data Path: flight_phys/Bird_Y_5 to vga_r
+  Data Path: syncgen/CounterX_3 to syncgen/CounterY_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q            19   0.447   1.416  flight_phys/Bird_Y_5 (flight_phys/Bird_Y_5)
-     LUT5:I0->O            3   0.203   0.651  Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<6>121 (Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<6>12)
-     LUT5:I4->O            2   0.205   0.961  Msub_GND_1_o_GND_1_o_sub_4_OUT_xor<8>11 (GND_1_o_GND_1_o_sub_4_OUT<8>)
-     LUT5:I0->O            1   0.203   0.000  Mcompar_GND_1_o_GND_1_o_LessThan_5_o_lut<4> (Mcompar_GND_1_o_GND_1_o_LessThan_5_o_lut<4>)
-     MUXCY:S->O            1   0.366   0.580  Mcompar_GND_1_o_GND_1_o_LessThan_5_o_cy<4> (GND_1_o_GND_1_o_LessThan_5_o)
-     LUT3:I2->O            1   0.205   0.000  R_inDisplayArea_AND_18_o3 (R_inDisplayArea_AND_18_o)
-     FD:D                      0.102          vga_r
+     FDC:C->Q              7   0.447   1.118  syncgen/CounterX_3 (syncgen/CounterX_3)
+     LUT5:I0->O           10   0.203   0.857  syncgen/CounterX[9]_PWR_3_o_equal_1_o<9>_SW0 (N33)
+     LUT6:I5->O            1   0.205   0.684  syncgen/CounterX[9]_PWR_3_o_equal_1_o<9> (syncgen/CounterX[9]_PWR_3_o_equal_1_o)
+     LUT2:I0->O           10   0.203   0.856  syncgen/_n0047_inv1 (syncgen/_n0047_inv)
+     FDCE:CE                   0.322          syncgen/CounterY_0
     ----------------------------------------
-    Total                      5.339ns (1.731ns logic, 3.608ns route)
-                                       (32.4% logic, 67.6% route)
+    Total                      4.894ns (1.380ns logic, 3.514ns route)
+                                       (28.2% logic, 71.8% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'DIV_CLK_18'
-  Clock period: 4.096ns (frequency: 244.111MHz)
-  Total number of paths / destination ports: 347 / 27
+Timing constraint: Default period analysis for Clock 'ClkPort'
+  Clock period: 2.194ns (frequency: 455.736MHz)
+  Total number of paths / destination ports: 351 / 26
 -------------------------------------------------------------------------
-Delay:               4.096ns (Levels of Logic = 3)
-  Source:            x_ram/array_X_0_32 (FF)
-  Destination:       x_ram/array_X_0_36 (FF)
-  Source Clock:      DIV_CLK_18 rising
-  Destination Clock: DIV_CLK_18 rising
+Delay:               2.194ns (Levels of Logic = 26)
+  Source:            DIV_CLK_1 (FF)
+  Destination:       DIV_CLK_25 (FF)
+  Source Clock:      ClkPort rising
+  Destination Clock: ClkPort rising
 
-  Data Path: x_ram/array_X_0_32 to x_ram/array_X_0_36
+  Data Path: DIV_CLK_1 to DIV_CLK_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q              3   0.447   0.651  DIV_CLK_1 (DIV_CLK_1)
+     LUT1:I0->O            1   0.205   0.000  Mcount_DIV_CLK_cy<1>_rt (Mcount_DIV_CLK_cy<1>_rt)
+     MUXCY:S->O            1   0.172   0.000  Mcount_DIV_CLK_cy<1> (Mcount_DIV_CLK_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<2> (Mcount_DIV_CLK_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<3> (Mcount_DIV_CLK_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<4> (Mcount_DIV_CLK_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<5> (Mcount_DIV_CLK_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<6> (Mcount_DIV_CLK_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<7> (Mcount_DIV_CLK_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<8> (Mcount_DIV_CLK_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<9> (Mcount_DIV_CLK_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<10> (Mcount_DIV_CLK_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<11> (Mcount_DIV_CLK_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<12> (Mcount_DIV_CLK_cy<12>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<13> (Mcount_DIV_CLK_cy<13>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<14> (Mcount_DIV_CLK_cy<14>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<15> (Mcount_DIV_CLK_cy<15>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<16> (Mcount_DIV_CLK_cy<16>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<17> (Mcount_DIV_CLK_cy<17>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<18> (Mcount_DIV_CLK_cy<18>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<19> (Mcount_DIV_CLK_cy<19>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<20> (Mcount_DIV_CLK_cy<20>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<21> (Mcount_DIV_CLK_cy<21>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<22> (Mcount_DIV_CLK_cy<22>)
+     MUXCY:CI->O           1   0.019   0.000  Mcount_DIV_CLK_cy<23> (Mcount_DIV_CLK_cy<23>)
+     MUXCY:CI->O           0   0.019   0.000  Mcount_DIV_CLK_cy<24> (Mcount_DIV_CLK_cy<24>)
+     XORCY:CI->O           1   0.180   0.000  Mcount_DIV_CLK_xor<25> (Result<25>)
+     FDC:D                     0.102          DIV_CLK_25
+    ----------------------------------------
+    Total                      2.194ns (1.543ns logic, 0.651ns route)
+                                       (70.3% logic, 29.7% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'DIV_CLK_21'
+  Clock period: 3.897ns (frequency: 256.624MHz)
+  Total number of paths / destination ports: 634 / 47
+-------------------------------------------------------------------------
+Delay:               3.897ns (Levels of Logic = 3)
+  Source:            x_ram/array_X_0_32 (FF)
+  Destination:       x_ram/array_X_0_39 (FF)
+  Source Clock:      DIV_CLK_21 rising
+  Destination Clock: DIV_CLK_21 rising
+
+  Data Path: x_ram/array_X_0_32 to x_ram/array_X_0_39
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDE:C->Q             10   0.447   1.085  x_ram/array_X_0_32 (x_ram/array_X_0_32)
-     LUT3:I0->O            8   0.205   0.907  x_ram/state[2]_GND_5_o_select_22_OUT<37>21 (x_ram/state[2]_GND_5_o_select_22_OUT<17>2)
-     LUT5:I3->O            5   0.203   0.943  x_ram/state[2]_GND_5_o_select_22_OUT<3>21 (x_ram/state[2]_GND_5_o_select_22_OUT<23>3)
-     LUT6:I3->O            1   0.205   0.000  x_ram/state[2]_GND_5_o_select_22_OUT<4>1 (x_ram/state[2]_GND_5_o_select_22_OUT<36>)
-     FDE:D                     0.102          x_ram/array_X_0_36
+     LUT3:I0->O            8   0.205   0.803  x_ram/state[2]_GND_5_o_select_22_OUT<37>21 (x_ram/state[2]_GND_5_o_select_22_OUT<17>2)
+     LUT6:I5->O            2   0.205   0.845  x_ram/Msub_array_X[0][9]_GND_5_o_sub_4_OUT_cy<7>1 (x_ram/Msub_array_X[0][9]_GND_5_o_sub_4_OUT_cy<7>)
+     LUT5:I2->O            1   0.205   0.000  x_ram/state[2]_GND_5_o_select_22_OUT<31>1 (x_ram/state[2]_GND_5_o_select_22_OUT<9>)
+     FDE:D                     0.102          x_ram/array_X_0_9
     ----------------------------------------
-    Total                      4.096ns (1.162ns logic, 2.934ns route)
-                                       (28.4% logic, 71.6% route)
+    Total                      3.897ns (1.164ns logic, 2.733ns route)
+                                       (29.9% logic, 70.1% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'ClkPort'
-  Total number of paths / destination ports: 104 / 93
+Timing constraint: Default period analysis for Clock 'DIV_CLK_1'
+  Clock period: 1.780ns (frequency: 561.940MHz)
+  Total number of paths / destination ports: 4 / 2
 -------------------------------------------------------------------------
-Offset:              4.335ns (Levels of Logic = 2)
-  Source:            BtnR (PAD)
-  Destination:       syncgen/CounterX_0 (FF)
-  Destination Clock: ClkPort rising
+Delay:               1.780ns (Levels of Logic = 1)
+  Source:            obs_log/state_FSM_FFd1 (FF)
+  Destination:       obs_log/state_FSM_FFd1 (FF)
+  Source Clock:      DIV_CLK_1 rising
+  Destination Clock: DIV_CLK_1 rising
 
-  Data Path: BtnR to syncgen/CounterX_0
+  Data Path: obs_log/state_FSM_FFd1 to obs_log/state_FSM_FFd1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            48   1.222   1.624  BtnR_IBUF (Ld3_OBUF)
-     LUT2:I0->O           10   0.203   0.856  syncgen/Mcount_CounterX_val1 (syncgen/Mcount_CounterX_val)
-     FDR:R                     0.430          syncgen/CounterX_0
+     FDC:C->Q              4   0.447   1.028  obs_log/state_FSM_FFd1 (obs_log/state_FSM_FFd1)
+     LUT6:I1->O            1   0.203   0.000  obs_log/state_FSM_FFd1-In (obs_log/state_FSM_FFd1-In)
+     FDC:D                     0.102          obs_log/state_FSM_FFd1
     ----------------------------------------
-    Total                      4.335ns (1.855ns logic, 2.480ns route)
-                                       (42.8% logic, 57.2% route)
+    Total                      1.780ns (0.752ns logic, 1.028ns route)
+                                       (42.3% logic, 57.7% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'DIV_CLK_18'
-  Total number of paths / destination ports: 31 / 29
+Timing constraint: Default OFFSET IN BEFORE for Clock 'ClkPort'
+  Total number of paths / destination ports: 26 / 26
 -------------------------------------------------------------------------
-Offset:              4.460ns (Levels of Logic = 2)
+Offset:              3.219ns (Levels of Logic = 1)
+  Source:            BtnR (PAD)
+  Destination:       DIV_CLK_0 (FF)
+  Destination Clock: ClkPort rising
+
+  Data Path: BtnR to DIV_CLK_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            53   1.222   1.567  BtnR_IBUF (Ld3_OBUF)
+     FDC:CLR                   0.430          DIV_CLK_0
+    ----------------------------------------
+    Total                      3.219ns (1.652ns logic, 1.567ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'DIV_CLK_21'
+  Total number of paths / destination ports: 74 / 69
+-------------------------------------------------------------------------
+Offset:              4.793ns (Levels of Logic = 2)
   Source:            BtnR (PAD)
   Destination:       x_ram/out_pipe_1 (FF)
-  Destination Clock: DIV_CLK_18 rising
+  Destination Clock: DIV_CLK_21 rising
 
   Data Path: BtnR to x_ram/out_pipe_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            48   1.222   1.519  BtnR_IBUF (Ld3_OBUF)
-     INV:I->O             25   0.206   1.192  x_ram/reset_inv1_INV_0 (x_ram/reset_inv)
-     FDE:CE                    0.322          x_ram/array_X_0_6
+     IBUF:I->O            53   1.222   1.567  BtnR_IBUF (Ld3_OBUF)
+     INV:I->O             45   0.206   1.476  x_ram/reset_inv1_INV_0 (flight_phys/reset_inv)
+     FDE:CE                    0.322          flight_phys/VertSpeed_0
     ----------------------------------------
-    Total                      4.460ns (1.750ns logic, 2.710ns route)
-                                       (39.2% logic, 60.8% route)
+    Total                      4.793ns (1.750ns logic, 3.043ns route)
+                                       (36.5% logic, 63.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'DIV_CLK_1'
+  Total number of paths / destination ports: 5 / 4
+-------------------------------------------------------------------------
+Offset:              3.219ns (Levels of Logic = 1)
+  Source:            BtnR (PAD)
+  Destination:       obs_log/state_FSM_FFd1 (FF)
+  Destination Clock: DIV_CLK_1 rising
+
+  Data Path: BtnR to obs_log/state_FSM_FFd1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            53   1.222   1.567  BtnR_IBUF (Ld3_OBUF)
+     FDC:CLR                   0.430          obs_log/state_FSM_FFd2
+    ----------------------------------------
+    Total                      3.219ns (1.652ns logic, 1.567ns route)
+                                       (51.3% logic, 48.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'DIV_CLK_25'
+  Total number of paths / destination ports: 21 / 21
+-------------------------------------------------------------------------
+Offset:              4.004ns (Levels of Logic = 2)
+  Source:            BtnR (PAD)
+  Destination:       syncgen/inDisplayArea (FF)
+  Destination Clock: DIV_CLK_25 rising
+
+  Data Path: BtnR to syncgen/inDisplayArea
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            53   1.222   1.568  BtnR_IBUF (Ld3_OBUF)
+     LUT4:I3->O            1   0.205   0.579  syncgen/CounterX[9]_PWR_3_o_LessThan_17_o1 (syncgen/CounterX[9]_PWR_3_o_LessThan_17_o_0)
+     FDR:R                     0.430          syncgen/inDisplayArea
+    ----------------------------------------
+    Total                      4.004ns (1.857ns logic, 2.147ns route)
+                                       (46.4% logic, 53.6% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'DIV_CLK_25'
+  Total number of paths / destination ports: 65 / 9
+-------------------------------------------------------------------------
+Offset:              6.235ns (Levels of Logic = 3)
+  Source:            syncgen/CounterX_0 (FF)
+  Destination:       Ce (PAD)
+  Source Clock:      DIV_CLK_25 rising
+
+  Data Path: syncgen/CounterX_0 to Ce
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDC:C->Q             15   0.447   1.210  syncgen/CounterX_0 (syncgen/CounterX_0)
+     LUT5:I2->O            7   0.205   1.021  Mmux_SSD<0>11 (SSD<0>)
+     LUT4:I0->O            1   0.203   0.579  Mram_SSD_CATHODES21 (Ce_OBUF)
+     OBUF:I->O                 2.571          Ce_OBUF (Ce)
+    ----------------------------------------
+    Total                      6.235ns (3.426ns logic, 2.809ns route)
+                                       (54.9% logic, 45.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ClkPort'
-  Total number of paths / destination ports: 39 / 14
+  Total number of paths / destination ports: 66 / 13
 -------------------------------------------------------------------------
-Offset:              6.128ns (Levels of Logic = 3)
+Offset:              6.197ns (Levels of Logic = 3)
   Source:            DIV_CLK_19 (FF)
-  Destination:       Ca (PAD)
+  Destination:       Ce (PAD)
   Source Clock:      ClkPort rising
 
-  Data Path: DIV_CLK_19 to Ca
+  Data Path: DIV_CLK_19 to Ce
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q             13   0.447   1.277  DIV_CLK_19 (DIV_CLK_19)
-     LUT5:I0->O            1   0.203   0.808  Ca_SW0 (N12)
-     LUT4:I1->O            2   0.205   0.616  Ca (Ca_OBUF)
-     OBUF:I->O                 2.571          Ca_OBUF (Ca)
+     FDC:C->Q              9   0.447   1.174  DIV_CLK_19 (DIV_CLK_19)
+     LUT5:I0->O            7   0.203   1.021  Mmux_SSD<0>11 (SSD<0>)
+     LUT4:I0->O            1   0.203   0.579  Mram_SSD_CATHODES21 (Ce_OBUF)
+     OBUF:I->O                 2.571          Ce_OBUF (Ce)
     ----------------------------------------
-    Total                      6.128ns (3.426ns logic, 2.702ns route)
-                                       (55.9% logic, 44.1% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'DIV_CLK_18'
-  Total number of paths / destination ports: 22 / 6
--------------------------------------------------------------------------
-Offset:              6.432ns (Levels of Logic = 3)
-  Source:            x_ram/state_FSM_FFd2 (FF)
-  Destination:       Ca (PAD)
-  Source Clock:      DIV_CLK_18 rising
-
-  Data Path: x_ram/state_FSM_FFd2 to Ca
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDC:C->Q             35   0.447   1.582  x_ram/state_FSM_FFd2 (x_ram/state_FSM_FFd2)
-     LUT5:I1->O            1   0.203   0.808  Ca_SW0 (N12)
-     LUT4:I1->O            2   0.205   0.616  Ca (Ca_OBUF)
-     OBUF:I->O                 2.571          Ca_OBUF (Ca)
-    ----------------------------------------
-    Total                      6.432ns (3.426ns logic, 3.006ns route)
-                                       (53.3% logic, 46.7% route)
+    Total                      6.197ns (3.424ns logic, 2.773ns route)
+                                       (55.3% logic, 44.7% route)
 
 =========================================================================
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 5 / 5
 -------------------------------------------------------------------------
-Delay:               5.312ns (Levels of Logic = 2)
+Delay:               5.360ns (Levels of Logic = 2)
   Source:            BtnR (PAD)
   Destination:       Ld3 (PAD)
 
@@ -823,11 +991,11 @@ Delay:               5.312ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            48   1.222   1.519  BtnR_IBUF (Ld3_OBUF)
+     IBUF:I->O            53   1.222   1.567  BtnR_IBUF (Ld3_OBUF)
      OBUF:I->O                 2.571          Ld3_OBUF (Ld3)
     ----------------------------------------
-    Total                      5.312ns (3.793ns logic, 1.519ns route)
-                                       (71.4% logic, 28.6% route)
+    Total                      5.360ns (3.793ns logic, 1.567ns route)
+                                       (70.8% logic, 29.2% route)
 
 =========================================================================
 
@@ -839,29 +1007,49 @@ Clock to Setup on destination clock ClkPort
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ClkPort        |    5.339|         |         |         |
-DIV_CLK_18     |    6.192|         |         |         |
+ClkPort        |    2.194|         |         |         |
+DIV_CLK_25     |    2.316|         |         |         |
 ---------------+---------+---------+---------+---------+
 
-Clock to Setup on destination clock DIV_CLK_18
+Clock to Setup on destination clock DIV_CLK_1
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-DIV_CLK_18     |    4.096|         |         |         |
+DIV_CLK_1      |    1.780|         |         |         |
+DIV_CLK_21     |    7.614|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock DIV_CLK_21
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+DIV_CLK_1      |    1.666|         |         |         |
+DIV_CLK_21     |    3.897|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock DIV_CLK_25
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+DIV_CLK_21     |    9.934|         |         |         |
+DIV_CLK_25     |    4.894|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 8.00 secs
-Total CPU time to Xst completion: 7.67 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 6.25 secs
  
 --> 
 
-Total memory usage is 243900 kilobytes
+
+Total memory usage is 490756 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   68 (   0 filtered)
-Number of infos    :   22 (   0 filtered)
+Number of warnings :   86 (   0 filtered)
+Number of infos    :   33 (   0 filtered)
 

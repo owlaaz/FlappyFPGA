@@ -63,8 +63,8 @@ begin
 					state <= QFlight;
 					
 				VertSpeed <= 10'd0;
-				Bird_X <= 10'd10; //10'd300;
-				Bird_Y <= 10'd10;//10'd240;
+				Bird_X <= 10'd20; //10'd300;
+				Bird_Y <= 10'd20;//10'd240;
 			end	
 			
 			QFlight:

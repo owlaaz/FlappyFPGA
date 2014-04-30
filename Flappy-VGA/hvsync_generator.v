@@ -24,7 +24,7 @@ reg [9:0] CounterY;
 reg vga_HS, vga_VS;
 reg inDisplayArea;
 //increment column counter
-always @(posedge clk)
+always @(posedge clk, posedge reset)
 begin
    if(reset)
       CounterX <= 0;
@@ -34,7 +34,7 @@ begin
 	   CounterX <= CounterX +1;
 end
 //increment row counter
-always @(posedge clk)
+always @(posedge clk, posedge reset)
 begin
    if(reset)
       CounterY<=0; 

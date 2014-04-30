@@ -1,8 +1,9 @@
 //! **************************************************************************
-// Written by: Map O.61xd on Tue Apr 29 19:31:17 2014
+// Written by: Map P.20131013 on Tue Apr 29 22:48:41 2014
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "Ca" LOCATE = SITE "T17" LEVEL 1;
 COMP "Cb" LOCATE = SITE "T18" LEVEL 1;
 COMP "Cc" LOCATE = SITE "U17" LEVEL 1;
 COMP "Cd" LOCATE = SITE "U18" LEVEL 1;
@@ -42,40 +43,18 @@ COMP "vga_b" LOCATE = SITE "R7" LEVEL 1;
 COMP "vga_g" LOCATE = SITE "P8" LEVEL 1;
 COMP "Mt_St_oe_bar" LOCATE = SITE "L18" LEVEL 1;
 COMP "Mt_St_we_bar" LOCATE = SITE "M16" LEVEL 1;
-COMP "Ca" LOCATE = SITE "T17" LEVEL 1;
 COMP "vga_r" LOCATE = SITE "U7" LEVEL 1;
 COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
 COMP "St_ce_bar" LOCATE = SITE "L17" LEVEL 1;
 COMP "St_rp_bar" LOCATE = SITE "V3" LEVEL 1;
-TIMEGRP sys_clk_pin = BEL "vga_r" BEL "flight_phys/VertSpeed_2" BEL
-        "flight_phys/VertSpeed_4" BEL "flight_phys/VertSpeed_5" BEL
-        "flight_phys/VertSpeed_6" BEL "flight_phys/VertSpeed_7" BEL
-        "flight_phys/VertSpeed_8" BEL "flight_phys/VertSpeed_9" BEL
-        "DIV_CLK_0" BEL "DIV_CLK_1" BEL "DIV_CLK_2" BEL "DIV_CLK_3" BEL
-        "DIV_CLK_4" BEL "DIV_CLK_5" BEL "DIV_CLK_6" BEL "DIV_CLK_7" BEL
-        "DIV_CLK_8" BEL "DIV_CLK_9" BEL "DIV_CLK_10" BEL "DIV_CLK_11" BEL
-        "DIV_CLK_12" BEL "DIV_CLK_13" BEL "DIV_CLK_14" BEL "DIV_CLK_15" BEL
-        "DIV_CLK_16" BEL "DIV_CLK_17" BEL "DIV_CLK_18" BEL "DIV_CLK_19" BEL
-        "flight_phys/Bird_Y_0" BEL "flight_phys/Bird_Y_1" BEL
-        "flight_phys/Bird_Y_2" BEL "flight_phys/Bird_Y_3" BEL
-        "flight_phys/Bird_Y_4" BEL "flight_phys/Bird_Y_5" BEL
-        "flight_phys/Bird_Y_6" BEL "flight_phys/Bird_Y_7" BEL
-        "flight_phys/Bird_Y_8" BEL "flight_phys/VertSpeed_0" BEL
-        "flight_phys/Bird_Y_9" BEL "obs_log/state_FSM_FFd1" BEL
-        "obs_log/state_FSM_FFd2" BEL "syncgen/CounterX_0" BEL
-        "syncgen/CounterY_0" BEL "syncgen/CounterX_8" BEL "syncgen/CounterX_7"
-        BEL "syncgen/CounterX_9" BEL "syncgen/CounterX_5" BEL
-        "syncgen/CounterX_4" BEL "syncgen/CounterX_6" BEL "syncgen/CounterX_2"
-        BEL "syncgen/CounterX_1" BEL "syncgen/CounterX_3" BEL
-        "syncgen/CounterY_9" BEL "syncgen/CounterY_8" BEL "syncgen/CounterY_6"
-        BEL "syncgen/CounterY_5" BEL "syncgen/CounterY_7" BEL
-        "syncgen/CounterY_3" BEL "syncgen/CounterY_2" BEL "syncgen/CounterY_4"
-        BEL "syncgen/CounterY_1" BEL "syncgen/vga_HS" BEL
-        "syncgen/inDisplayArea" BEL "syncgen/vga_VS" BEL
-        "flight_phys/VertSpeed_1" BEL "flight_phys/VertSpeed_3" BEL
-        "flight_phys/Bird_Y_1_1" BEL "flight_phys/Bird_Y_2_1" BEL
-        "flight_phys/Bird_Y_4_1" BEL "flight_phys/Bird_Y_3_1" BEL
-        "ClkPort_BUFGP/BUFG";
+TIMEGRP sys_clk_pin = BEL "vga_r" BEL "DIV_CLK_0" BEL "DIV_CLK_1" BEL
+        "DIV_CLK_2" BEL "DIV_CLK_3" BEL "DIV_CLK_4" BEL "DIV_CLK_5" BEL
+        "DIV_CLK_6" BEL "DIV_CLK_7" BEL "DIV_CLK_8" BEL "DIV_CLK_9" BEL
+        "DIV_CLK_10" BEL "DIV_CLK_11" BEL "DIV_CLK_12" BEL "DIV_CLK_13" BEL
+        "DIV_CLK_14" BEL "DIV_CLK_15" BEL "DIV_CLK_16" BEL "DIV_CLK_17" BEL
+        "DIV_CLK_18" BEL "DIV_CLK_19" BEL "DIV_CLK_20" BEL "DIV_CLK_21" BEL
+        "DIV_CLK_22" BEL "DIV_CLK_23" BEL "DIV_CLK_24" BEL "DIV_CLK_25" BEL
+        "ClkPort_BUFGP/BUFG" BEL "vga_r_1";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 

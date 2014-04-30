@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.ncd
-OUTFILE=C:\Users\Lorraine\Documents\Flappy-vgatop\vga_top.bit
+INFILE=/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.ncd
+OUTFILE=/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.bit
 FAMILY=Spartan6
 PART=xc6slx16-3csg324
-WORKINGDIR=C:\Users\Lorraine\Documents\Flappy-vgatop
+WORKINGDIR=/home/david/ee201/FlappyFPGA/Flappy-VGA
 LICENSE=WebPack
-USER_INFO=210797707_0_0_653
+USER_INFO=210721853_0_0_079
