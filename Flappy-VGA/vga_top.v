@@ -408,8 +408,12 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Check
 	*/
 	obstacle_logic obs_log(.Clk(DIV_CLK[1]),.reset(BtnR),.Q_Initial(q_Initial),.Q_Check(q_Check),.Q_Lose(q_Lose),
-		.Start(BtnU), .Ack(BtnD), .X_Edge(X_Edge),
-			.Y_Edge(Y_Edge), .Bird_X(Bird_X), .Bird_Y(Bird_Y));
+		.Start(BtnU), .Ack(BtnD), 
+		.X_Edge_Left(),
+		.X_Edge_Right(),
+		.Y_Edge_Top(),
+		.Y_Edge_Bottom(),
+		.Bird_X(Bird_X), .Bird_Y(Bird_Y));
 			
 	/*	flight_physics
 	*	INPUTS:		Clk
