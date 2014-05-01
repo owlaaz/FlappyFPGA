@@ -97,7 +97,7 @@ begin
 			QLose:
 			begin
 				loseCounter <= loseCounter+1;
-				if(Ack && loseCounter==20)
+				if(Ack && loseCounter>=4)
 					begin						
 						state <= QInitial;
 						loseCounter <= 0;

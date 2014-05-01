@@ -136,7 +136,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	reg Flash_Blue;
 	
-	always @(posedge DIV_CLK[21])
+	always @(posedge DIV_CLK[22])
 		begin
 			Flash_Blue <= 0;
 			if (q_Lose)
