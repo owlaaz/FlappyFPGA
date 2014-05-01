@@ -108,10 +108,12 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		CounterX>=(Bird_X_L) && CounterX<=(Bird_X_R);
 	//green = pipes
 	wire G = 
-		(CounterX>=X_Edge_O1_L && CounterX<=X_Edge_O1_R && (CounterY<=Y_Edge_02_Top || CounterY>=Y_Edge_02_Bottom)) ||
+		((CounterX>=X_Edge_O1_L && CounterX<=X_Edge_O1_R && (CounterY<=Y_Edge_02_Top || CounterY>=Y_Edge_02_Bottom)) ||
 		(CounterX>=X_Edge_O2_L && CounterX<=X_Edge_O2_R && (CounterY<=Y_Edge_03_Top || CounterY>=Y_Edge_03_Bottom)) ||
 		(CounterX>=X_Edge_O3_L && CounterX<=X_Edge_O3_R && (CounterY<=Y_Edge_04_Top || CounterY>=Y_Edge_04_Bottom)) ||
-		(CounterX>=X_Edge_OO_L && CounterX<=X_Edge_OO_R && (CounterY<=Y_Edge_01_Top || CounterY>=Y_Edge_01_Bottom));
+		(CounterX>=X_Edge_OO_L && CounterX<=X_Edge_OO_R && (CounterY<=Y_Edge_01_Top || CounterY>=Y_Edge_01_Bottom))) && 
+		~(CounterY>=(Bird_Y_T) && CounterY<=(Bird_Y_B) && 
+		CounterX>=(Bird_X_L) && CounterX<=(Bird_X_R));
 	wire B = 0;
 	
 	always @(posedge sys_clk)
@@ -145,12 +147,6 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	reg 	[3:0]	SSD;
 	wire 	[3:0]	SSD0, SSD1, SSD2, SSD3;
 	
-		reg lose;
-	always @ (q_Lose)
-	begin
-		lose <= q_Lose;
-	end
-	
 	assign SSD0 = Score[3:0]; // pipe index
 	//assign SSD1 = X_Edge_OO_L[3:0];
 	assign SSD1 =  X_Index; //in check state
@@ -158,7 +154,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	//assign SSD2 = X_Edge_OO_L[3:0];
 	assign SSD2 = q_Check;
 	//assign SSD3 =  {0,0,counterx[9:8]}; // obstacle logic 
-	assign SSD3 = lose;
+	assign SSD3 = q_Lose;
 	
 	// need a scan clk for the seven segment display 
 	// 191Hz (50MHz / 2^18) works well
@@ -211,7 +207,6 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	//assign Ack = BtnD_Pulse;
 	//assign Jump = BtnC_Pulse;
 	
-	ee201_debouncer #(.N_dc(28)) db1(.CLK(DIV_CLK[1]), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(Jump), .MCEN(), .CCEN());
 	
 	/*	X_RAM
 	*	INPUTS:		clk
@@ -268,7 +263,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		.X_Edge_Right(X_Edge_OO_R),
 		.Y_Edge_Top(Y_Edge_01_Top),
 		.Y_Edge_Bottom(Y_Edge_01_Bottom),
-		.Bird_X(Bird_X), .Bird_Y(Bird_Y));
+		.Bird_X_L(Bird_X_L), .Bird_X_R(Bird_X_R), .Bird_Y_T(Bird_Y_T), .Bird_Y_B(Bird_Y_B));
 			
 	/*	flight_physics
 	*	INPUTS:		Clk

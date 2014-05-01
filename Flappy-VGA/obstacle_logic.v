@@ -28,13 +28,15 @@ module obstacle_logic(
 	X_Edge_Right,
 	Y_Edge_Top,
 	Y_Edge_Bottom,
-	Bird_X, Bird_Y
+	Bird_X_L, Bird_X_R, Bird_Y_T, Bird_Y_B
 	);
 
 // INPUTS //
 input 	Clk, reset, Start, Ack;
-input	signed [9:0] Bird_X; // flappy's x
-input	signed [9:0] Bird_Y; // flappy's y
+input [9:0] Bird_X_L; // flappy's x
+input [9:0] Bird_Y_T; // flappy's y
+input [9:0] Bird_X_R; // flappy's x
+input [9:0] Bird_Y_B; // flappy's y
 input	[9:0] X_Edge_Left; // 10-bit x edge of current pipe (left edge)
 input	[9:0] X_Edge_Right; // 10-bit x edge of current pipe (right edge)
 input	[9:0] Y_Edge_Top; // 10 bit y edge of current pipe (top edge)
@@ -83,8 +85,8 @@ begin
 			begin
 			// if (Bird is below the bottom part of pipe OR above the top part of pipe
 			//			AND Bird is inside of the pipe X-wise) Then the player loses
-				if( (Bird_Y >= Y_Edge_Bottom || Bird_Y <= Y_Edge_Top)
-					&& (X_Edge_Left < Bird_X && X_Edge_Right > Bird_Y) )
+				if( (Bird_Y_T >= Y_Edge_Bottom || Bird_Y_B <= Y_Edge_Top)
+					&& (Bird_X_L > X_Edge_Left && Bird_X_R < X_Edge_Right) )
 					begin
 						state <= QLose;
 					end

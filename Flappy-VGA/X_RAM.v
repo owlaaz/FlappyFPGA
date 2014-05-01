@@ -108,10 +108,10 @@ integer i;
 						array_X_Right[1] <= X1_init_2;
 						array_X_Right[2] <= X2_init_2;
 						array_X_Right[3] <= X3_init_2;
-						out_pipe <= 0; // The first pipe in scope is 2 because that's just to the right of the bird.
-						out_temp_1 <= 1;
-						out_temp_2 <= 2;
-						out_temp_3 <= 3;
+						out_pipe <= 2; // The first pipe in scope is 2 because that's just to the right of the bird.
+						out_temp_1 <= 3;
+						out_temp_2 <= 0;
+						out_temp_3 <= 1;
 					if(Start) // we're startin' folks
 						state <= QCount;
 				end	
