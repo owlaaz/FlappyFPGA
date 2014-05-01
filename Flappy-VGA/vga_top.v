@@ -84,7 +84,9 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	always @ (posedge board_clk, posedge Reset)  
 	begin : CLOCK_DIVIDER
       if (Reset)
-			DIV_CLK <= 0;
+			begin
+				DIV_CLK <= 0;
+			end
       else
 			DIV_CLK <= DIV_CLK + 1'b1;
 	end	
@@ -114,7 +116,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		(CounterX>=X_Edge_OO_L && CounterX<=X_Edge_OO_R && (CounterY<=Y_Edge_01_Top || CounterY>=Y_Edge_01_Bottom))) && 
 		~(CounterY>=(Bird_Y_T) && CounterY<=(Bird_Y_B) && 
 		CounterX>=(Bird_X_L) && CounterX<=(Bird_X_R));
-	wire B = 0;
+	wire B = Flash_Blue;
 	
 	always @(posedge sys_clk)
 	begin
@@ -122,6 +124,17 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		vga_g <= G & inDisplayArea;
 		vga_b <= B & inDisplayArea;
 	end
+	
+	//Flash when you lost
+	
+	reg Flash_Blue;
+	
+	always @(posedge DIV_CLK[21])
+		begin
+			Flash_Blue <= 0;
+			if (q_Lose)
+				Flash_Blue <= ~Flash_Blue;				
+		end
 	
 	/////////////////////////////////////////////////////////////////
 	//////////////  	  VGA control ends here 	 ///////////////////

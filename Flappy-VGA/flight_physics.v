@@ -87,8 +87,8 @@ begin
 					
 				if(BtnPress && j == 0)
 				begin
-						PositiveSpeed = JUMP_VELOCITY;
-						NegativeSpeed = 0;
+						PositiveSpeed <= JUMP_VELOCITY;
+						NegativeSpeed <= 0;
 						j <= 1;
 				end
 				

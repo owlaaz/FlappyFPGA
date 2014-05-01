@@ -52,6 +52,8 @@ reg	Check;
 reg 	Initial;
 reg [2:0] state;
 
+integer loseCounter;
+
 //reg timer_out;
 //reg [3:0] count;
 
@@ -94,8 +96,12 @@ begin
 			
 			QLose:
 			begin
-				if(Ack)
-					state <= QInitial;
+				loseCounter <= loseCounter+1;
+				if(Ack && loseCounter==20)
+					begin						
+						state <= QInitial;
+						loseCounter <= 0;
+					end
 			end
 
 			default:
