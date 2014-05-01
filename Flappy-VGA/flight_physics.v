@@ -51,8 +51,8 @@ localparam
 			QStop 	= 3'b100,
 			UNK		= 3'bXXX;
 
-parameter JUMP_VELOCITY = 10; // some amount of pixels per clock
-parameter GRAVITY = 9; // change to some number of pixels per clock
+parameter JUMP_VELOCITY = 1; // some amount of pixels per clock
+parameter GRAVITY = 1; // change to some number of pixels per clock
 
 always @ (posedge Clk, posedge reset)
 begin
@@ -73,10 +73,10 @@ begin
 					
 				PositiveSpeed <= 10'd0;
 				NegativeSpeed <= 10'd0;
-				Bird_X_L <= 10'd0; //10'd300;
-				Bird_X_R <= 10'd100; //10'd300;
-				Bird_Y_T <= 10'd0;//10'd240;
-				Bird_Y_B <= 10'd100; //10'd300;
+				Bird_X_L <= 10'd300; //10'd300;
+				Bird_X_R <= 10'd320; //10'd300;
+				Bird_Y_T <= 10'd220;//10'd240;
+				Bird_Y_B <= 10'd240; //10'd300;
 			end	
 			
 			QFlight:
@@ -117,7 +117,7 @@ begin
 					end
 					
 					// VELOCITY LOGIC 
-						pos_temp = PositiveSpeed - 10'd9; // temp
+						pos_temp = PositiveSpeed - GRAVITY; // temp
 						
 					// if the bird is not yet falling, but is about to start falling
 					// positivespeed = 0 (no longer flying up) and negativespeed gets a value (bird starts falling)
@@ -125,7 +125,7 @@ begin
 							//&& NegativeSpeed == 0)
 					begin
 						PositiveSpeed <= 0;
-						NegativeSpeed <= 10'd9 - PositiveSpeed; 
+						NegativeSpeed <= GRAVITY - PositiveSpeed; 
 					end
 					else
 					begin
@@ -135,7 +135,7 @@ begin
 					// bird is already falling
 					if(PositiveSpeed == 0)//&& NegativeSpeed > 0)
 					begin
-						NegativeSpeed <= NegativeSpeed + 10'd9; // plus because falling faster and faster, gravity
+						NegativeSpeed <= NegativeSpeed + GRAVITY; // plus because falling faster and faster, gravity
 						if((NegativeSpeed) > 10'd300)
 							NegativeSpeed <= 10'd300; // terminal velocity sort of
 					end
