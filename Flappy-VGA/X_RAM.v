@@ -82,11 +82,11 @@ module X_RAM_NOREAD(clk,reset,Start, Stop, Ack, out_pipe, Score,
 	parameter X3_init = 426;
 	parameter X4_init = 568;
 	
-	parameter X0_init_2 = 71;
-	parameter X1_init_2 = 213;
-	parameter X2_init_2 = 355;
-	parameter X3_init_2 = 497;
-	parameter X4_init_2 = 639;
+	parameter X0_init_2 = 61;
+	parameter X1_init_2 = 203;
+	parameter X2_init_2 = 345;
+	parameter X3_init_2 = 487;
+	parameter X4_init_2 = 629;
 	
 	//reg [1:0] out_temp_0;
 	reg [2:0] out_temp_1;
@@ -154,7 +154,7 @@ integer i;
 							end
 						end
 				
-						if(array_X_Right[out_pipe] < 320) // if current pipe is going out of scope (240 because 320-width of 80)
+						if(array_X_Right[out_pipe] < 230) // if current pipe is going out of scope 
 						begin // move on to the next pipe
 							out_pipe <= out_pipe + 1;
 							if(out_pipe == 4)
