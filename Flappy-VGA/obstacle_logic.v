@@ -52,6 +52,12 @@ reg	Check;
 reg 	Initial;
 reg [2:0] state;
 
+reg [9:0] t1;
+reg [9:0] t2;
+reg [9:0] t3;
+reg [9:0] t4;
+
+
 integer loseCounter;
 
 //reg timer_out;
@@ -87,8 +93,14 @@ begin
 			begin
 			// if (Bird is below the bottom part of pipe OR above the top part of pipe
 			//			AND Bird is inside of the pipe X-wise) Then the player loses
+//				t1 = Y_Edge_Top + 10'd10;
+	//			t2 = Y_Edge_Bottom - 10'd10;
+		//		t3 = Bird_X_L - 10'd10;
+			//	t4 = Bird_X_R + 10'd10;
+				//if( (Bird_Y_T >= Y_Edge_Bottom || Bird_Y_B <= Y_Edge_Top)
+				//	&& (Bird_X_L > X_Edge_Left && Bird_X_R < X_Edge_Right) )
 				if( (Bird_Y_T >= Y_Edge_Bottom || Bird_Y_B <= Y_Edge_Top)
-					&& (Bird_X_L > X_Edge_Left && Bird_X_R < X_Edge_Right) )
+					&& (Bird_X_R > X_Edge_Left && Bird_X_L < X_Edge_Right) )
 					begin
 						state <= QLose;
 					end
@@ -97,7 +109,7 @@ begin
 			QLose:
 			begin
 				loseCounter <= loseCounter+1;
-				if(Ack && loseCounter>=4)
+				if(Ack && loseCounter>=1600)
 					begin						
 						state <= QInitial;
 						loseCounter <= 0;

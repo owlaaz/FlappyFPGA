@@ -29,9 +29,9 @@ module Y_ROM(I,
 	);
 	
 	parameter E0 = 210;
-	parameter E1 = 272;
-	parameter E2 = 100;
-	parameter E3 = 143;
+	parameter E1 = 252;
+	parameter E2 = 180;
+	parameter E3 = 110;
 	parameter E4 = 314;
 	
 	input [2:0] I;
