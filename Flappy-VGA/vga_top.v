@@ -18,12 +18,17 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	input 	BtnL, BtnR, BtnC, BtnU, BtnD;
 	
 	output 	St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar;
-	output 	vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b;
+	output 	vga_h_sync, vga_v_sync;
+	output [2:0] vga_r;
+	output [2:0] vga_g;
+	output [1:0] vga_b;
 	output 	An0, An1, An2, An3;
 	output	Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp;
 	output 	Ld0, Ld1, Ld2, Ld3, Ld4, Ld5, Ld6, Ld7;
 	
-	reg 	vga_r, vga_g, vga_b;
+	reg [2:0] vga_r;
+	reg [2:0] vga_g;
+	reg [1:0] vga_b;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
 	/*  LOCAL SIGNALS */
@@ -127,9 +132,9 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	always @(posedge sys_clk)
 	begin
-		vga_r <= R & inDisplayArea;
-		vga_g <= G & inDisplayArea;
-		vga_b <= B & inDisplayArea;
+		vga_r[2:0] <= R & inDisplayArea;
+		vga_g[2:0] <= G & inDisplayArea;
+		vga_b[1:0] <= B & inDisplayArea;
 	end
 	
 	//Flash when you lost
