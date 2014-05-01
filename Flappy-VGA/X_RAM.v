@@ -28,10 +28,14 @@ module X_RAM_NOREAD(clk,reset,Start, Stop, Ack, out_pipe, Score,
 	X_Edge_O1_L,
 	X_Edge_O2_L,
 	X_Edge_O3_L,
+	X_Edge_O4_L,
+	
 	X_Edge_OO_R,
 	X_Edge_O1_R,
 	X_Edge_O2_R,
 	X_Edge_O3_R,
+	X_Edge_O4_R,
+	
 	Q_Initial,
 	Q_Count,
 	Q_Stop);
@@ -43,17 +47,22 @@ module X_RAM_NOREAD(clk,reset,Start, Stop, Ack, out_pipe, Score,
  output [9:0] X_Edge_O1_L;
  output [9:0] X_Edge_O2_L;
  output [9:0] X_Edge_O3_L;
+ output [9:0] X_Edge_O4_L;
+ 
+ 
  output [9:0] X_Edge_OO_R;
  output [9:0] X_Edge_O1_R;
  output [9:0] X_Edge_O2_R;
  output [9:0] X_Edge_O3_R;
- output	[1:0] out_pipe;
+ output [9:0] X_Edge_O4_R;
+ 
+ output	[2:0] out_pipe;
  output	[3:0] Score;
  output 	Q_Initial, Q_Count, Q_Stop;
  
- reg [9:0] array_X_Left [3:0]; // 2D array X to store four 10 bit pipes
- reg [9:0] array_X_Right [3:0]; // 2D array X to store four 10 bit pipes
- reg [1:0] out_pipe;
+ reg [9:0] array_X_Left [4:0]; // 2D array X to store four 10 bit pipes
+ reg [9:0] array_X_Right [4:0]; // 2D array X to store four 10 bit pipes
+ reg [2:0] out_pipe;
  reg [3:0] Score;
  
  reg[2:0] state;
@@ -68,19 +77,22 @@ module X_RAM_NOREAD(clk,reset,Start, Stop, Ack, out_pipe, Score,
 			Q_Initial } = state;
 			
 	parameter X0_init = 0;
-	parameter X1_init = 160;
-	parameter X2_init = 320;
-	parameter X3_init = 480;
+	parameter X1_init = 142;
+	parameter X2_init = 284;
+	parameter X3_init = 426;
+	parameter X4_init = 568;
 	
-	parameter X0_init_2 = 80;
-	parameter X1_init_2 = 240;
-	parameter X2_init_2 = 400;
-	parameter X3_init_2 = 560;
+	parameter X0_init_2 = 61;
+	parameter X1_init_2 = 203;
+	parameter X2_init_2 = 345;
+	parameter X3_init_2 = 487;
+	parameter X4_init_2 = 629;
 	
 	//reg [1:0] out_temp_0;
-	reg [1:0] out_temp_1;
-	reg [1:0] out_temp_2;
-	reg [1:0] out_temp_3;
+	reg [2:0] out_temp_1;
+	reg [2:0] out_temp_2;
+	reg [2:0] out_temp_3;
+	reg [2:0] out_temp_4;
 
 
 integer i;
@@ -103,15 +115,19 @@ integer i;
 						array_X_Left[1] <= X1_init;
 						array_X_Left[2] <= X2_init;
 						array_X_Left[3] <= X3_init;
+						array_X_Left[4] <= X4_init;
 						
 						array_X_Right[0] <= X0_init_2;
 						array_X_Right[1] <= X1_init_2;
 						array_X_Right[2] <= X2_init_2;
 						array_X_Right[3] <= X3_init_2;
+						array_X_Right[4] <= X4_init_2;
+						
 						out_pipe <= 2; // The first pipe in scope is 2 because that's just to the right of the bird.
 						out_temp_1 <= 3;
-						out_temp_2 <= 0;
-						out_temp_3 <= 1;
+						out_temp_2 <= 4;
+						out_temp_3 <= 0;
+						out_temp_4 <= 1;
 					if(Start) // we're startin' folks
 						state <= QCount;
 				end	
@@ -122,7 +138,7 @@ integer i;
 					begin
 						state <= QStop;
 					end
-						for(i = 0; i < 4; i = i + 1) // Then we shift each pipe by 1 pixel
+						for(i = 0; i < 5; i = i + 1) // Then we shift each pipe by 1 pixel
 						begin
 							array_X_Left[i] <= array_X_Left[i]-10'd1;
 							if(array_X_Left[i] == 0)
@@ -138,23 +154,27 @@ integer i;
 							end
 						end
 				
-						if(array_X_Right[out_pipe] < 320) // if current pipe is going out of scope (240 because 320-width of 80)
+						if(array_X_Right[out_pipe] < 230) // if current pipe is going out of scope 
 						begin // move on to the next pipe
 							out_pipe <= out_pipe + 1;
-							if(out_pipe == 3)
+							if(out_pipe == 4)
 								out_pipe <= 0;
 							
 							out_temp_1 <= out_temp_1 + 1;
-							if(out_temp_1 == 3)
+							if(out_temp_1 == 4)
 								out_temp_1 <= 0;
 								
 							out_temp_2 <= out_temp_2 + 1;
-							if(out_temp_2 == 3)
+							if(out_temp_2 == 4)
 								out_temp_2 <= 0;
 								
 							out_temp_3 <= out_temp_3 + 1;
-							if(out_temp_3 == 3)
+							if(out_temp_3 == 4)
 								out_temp_3 <= 0;
+								
+							out_temp_4 <= out_temp_4 + 1;
+							if(out_temp_4 == 4)
+								out_temp_4 <= 0;								
 							
 							if(~Stop) Score <= Score + 4'd1; // increment score once a pipe passes the bird
 						end
@@ -178,10 +198,12 @@ integer i;
  assign X_Edge_O1_L = array_X_Left[out_temp_1];
  assign X_Edge_O2_L = array_X_Left[out_temp_2];
  assign X_Edge_O3_L = array_X_Left[out_temp_3];
+ assign X_Edge_O4_L = array_X_Left[out_temp_4];
  
  assign X_Edge_OO_R = array_X_Right[out_pipe];
  assign X_Edge_O1_R = array_X_Right[out_temp_1];
  assign X_Edge_O2_R = array_X_Right[out_temp_2];
  assign X_Edge_O3_R = array_X_Right[out_temp_3];
+ assign X_Edge_O4_R = array_X_Right[out_temp_4];
  
 endmodule

@@ -51,7 +51,7 @@ localparam
 			QStop 	= 3'b100,
 			UNK		= 3'bXXX;
 
-parameter JUMP_VELOCITY = 8; // some amount of pixels per clock
+parameter JUMP_VELOCITY = 6; // some amount of pixels per clock
 parameter GRAVITY = 1; // change to some number of pixels per clock
 
 reg j;
@@ -74,8 +74,8 @@ begin
 					
 				PositiveSpeed <= 10'd0;
 				NegativeSpeed <= 10'd0;
-				Bird_X_L <= 10'd300; //10'd300;
-				Bird_X_R <= 10'd320; //10'd300;
+				Bird_X_L <= 10'd230; //10'd300;
+				Bird_X_R <= 10'd250; //10'd300;
 				Bird_Y_T <= 10'd220;//10'd240;
 				Bird_Y_B <= 10'd240; //10'd300;
 			end	
