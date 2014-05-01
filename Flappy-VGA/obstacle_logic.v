@@ -83,7 +83,7 @@ begin
 			begin
 			// if (Bird is below the bottom part of pipe OR above the top part of pipe
 			//			AND Bird is inside of the pipe X-wise) Then the player loses
-				if( (Bird_Y >= Y_Edge_Bottm || Bird_Y <= Y_Edge_Top)
+				if( (Bird_Y >= Y_Edge_Bottom || Bird_Y <= Y_Edge_Top)
 					&& (X_Edge_Left < Bird_X && X_Edge_Right > Bird_Y) )
 					begin
 						state <= QLose;

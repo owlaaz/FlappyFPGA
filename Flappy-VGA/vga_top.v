@@ -69,8 +69,8 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	wire [9:0] Bird_Y_B;
 	wire BtnC_Pulse, BtnL_Pulse, BtnD_Pulse, BtnR_Pulse, BtnU_Pulse;
 	wire Jump;
-	reg [9:0] PositiveSpeed;
-	reg [9:0] NegativeSpeed;
+	wire [9:0] PositiveSpeed;
+	wire [9:0] NegativeSpeed;
 	
 	wire [1:0] 	ssdscan_clk;
 	reg [1:0] state_num;
@@ -97,87 +97,21 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	assign sys_clk = board_clk;
 	
-	hvsync_generator syncgen(.clk(DIV_CLK[25]), .reset(BtnR),.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .inDisplayArea(inDisplayArea), .CounterX(CounterX), .CounterY(CounterY));
+	hvsync_generator syncgen(.clk(DIV_CLK[1]), .reset(BtnR),.vga_h_sync(vga_h_sync), .vga_v_sync(vga_v_sync), .inDisplayArea(inDisplayArea), .CounterX(CounterX), .CounterY(CounterY));
 	
 	/////////////////////////////////////////////////////////////////
 	///////////////		VGA control starts here		/////////////////
 	/////////////////////////////////////////////////////////////////
-	
-	reg R;
-	
-	reg [9:0] Bird_L; reg [9:0] Bird_R;
-	reg [9:0]	Bird_T;
-	reg [9:0]	Bird_B;
-	reg [9:0] Bird_L_temp; reg [9:0] Bird_R_temp; reg [9:0] Bird_T_temp; reg [9:0] Bird_B_temp;
-	
-	always @ (DIV_CLK[25])
-		begin
-			Bird_L_temp = Bird_X-10;
-			Bird_R_temp = Bird_X+10;
-			Bird_T_temp = Bird_Y-10;
-			Bird_B_temp = Bird_Y+10;
-			if (Bird_L_temp > Bird_X)
-				Bird_L_temp = 0;
-			if (Bird_R_temp < Bird_X)
-				Bird_R_temp = 640;
-				
-			if (Bird_T_temp > Bird_Y)
-				Bird_T_temp = 0;
-			if (Bird_B_temp < Bird_Y)
-				Bird_B_temp = 480;
-			
-			Bird_L <= Bird_L_temp;
-			Bird_R <= Bird_R_temp;
-			Bird_T <= Bird_T_temp;
-			Bird_B <= Bird_B_temp;
-		end
-		
-	reg X0draw, X1draw, X2draw, X3draw;
-	reg X_Edge_temp, X_Edge_01_temp, X_Edge_02_temp, X_Edge_03_temp; 
-	
-	always @ (X_Edge, X_Edge_O1, X_Edge_O2, X_Edge_O3)
-		begin
-			X_Edge_temp = X_Edge+80;
-			X_Edge_01_temp = X_Edge_O1+80;
-			X_Edge_02_temp = X_Edge_O2+80;
-			X_Edge_03_temp = X_Edge_O3+80;
-			
-			if (X_Edge_temp < X_Edge)
-				X_Edge_temp = 640;
-				
-			if (X_Edge_01_temp < X_Edge_O1)
-				X_Edge_01_temp = 640;
-				
-			if (X_Edge_02_temp < X_Edge_O2)
-				X_Edge_02_temp = 640;
-				
-			if (X_Edge_03_temp < X_Edge_O3)
-				X_Edge_03_temp = 640;
-				
-			X0draw <= X_Edge_temp;
-			X1draw <= X_Edge_01_temp;
-			X2draw <= X_Edge_02_temp;
-			X3draw <= X_Edge_03_temp;
-		end
-	
-	always @ (posedge DIV_CLK[25])//, posedge Reset)//, Bird_Y, Bird_X, CounterY, CounterX)
-	begin
-		if(Reset) R <= 0;
-		
-		//R <= ~R;
-		R <= (CounterY>=(Bird_T) && CounterY<=(Bird_B) && 
-		CounterX>=(Bird_L) && CounterX<=(Bird_R));
-	end
 
-	//wire R = 
-		//CounterY>=(Bird_T) && CounterY<=(Bird_B) && 
-		//CounterX>=(Bird_L) && CounterX<=(Bird_R);
+	wire R = 
+		CounterY>=(Bird_Y_T) && CounterY<=(Bird_Y_B) && 
+		CounterX>=(Bird_X_L) && CounterX<=(Bird_X_R);
 	//green = pipes
 	wire G = 
-		CounterX>=X_Edge_O1 && CounterX<=X1draw && CounterY<=Y_Edge_01_Top && CounterY>=Y_Edge_01_Bottom ||
-		CounterX>=X_Edge_O2 && CounterX<=X2draw && CounterY<=Y_Edge_02_Top && CounterY>=Y_Edge_02_Bottom ||
-		CounterX>=X_Edge_O3 && CounterX<=X3draw && CounterY<=Y_Edge_03_Top && CounterY>=Y_Edge_03_Bottom ||
-		CounterX>=X_Edge && CounterX<=X0draw && CounterY<=Y_Edge_04_Top && CounterY>=Y_Edge_04_Bottom;
+		CounterX>=X_Edge_O1_L && CounterX<=X_Edge_O1_R && CounterY<=Y_Edge_01_Top && CounterY>=Y_Edge_01_Bottom ||
+		CounterX>=X_Edge_O2_L && CounterX<=X_Edge_O2_R && CounterY<=Y_Edge_02_Top && CounterY>=Y_Edge_02_Bottom ||
+		CounterX>=X_Edge_O3_L && CounterX<=X_Edge_O3_R && CounterY<=Y_Edge_03_Top && CounterY>=Y_Edge_03_Bottom ||
+		CounterX>=X_Edge_OO_L && CounterX<=X_Edge_OO_R && CounterY<=Y_Edge_04_Top && CounterY>=Y_Edge_04_Bottom;
 	wire B = 0;
 	
 	always @(posedge sys_clk)
@@ -284,17 +218,11 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	assign SSD3 = state_num;
 	*/	
 	
-	reg [3:0] bird_y;
-	always @ (Bird_Y)
-	begin
-		bird_y <= Bird_L;
-	end
-	
 	assign SSD0 = red; // pipe index
 	assign SSD1 =  counterx[3:0]; //in check state
 	assign SSD2 = 	counterx[7:4]; //x rom
 	//assign SSD3 =  {0,0,counterx[9:8]}; // obstacle logic 
-	assign SSD3 = Bird_X[3:0];
+	assign SSD3 = Bird_X_L[3:0];
 	// need a scan clk for the seven segment display 
 	// 191Hz (50MHz / 2^18) works well
 	assign ssdscan_clk = DIV_CLK[19:18];	
@@ -420,6 +348,6 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Bird_Y
 	*/
 	flight_physics flight_phys(.Clk(DIV_CLK[21]), .reset(BtnR), .Start(BtnU), .Ack(BtnD), .Stop(q_Lose),
-		.BtnPress(BtnC), .Bird_X_L(Bird_X_L),  .Bird_X_L(Bird_X_L), .Bird_Y_T(Bird_Y_T),  .Bird_Y_B(Bird_Y_B),
+		.BtnPress(BtnC), .Bird_X_L(Bird_X_L),  .Bird_X_R(Bird_X_R), .Bird_Y_T(Bird_Y_T),  .Bird_Y_B(Bird_Y_B),
 		.q_Initial(q_InitialF), .q_Flight(q_Flight), .q_Stop(q_StopF), .PositiveSpeed(PositiveSpeed), .NegativeSpeed(NegativeSpeed));
 endmodule

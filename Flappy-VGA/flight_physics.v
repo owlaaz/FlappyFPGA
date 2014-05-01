@@ -73,10 +73,10 @@ begin
 					
 				PositiveSpeed <= 10'd0;
 				NegativeSpeed <= 10'd0;
-				Bird_X_L <= 10'd20; //10'd300;
-				Bird_X_R <= 10'd40; //10'd300;
-				Bird_Y_T <= 10'd20;//10'd240;
-				Bird_Y_B <= 10'd40; //10'd300;
+				Bird_X_L <= 10'd0; //10'd300;
+				Bird_X_R <= 10'd100; //10'd300;
+				Bird_Y_T <= 10'd0;//10'd240;
+				Bird_Y_B <= 10'd100; //10'd300;
 			end	
 			
 			QFlight:
