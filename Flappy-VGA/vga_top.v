@@ -132,9 +132,9 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	always @(posedge sys_clk)
 	begin
-		vga_r[2:0] <= R & inDisplayArea;
-		vga_g[2:0] <= G & inDisplayArea;
-		vga_b[1:0] <= B & inDisplayArea;
+		vga_r[2:0] <= {R & inDisplayArea, R & inDisplayArea, R & inDisplayArea};
+		vga_g[2:0] <= {G & inDisplayArea, G & inDisplayArea, G & inDisplayArea};
+		vga_b[1:0] <= {B & inDisplayArea, B & inDisplayArea};
 	end
 	
 	//Flash when you lost
