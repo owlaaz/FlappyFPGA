@@ -54,9 +54,10 @@ localparam
 parameter JUMP_VELOCITY = 1; // some amount of pixels per clock
 parameter GRAVITY = 1; // change to some number of pixels per clock
 
-always @ (posedge Clk, posedge reset)
-begin
+reg j;
 
+always @ (posedge Clk, posedge reset)
+begin	
 	if(reset)
 	begin
 		state <= QInitial;
@@ -84,21 +85,23 @@ begin
 				if(Stop)
 					state <= QStop;
 					
-				if(BtnPress)
+				if(BtnPress && j == 0)
 				begin
-					PositiveSpeed <= JUMP_VELOCITY;
-					NegativeSpeed <= 0;
+						PositiveSpeed = JUMP_VELOCITY;
+						NegativeSpeed = 0;
+						j <= 1;
 				end
 				
 				else 
 				begin
+					j <= 0;
 					// BIRD POSITIONING LOGIC 
 					if(PositiveSpeed > 0 && NegativeSpeed == 0)
 					begin
 						Bird_Y_T <= Bird_Y_T - PositiveSpeed; // minus because Y should become smaller for bird to rise
 						Bird_Y_B <= Bird_Y_B - PositiveSpeed; 
 						// if bird rises too much
-						if(Bird_Y_T > PositiveSpeed || Bird_Y_B > PositiveSpeed)
+						if(Bird_Y_T < PositiveSpeed || Bird_Y_B < PositiveSpeed)
 						begin
 							Bird_Y_T <= 10'd0;
 							Bird_Y_B <= 10'd20;

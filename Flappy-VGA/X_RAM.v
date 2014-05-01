@@ -126,11 +126,16 @@ integer i;
 						begin
 							array_X_Left[i] <= array_X_Left[i]-10'd1;
 							if(array_X_Left[i] == 0)
-								array_X_Left[i] <= 640;
+							begin
+								array_X_Left[i] <= 0;
+							end
 								
 							array_X_Right[i] <= array_X_Right[i]-10'd1;
 							if(array_X_Right[i] == 0)
-								array_X_Right[i] <= 640;
+							begin
+								array_X_Left[i] <= 10'd640;
+								array_X_Right[i] <= 10'd720;
+							end
 						end
 				
 						if(array_X_Right[out_pipe] < 320) // if current pipe is going out of scope (240 because 320-width of 80)

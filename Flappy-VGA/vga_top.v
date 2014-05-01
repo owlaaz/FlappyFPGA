@@ -129,11 +129,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	//////////////  	  LD control starts here 	 ///////////////////
 	/////////////////////////////////////////////////////////////////
 	
-	reg clock_led;
-	always @ (posedge sys_clk)
-	begin
-		clock_led = sys_clk;
-	end
+
 	//assign Ld7 = clock_led;
 	assign {Ld7, Ld6, Ld5} = {vga_r, vga_g, vga_b}; // r, g, b
 //	assign {Ld7, Ld6, Ld5} = {clock_led, 0, 0};
@@ -149,16 +145,20 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	reg 	[3:0]	SSD;
 	wire 	[3:0]	SSD0, SSD1, SSD2, SSD3;
 	
-	
+		reg lose;
+	always @ (q_Lose)
+	begin
+		lose <= q_Lose;
+	end
 	
 	assign SSD0 = Score[3:0]; // pipe index
 	//assign SSD1 = X_Edge_OO_L[3:0];
-	assign SSD1 =  Score[7:4]; //in check state
+	assign SSD1 =  X_Index; //in check state
 	//assign SSD2 = 	CounterX[7:4]; //x rom
 	//assign SSD2 = X_Edge_OO_L[3:0];
-	assign SSD2 = X_Index;
+	assign SSD2 = q_Check;
 	//assign SSD3 =  {0,0,counterx[9:8]}; // obstacle logic 
-	assign SSD3 = q_Lose;
+	assign SSD3 = lose;
 	
 	// need a scan clk for the seven segment display 
 	// 191Hz (50MHz / 2^18) works well
@@ -210,6 +210,8 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	//assign Start = BtnU_Pulse;
 	//assign Ack = BtnD_Pulse;
 	//assign Jump = BtnC_Pulse;
+	
+	ee201_debouncer #(.N_dc(28)) db1(.CLK(DIV_CLK[1]), .RESET(Reset), .PB(BtnC), .DPB(), .SCEN(Jump), .MCEN(), .CCEN());
 	
 	/*	X_RAM
 	*	INPUTS:		clk
@@ -277,7 +279,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*	OUTPUTS:	Bird_X
 	*				Bird_Y
 	*/
-	flight_physics flight_phys(.Clk(DIV_CLK[19]), .reset(BtnR), .Start(BtnD), .Ack(BtnD), .Stop(q_Lose),
+	flight_physics flight_phys(.Clk(DIV_CLK[20]), .reset(BtnR), .Start(BtnD), .Ack(BtnD), .Stop(q_Lose),
 		.BtnPress(BtnC), .Bird_X_L(Bird_X_L),  .Bird_X_R(Bird_X_R), .Bird_Y_T(Bird_Y_T),  .Bird_Y_B(Bird_Y_B),
 		.q_Initial(q_InitialF), .q_Flight(q_Flight), .q_Stop(q_StopF), .PositiveSpeed(PositiveSpeed), .NegativeSpeed(NegativeSpeed));
 endmodule
