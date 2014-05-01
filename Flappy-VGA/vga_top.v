@@ -31,7 +31,7 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	// Inputs to the core design
 	wire Start, Ack;
-	wire [1:0] X_Index; // index of pipe to read
+	wire [2:0] X_Index; // index of pipe to read
 	// Outputs from the core design
 	wire [9:0] X_Edge_OO_L;
 	wire [9:0] X_Edge_OO_R;
@@ -44,7 +44,13 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	
 	wire [9:0] X_Edge_O3_L;
 	wire [9:0] X_Edge_O3_R;
+	
+	wire [9:0] X_Edge_O4_L;
+	wire [9:0] X_Edge_O4_R;
 
+	wire [9:0] Y_Edge_00_Top;
+	wire [9:0] Y_Edge_00_Bottom;
+	
 	wire [9:0] Y_Edge_01_Top;
 	wire [9:0] Y_Edge_01_Bottom;
 		
@@ -108,10 +114,11 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		CounterX>=(Bird_X_L) && CounterX<=(Bird_X_R);
 	//green = pipes
 	wire G = 
-		((CounterX>=X_Edge_O1_L && CounterX<=X_Edge_O1_R && (CounterY<=Y_Edge_02_Top || CounterY>=Y_Edge_02_Bottom)) ||
-		(CounterX>=X_Edge_O2_L && CounterX<=X_Edge_O2_R && (CounterY<=Y_Edge_03_Top || CounterY>=Y_Edge_03_Bottom)) ||
-		(CounterX>=X_Edge_O3_L && CounterX<=X_Edge_O3_R && (CounterY<=Y_Edge_04_Top || CounterY>=Y_Edge_04_Bottom)) ||
-		(CounterX>=X_Edge_OO_L && CounterX<=X_Edge_OO_R && (CounterY<=Y_Edge_01_Top || CounterY>=Y_Edge_01_Bottom))) && 
+		( (CounterX>=X_Edge_OO_L && CounterX<=X_Edge_OO_R && (CounterY<=Y_Edge_00_Top || CounterY>=Y_Edge_00_Bottom)) ||
+		(CounterX>=X_Edge_O1_L && CounterX<=X_Edge_O1_R && (CounterY<=Y_Edge_01_Top || CounterY>=Y_Edge_01_Bottom)) ||
+		(CounterX>=X_Edge_O2_L && CounterX<=X_Edge_O2_R && (CounterY<=Y_Edge_02_Top || CounterY>=Y_Edge_02_Bottom)) ||
+		(CounterX>=X_Edge_O3_L && CounterX<=X_Edge_O3_R && (CounterY<=Y_Edge_03_Top || CounterY>=Y_Edge_03_Bottom)) ||
+		(CounterX>=X_Edge_O4_L && CounterX<=X_Edge_O4_R && (CounterY<=Y_Edge_04_Top || CounterY>=Y_Edge_04_Bottom))) && 
 		~(CounterY>=(Bird_Y_T) && CounterY<=(Bird_Y_B) && 
 		CounterX>=(Bird_X_L) && CounterX<=(Bird_X_R));
 	wire B = 0;
@@ -221,8 +228,8 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Score - player's score, which increments when an edge leaves scope and a new one enters
 	*/
 	X_RAM_NOREAD x_ram(.clk(DIV_CLK[19]),.reset(BtnR),.Start(BtnD), .Stop(q_Lose), .Ack(BtnD), .out_pipe(X_Index), 
-		.Score(Score),.X_Edge_OO_L(X_Edge_OO_L), .X_Edge_O1_L(X_Edge_O1_L), .X_Edge_O2_L(X_Edge_O2_L), .X_Edge_O3_L(X_Edge_O3_L), 
-		.X_Edge_OO_R(X_Edge_OO_R), .X_Edge_O1_R(X_Edge_O1_R), .X_Edge_O2_R(X_Edge_O2_R), .X_Edge_O3_R(X_Edge_O3_R), 
+		.Score(Score),.X_Edge_OO_L(X_Edge_OO_L), .X_Edge_O1_L(X_Edge_O1_L), .X_Edge_O2_L(X_Edge_O2_L), .X_Edge_O3_L(X_Edge_O3_L),.X_Edge_O4_L(X_Edge_O4_L), 
+		.X_Edge_OO_R(X_Edge_OO_R), .X_Edge_O1_R(X_Edge_O1_R), .X_Edge_O2_R(X_Edge_O2_R), .X_Edge_O3_R(X_Edge_O3_R), .X_Edge_O4_R(X_Edge_O4_R), 
 		.Q_Initial(q_InitialX), .Q_Count(q_Count), .Q_Stop(q_Stop));	
 	
 	/*	Y_ROM
@@ -233,6 +240,8 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 	*				Y_Edge_O3
 	*/
 	Y_ROM y_rom(.I(X_Index),
+		.YEdge0T(Y_Edge_00_Top), 
+		.YEdge0B(Y_Edge_00_Bottom),
 		.YEdge1T(Y_Edge_01_Top), 
 		.YEdge1B(Y_Edge_01_Bottom),
 		.YEdge2T(Y_Edge_02_Top),
@@ -261,8 +270,8 @@ module vga_top(ClkPort, vga_h_sync, vga_v_sync, vga_r, vga_g, vga_b,
 		.Start(BtnD), .Ack(BtnD), 
 		.X_Edge_Left(X_Edge_OO_L),
 		.X_Edge_Right(X_Edge_OO_R),
-		.Y_Edge_Top(Y_Edge_01_Top),
-		.Y_Edge_Bottom(Y_Edge_01_Bottom),
+		.Y_Edge_Top(Y_Edge_00_Top),
+		.Y_Edge_Bottom(Y_Edge_00_Bottom),
 		.Bird_X_L(Bird_X_L), .Bird_X_R(Bird_X_R), .Bird_Y_T(Bird_Y_T), .Bird_Y_B(Bird_Y_B));
 			
 	/*	flight_physics

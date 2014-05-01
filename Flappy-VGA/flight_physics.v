@@ -74,8 +74,8 @@ begin
 					
 				PositiveSpeed <= 10'd0;
 				NegativeSpeed <= 10'd0;
-				Bird_X_L <= 10'd300; //10'd300;
-				Bird_X_R <= 10'd320; //10'd300;
+				Bird_X_L <= 10'd250; //10'd300;
+				Bird_X_R <= 10'd270; //10'd300;
 				Bird_Y_T <= 10'd220;//10'd240;
 				Bird_Y_B <= 10'd240; //10'd300;
 			end	
@@ -87,8 +87,8 @@ begin
 					
 				if(BtnPress && j == 0)
 				begin
-						PositiveSpeed = JUMP_VELOCITY;
-						NegativeSpeed = 0;
+						PositiveSpeed <= JUMP_VELOCITY;
+						NegativeSpeed <= 0;
 						j <= 1;
 				end
 				
