@@ -51,7 +51,7 @@ localparam
 			QStop 	= 3'b100,
 			UNK		= 3'bXXX;
 
-parameter JUMP_VELOCITY = 6; // some amount of pixels per clock
+parameter JUMP_VELOCITY = 10; // some amount of pixels per clock
 parameter GRAVITY = 1; // change to some number of pixels per clock
 
 reg j;

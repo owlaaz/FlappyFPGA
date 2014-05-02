@@ -1,7 +1,7 @@
 Release 14.7 Drc P.20131013 (lin64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue Apr 29 22:48:57 2014
+Thu May  1 17:12:16 2014
 
 drc -z vga_top.ncd vga_top.pcf
 
