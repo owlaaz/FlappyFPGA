@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.ncd
-OUTFILE=/home/david/ee201/FlappyFPGA/Flappy-VGA/vga_top.bit
-FAMILY=Spartan6
-PART=xc6slx16-3csg324
-WORKINGDIR=/home/david/ee201/FlappyFPGA/Flappy-VGA
-LICENSE=WebPack
-USER_INFO=210721853_0_0_079
