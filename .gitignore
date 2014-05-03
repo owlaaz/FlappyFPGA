@@ -4,6 +4,8 @@
 _ngo/
 iseconfig/
 xlnx_auto_0_xdb/
+*.gise
+*.xise
 *.xwbt
 *.bld
 *.drc
