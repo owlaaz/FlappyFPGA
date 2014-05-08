@@ -32,7 +32,7 @@ to the Stop state, where the decrementation of the coordinates stops 
 Y_ROM is a modified ROM that outputs the y­coordinates of each pipe’s top edge and bottom 
 edge. The output is based on the index from X_RAM_NOREAD. The Y_ROM contains five hard­coded 
 heights for the pipes, which rotate depending on which pipe is in scope. 
- 
+
 The flight_physics module outputs the bird’s x and y coordinates. The state machine contains 
 three states: Initial, Flight, and Stop. Upon reset, in the Initial state, the bird’s x and y coordinates are set. 
 When the player presses Start, the machine moves to the Flight state. 
@@ -58,7 +58,7 @@ PositiveSpeed is positive and NegativeSpeed is 0, meaning the bird is�
 and PositiveSpeed is 0, meaning the bird is falling. In the first scenario, PositiveSpeed is subtracted from 
 the bird’s y position to make it rise in the display. In the second, NegativeSpeed is added to the position to 
 make the bird fall.  
- 
+
 The obstacle_logic module handles checking whether the bird has hit an obstacle during gameplay. 
 It takes as input the outputs from the aforementioned modules: the bird’s x­ and y­ coordinates, as well as 
 the x­ and y­ coordinates of the pipe in scope. The state machine structure is also similar to the previous 
@@ -66,7 +66,7 @@ modules, with Initial, Check, and Lose (Stop) states. The Initial stat
 order to begin the Check state. In the Check state, the bird’s coordinates and the pipe coordinates are 
 compared for overlap to check if the bird and pipe have collided. If they do collide, the machine moves to 
 the Lose state. This modules Lose state is a signal for the other modules to move to their Stop states. 
- 
+
 The vga_top module contains logic to output the game display via VGA, and display the user’s 
 score simultaneously via the SSD’s on the Nexys3 and a simulated SSD on screen.  To display the bird, 
 the CounterX and CounterY values from the provided hvsync_generator are compared to the bird’s 
@@ -79,7 +79,7 @@ would result in a blended color.   
 When the player loses the game, the display flashes blue and waits a short duration, 
 then accepts an Ack signal from a button press to restart the game. A short always block toggles a 
 Flash_Blue register; this is used to generate the Blue output. 
- 
+
 Similar code is used to output the user’s score to both the physical SSD and the simulated SSD in 
 the upper left corner of the game display.  Wires representing ‘segments’ of the on­screen number are 
 simply 5x50 pixel regions on the screen.  An always block with a switch­case statement determines which 
