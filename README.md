@@ -1,5 +1,7 @@
 #Flappy Bird FPGA 
 
+[![ScreenShot](http://i.imgur.com/TPrbY0u.png)](https://www.youtube.com/watch?v=V-aDZSlBIQE&feature=youtu.be)
+
 ##Objective
 
 Our objective was to recreate the game Flappy Bird, with an emphasis on replicating the physics component of the gameplay. The design was implemented through Verilog code to be synthesized and downloaded onto a Nexys­3 Spartan 6 FPGA board. The game is displayed using the Nexys board’s VGA output and controlled via button inputs.   
